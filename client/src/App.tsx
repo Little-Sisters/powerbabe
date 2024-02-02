@@ -19,6 +19,9 @@ function App() {
       <Flex>
         <CharachterContainer>
           <Sprite src="./characters/head-medium.png"></Sprite>
+          <Sprite src="./characters/top-2-blue.png" zindex={11}></Sprite>
+          <Sprite src="./characters/hair-1-black.png" zindex={3}></Sprite>
+          <Sprite src="./characters/bottoms-3-black.png" zindex={15}></Sprite>
           <Sprite
             src="./characters/lowerbody-2-medium.png"
             zindex={10}
@@ -39,7 +42,6 @@ const Flex = styled.div`
   background: beige;
   justify-content: center;
   align-items: center;
-
 `;
 
 const ChooseBox = styled.div`
