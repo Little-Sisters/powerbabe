@@ -1,26 +1,48 @@
+interface BodyImage {
+  src: string;
+  number: number;
+}
 
-type LowerBodyImages = {
-  medium: string[];
-  tan: string[];
+type HeadImage = string; // Assuming HeadImage is just a string representing the image source
+
+type BodyImages = {
+  light: BodyImage[];
+  medium: BodyImage[];
+  tan: BodyImage[];
 };
 
-const lowerBodyArray: LowerBodyImages = {
+const lowerBodyArray: BodyImages = {
+  light: [
+    { src: "./characters/upperbody-1-medium.png", number: 1 },
+    { src: "./characters/upperbody-2-medium.png", number: 2 },
+  ],
   medium: [
-    "./characters/lowerbody-1-medium.png",
-    "./characters/lowerbody-2-medium.png",
+    { src: "./characters/lowerbody-1-medium.png", number: 1 },
+    { src: "./characters/lowerbody-2-medium.png", number: 2 },
   ],
   tan: [
-    // Add tan image paths here if applicable
+    { src: "./characters/lowerbody-tan-1.png", number: 1 },
+    { src: "./characters/lowerbody-tan-2.png", number: 2 },
   ],
 };
 
-const upperBodyArray = [
-  "./characters/upperbody-1-medium.png",
-  "./characters/upperbody-2-medium.png",
-];
+const upperBodyArray: BodyImages = {
+  light: [
+    { src: "./characters/upperbody-1-medium.png", number: 1 },
+    { src: "./characters/upperbody-2-medium.png", number: 2 },
+  ],
+  medium: [
+    { src: "./characters/upperbody-1-medium.png", number: 1 },
+    { src: "./characters/upperbody-2-medium.png", number: 2 },
+  ],
+  tan: [
+    { src: "./characters/upperbody-1-medium.png", number: 1 },
+    { src: "./characters/upperbody-2-medium.png", number: 2 },
+  ],
+};
 
-const topArray = [
-
-  "./characters/top-1-black.png",
-  "./characters/top-2-black.png",
+const headArray: HeadImage[] = [
+  "./characters/head-1.png",
+  "./characters/head-2.png",
+  "./characters/head-3.png",
 ];
