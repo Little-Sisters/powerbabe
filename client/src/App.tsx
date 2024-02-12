@@ -1,35 +1,45 @@
+import { useState } from "react";
 import styled from "styled-components";
+import {
+  BodyImage,
+  headArray,
+  lowerBodyImages,
+  upperBodyImages,
+} from "../public/data/bodyData";
 
 interface SpriteProps {
   src: string;
   zindex?: number;
   opacity?: number;
 }
+const colors = ["light", "medium", "dark", "yellow", "darker"];
 
 function App() {
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
+  const [currentLowerBodyNumber, setCurrentLowerBodyNumber] = useState(1);
+
+  const handleColorChange = () => {
+    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+  };
+
+  const handleLowerBodyChange = () => {
+    setCurrentLowerBodyNumber((prevNumber) => (prevNumber === 1 ? 2 : 1));
+  };
+
+  const headImage = headArray[currentColorIndex];
   return (
     <div className="App">
       <h1>Powerbabe the game version 0</h1>
       <Flex>
         <ChooseBox>
-          <button>previous</button>
-          <button>next one</button>
+          <button onClick={handleColorChange}>Change Color</button>
+          <button onClick={handleLowerBodyChange}>Change Lower Body</button>
         </ChooseBox>
       </Flex>
       <Flex>
         <CharachterContainer>
-          <Sprite src="./characters/head-medium.png"></Sprite>
-          <Sprite src="./characters/top-2-blue.png" zindex={11}></Sprite>
-          <Sprite src="./characters/hair-1-black.png" zindex={3}></Sprite>
-          <Sprite src="./characters/bottoms-3-black.png" zindex={15}></Sprite>
-          <Sprite
-            src="./characters/lowerbody-2-medium.png"
-            zindex={10}
-          ></Sprite>
-          <Sprite
-            src="./characters/upperbody-1-medium.png"
-            zindex={10}
-          ></Sprite>
+
+          <Sprite src={headImage} zindex={3} />
         </CharachterContainer>
       </Flex>
     </div>
