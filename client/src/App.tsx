@@ -1,81 +1,58 @@
-import { useState } from "react";
-import styled from "styled-components";
-import {
-  BodyImage,
-  headArray,
-  lowerBodyImages,
-  upperBodyImages,
-} from "../public/data/bodyData";
-
-interface SpriteProps {
-  src: string;
-  zindex?: number;
-  opacity?: number;
-}
-const colors = ["light", "medium", "dark", "yellow", "darker"];
+import { AnimatePresence } from "framer-motion";
+import { Route, Routes, useLocation } from "react-router-dom";
+import styled, { ThemeProvider } from "styled-components";
+import { Page } from "./animations/page-transitions";
+import Header from "./components/layout/header";
+import { useLocalStorageState } from "./hooks/useLocalStorage";
+import DressingRoomPage from "./pages/dressingroom-page";
+import StartPage from "./pages/startpage";
+import { GlobalStyles } from "./theme/GlobalStyles";
+import { pinkTheme, blackTheme } from "./theme/Themes";
 
 function App() {
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
-  const [currentLowerBodyNumber, setCurrentLowerBodyNumber] = useState(1);
+  const [theme, setTheme] = useLocalStorageState("pink", "theme");
+  const location = useLocation();
+  const locationArr = location.pathname?.split("/") ?? [];
 
-  const handleColorChange = () => {
-    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+  const themeToggler = () => {
+    theme === "pink" ? setTheme("black") : setTheme("pink");
   };
 
-  const handleLowerBodyChange = () => {
-    setCurrentLowerBodyNumber((prevNumber) => (prevNumber === 1 ? 2 : 1));
-  };
-
-  const headImage = headArray[currentColorIndex];
   return (
     <div className="App">
-      <h1>Powerbabe the game version 0</h1>
-      <Flex>
-        <ChooseBox>
-          <button onClick={handleColorChange}>Change Color</button>
-          <button onClick={handleLowerBodyChange}>Change Lower Body</button>
-        </ChooseBox>
-      </Flex>
-      <Flex>
-        <CharachterContainer>
-
-          <Sprite src={headImage} zindex={3} />
-        </CharachterContainer>
-      </Flex>
+      <ThemeProvider theme={theme === "pink" ? pinkTheme : blackTheme}>
+        <GlobalStyles />
+        <Header theme={theme} themeToggler={themeToggler} />
+        <Main>
+          <AnimatePresence initial={false} mode="wait">
+            <Routes location={location} key={locationArr[1]}>
+              <Route
+                path="/"
+                element={
+                  <Page>
+                    <StartPage />
+                  </Page>
+                }
+              />
+              <Route
+                path="/dressing-room"
+                element={
+                  <Page>
+                    <DressingRoomPage />
+                  </Page>
+                }
+              />
+            </Routes>
+          </AnimatePresence>
+        </Main>
+      </ThemeProvider>
     </div>
   );
 }
 
-const Flex = styled.div`
-  display: flex;
-  width: 100%;
-  background: beige;
-  justify-content: center;
-  align-items: center;
+const Main = styled.main`
+margin-top: 3rem;
 `;
 
-const ChooseBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 20rem;
-  height: 7rem;
-  background: hotpink;
-`;
-
-const CharachterContainer = styled.div`
-  height: 40rem;
-  background: #ffa6f3;
-  width: 20rem;
-  position: relative;
-`;
-
-const Sprite = styled.img<SpriteProps>`
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: ${(props) => props.zindex || 1};
-  opacity: ${(props) => props.opacity || 1};
-`;
 
 export default App;
