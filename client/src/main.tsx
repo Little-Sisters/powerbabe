@@ -6,6 +6,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import App from "./App";
+import "./theme/App.css"
 
 const container = document.getElementById("root");
 const root = createRoot(container!);

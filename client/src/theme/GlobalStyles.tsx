@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
 }
 body {
-    background: ${({ theme }) => theme.primaryLight};
+    background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
      transition: all 0.30s linear;
 }

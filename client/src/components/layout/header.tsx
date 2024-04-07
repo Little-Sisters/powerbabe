@@ -37,13 +37,12 @@ function Header({ themeToggler, theme }: HeaderProps) {
   return (
     <StyledHeader
       style={{
-        //background: backgroundColor,
         backdropFilter: backdropFilter,
       }}
     >
         <HeaderFlex>
           <div>
-            <h2>Header</h2>
+            <h2>PowerGirl</h2>
           </div>
           <Nav>
             <StyledNavLink to="/">Home</StyledNavLink>
@@ -57,6 +56,7 @@ function Header({ themeToggler, theme }: HeaderProps) {
 }
 const StyledHeader = styled(motion.header)`
   width: 100%;
+  padding: 0 1rem;
   position: fixed;
   background: ${({ theme }) =>
   theme.primary}; // Black overlay with 50% opacity
