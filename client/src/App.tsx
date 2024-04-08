@@ -8,6 +8,7 @@ import DressingRoomPage from "./pages/dressingroom-page";
 import StartPage from "./pages/startpage";
 import { GlobalStyles } from "./theme/GlobalStyles";
 import { pinkTheme, blackTheme } from "./theme/Themes";
+import { EyeStyleProvider } from "./contexts/eyeContext";
 
 function App() {
   const [theme, setTheme] = useLocalStorageState("pink", "theme");
@@ -21,30 +22,32 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme === "pink" ? pinkTheme : blackTheme}>
-        <GlobalStyles />
-        <Header theme={theme} themeToggler={themeToggler} />
-        <Main>
-          <AnimatePresence initial={false} mode="wait">
-            <Routes location={location} key={locationArr[1]}>
-              <Route
-                path="/"
-                element={
-                  <Page>
-                    <StartPage />
-                  </Page>
-                }
-              />
-              <Route
-                path="/dressing-room"
-                element={
-                  <Page>
-                    <DressingRoomPage />
-                  </Page>
-                }
-              />
-            </Routes>
-          </AnimatePresence>
-        </Main>
+        <EyeStyleProvider>
+          <GlobalStyles />
+          <Header theme={theme} themeToggler={themeToggler} />
+          <Main>
+            <AnimatePresence initial={false} mode="wait">
+              <Routes location={location} key={locationArr[1]}>
+                <Route
+                  path="/"
+                  element={
+                    <Page>
+                      <StartPage />
+                    </Page>
+                  }
+                />
+                <Route
+                  path="/dressing-room"
+                  element={
+                    <Page>
+                      <DressingRoomPage />
+                    </Page>
+                  }
+                />
+              </Routes>
+            </AnimatePresence>
+          </Main>
+        </EyeStyleProvider>
       </ThemeProvider>
     </div>
   );

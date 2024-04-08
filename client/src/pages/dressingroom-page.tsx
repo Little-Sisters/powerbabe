@@ -1,8 +1,50 @@
 import styled from "styled-components";
+import { useEyeStyle, eyeStyles } from "../contexts/eyeContext";
+
+function DressingRoomPage() {
+  const {
+    currentStyleIndex,
+    setCurrentStyleIndex,
+    currentColorIndex,
+    setCurrentColorIndex,
+    goToNextStyle,
+    goToPreviousStyle,
+    goToNextColor,
+    goToPreviousColor,
+    currentStyleColors, 
+  } = useEyeStyle();
+
+  return (
+    <DressingRoomContainer>
+      <MainSection>
+        <h1>Main Content</h1>
+        <div>
+          <h2>Current Style: {eyeStyles[currentStyleIndex]}</h2>
+          <button onClick={goToPreviousStyle}>Previous Style</button>
+          <button onClick={goToNextStyle}>Next Style</button>
+          <h2>Current Color: {currentStyleColors[currentColorIndex]}</h2>
+          <button onClick={goToPreviousColor}>Previous Color</button>
+          <button onClick={goToNextColor}>Next Color</button>
+          {/* Display the current style and color combination */}
+          <h2>Available Colors:</h2>
+          <ul>
+            {currentStyleColors.map((color, index) => (
+              <li key={index}>{color}</li>
+            ))}
+          </ul>
+        </div>
+      </MainSection>
+      <SideSection>
+        <h1>Side Content</h1>
+      </SideSection>
+    </DressingRoomContainer>
+  );
+}
 
 const DressingRoomContainer = styled.section`
   display: flex;
   flex-direction: column;
+  color: #000000;
   height: 100vh;
   @media (min-width: 768px) {
     flex-direction: row;
@@ -11,8 +53,7 @@ const DressingRoomContainer = styled.section`
 
 const MainSection = styled.div`
   flex: 1;
-  background-image: url("./backgrounds/pinkroom.png"); 
-  opacity: 0.4;
+  background-image: url("./backgrounds/pinkroom.png");
 
   background-size: cover;
   background-position: bottom;
@@ -31,18 +72,5 @@ const SideSection = styled.div`
     height: 230px;
   }
 `;
-
-function DressingRoomPage() {
-  return (
-    <DressingRoomContainer>
-      <MainSection>
-        <h1>Main Content</h1>
-      </MainSection>
-      <SideSection>
-        <h1>Side Content</h1>
-      </SideSection>
-    </DressingRoomContainer>
-  );
-}
 
 export default DressingRoomPage;
