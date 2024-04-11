@@ -1,38 +1,17 @@
 import styled from "styled-components";
-import { useEyeStyle, eyeStyles } from "../contexts/eyeContext";
+import ColorAndStyleSwitcher from "../components/ColorAndStyleSwitcher";
 
-function DressingRoomPage() {
-  const {
-    currentStyleIndex,
-    setCurrentStyleIndex,
-    currentColorIndex,
-    setCurrentColorIndex,
-    goToNextStyle,
-    goToPreviousStyle,
-    goToNextColor,
-    goToPreviousColor,
-    currentStyleColors, 
-  } = useEyeStyle();
-
+function DressingRoomPage({}) {
   return (
     <DressingRoomContainer>
       <MainSection>
-        <h1>Main Content</h1>
-        <div>
-          <h2>Current Style: {eyeStyles[currentStyleIndex]}</h2>
-          <button onClick={goToPreviousStyle}>Previous Style</button>
-          <button onClick={goToNextStyle}>Next Style</button>
-          <h2>Current Color: {currentStyleColors[currentColorIndex]}</h2>
-          <button onClick={goToPreviousColor}>Previous Color</button>
-          <button onClick={goToNextColor}>Next Color</button>
-          {/* Display the current style and color combination */}
-          <h2>Available Colors:</h2>
-          <ul>
-            {currentStyleColors.map((color, index) => (
-              <li key={index}>{color}</li>
-            ))}
-          </ul>
-        </div>
+        <ColorAndStyleSwitcher
+          stylesAndColors={{
+            hairStyle1: ["black", "blonde", "brunette", "red"],
+            hairStyle2: ["pink", "blue", "purple", "green"],
+            hairStyle3: ["gray", "white", "silver", "gold"],
+          }}
+        />
       </MainSection>
       <SideSection>
         <h1>Side Content</h1>
