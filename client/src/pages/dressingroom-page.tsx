@@ -50,7 +50,6 @@ const DressingRoomContainer = styled.section`
 const MainSection = styled.div`
   flex: 1;
   background-image: url("./backgrounds/pinkroom.png");
-
   background-size: cover;
   background-position: bottom;
   @media (max-width: 767px) {

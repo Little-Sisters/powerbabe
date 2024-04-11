@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface StyleColorContextProps {
   hairstyle: { style: string; color: string };
@@ -33,6 +33,11 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
   const [eyestyle, setEyestyle] = useState({ style: "", color: "" });
   const [topstyle, setTopstyle] = useState({ style: "", color: "" });
   // Initialize other features as needed
+
+   useEffect(() => {
+     console.log("Hairstyle state:", hairstyle);
+   }, [hairstyle]);
+
 
   const values: StyleColorContextProps & StyleColorContextActions = {
     hairstyle,

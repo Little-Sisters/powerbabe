@@ -8,6 +8,7 @@ import DressingRoomPage from "./pages/dressingroom-page";
 import StartPage from "./pages/startpage";
 import { GlobalStyles } from "./theme/GlobalStyles";
 import { pinkTheme, blackTheme } from "./theme/Themes";
+import { StyleColorProvider } from "./contexts/styleColorContext";
 
 function App() {
   const [theme, setTheme] = useLocalStorageState("pink", "theme");
@@ -17,11 +18,30 @@ function App() {
   const themeToggler = () => {
     theme === "pink" ? setTheme("black") : setTheme("pink");
   };
+  const initialHairstyle = {
+    style: "style1",
+    color: ["blue", "green", "brown", "magenta"][0],
+  };
+
+  const initialEyestyle = {
+    style: "style1",
+    color: ["blue", "green", "brown", "magenta"][0],
+  };
+
+  const initialTopstyle = {
+    style: "style1",
+    color: ["blue", "green", "brown", "magenta"][0],
+  };
+  
 
   return (
     <div className="App">
       <ThemeProvider theme={theme === "pink" ? pinkTheme : blackTheme}>
-        <StyleColorProvider>
+        <StyleColorProvider
+          initialHairstyle={initialHairstyle}
+          initialEyestyle={initialEyestyle}
+          initialTopstyle={initialTopstyle}
+        >
           <GlobalStyles />
           <Header theme={theme} themeToggler={themeToggler} />
           <Main>
