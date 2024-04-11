@@ -6,10 +6,27 @@ function DressingRoomPage({}) {
     <DressingRoomContainer>
       <MainSection>
         <ColorAndStyleSwitcher
+          feature="hairstyle"
           stylesAndColors={{
-            hairStyle1: ["black", "blonde", "brunette", "red"],
-            hairStyle2: ["pink", "blue", "purple", "green"],
-            hairStyle3: ["gray", "white", "silver", "gold"],
+            style1: ["blue", "green", "brown", "magenta"],
+            style2: ["red", "yellow", "purple", "blue"],
+            style3: ["cyan", "magenta", "orange", "red"],
+          }}
+        />
+        <ColorAndStyleSwitcher
+          feature="eyestyle"
+          stylesAndColors={{
+            style1: ["blue", "green", "brown", "magenta"],
+            style2: ["red", "yellow", "purple", "blue"],
+            style3: ["cyan", "magenta", "orange", "red"],
+          }}
+        />
+        <ColorAndStyleSwitcher
+          feature="topstyle"
+          stylesAndColors={{
+            style1: ["blue", "green", "brown", "magenta"],
+            style2: ["red", "yellow", "purple", "blue"],
+            style3: ["cyan", "magenta", "orange", "red"],
           }}
         />
       </MainSection>

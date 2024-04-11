@@ -8,7 +8,6 @@ import DressingRoomPage from "./pages/dressingroom-page";
 import StartPage from "./pages/startpage";
 import { GlobalStyles } from "./theme/GlobalStyles";
 import { pinkTheme, blackTheme } from "./theme/Themes";
-import { EyeStyleProvider } from "./contexts/eyeContext";
 
 function App() {
   const [theme, setTheme] = useLocalStorageState("pink", "theme");
@@ -22,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme === "pink" ? pinkTheme : blackTheme}>
-        <EyeStyleProvider>
+        <StyleColorProvider>
           <GlobalStyles />
           <Header theme={theme} themeToggler={themeToggler} />
           <Main>
@@ -47,7 +46,7 @@ function App() {
               </Routes>
             </AnimatePresence>
           </Main>
-        </EyeStyleProvider>
+        </StyleColorProvider>
       </ThemeProvider>
     </div>
   );
