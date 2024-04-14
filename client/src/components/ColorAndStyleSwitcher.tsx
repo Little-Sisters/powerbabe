@@ -158,6 +158,7 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 };
 
 const Switcher = styled.div`
+  z-index: 1000;
   background: ${({ theme }) => theme.primaryLight};
   width: 250px;
   padding: 1rem;
