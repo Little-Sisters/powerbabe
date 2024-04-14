@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import ColorAndStyleSwitcher from "../components/ColorAndStyleSwitcher";
+import { useStyleColor } from "../contexts/styleColorContext";
 
 function DressingRoomPage({}) {
+  const { hairstyle, eyestyle, topstyle } = useStyleColor();
+
   return (
     <DressingRoomContainer>
-      <MainSection>
+      <MainSection></MainSection>
+      <SideSection>
         <ColorAndStyleSwitcher
           feature="hairstyle"
           stylesAndColors={{
@@ -29,9 +33,6 @@ function DressingRoomPage({}) {
             style3: ["cyan", "magenta", "orange", "red"],
           }}
         />
-      </MainSection>
-      <SideSection>
-        <h1>Side Content</h1>
       </SideSection>
     </DressingRoomContainer>
   );
@@ -41,9 +42,10 @@ const DressingRoomContainer = styled.section`
   display: flex;
   flex-direction: column;
   color: #000000;
-  height: 100vh;
+  height: auto;
   @media (min-width: 768px) {
     flex-direction: row;
+    height: 100vh;
   }
 `;
 
@@ -51,8 +53,9 @@ const MainSection = styled.div`
   flex: 1;
   background-image: url("./backgrounds/pinkroom.png");
   background-size: cover;
+  height: auto;
   background-position: bottom;
-  @media (max-width: 767px) {
+  @media (min-width: 767px) {
     width: 100%;
     height: 100vh;
   }
@@ -60,11 +63,11 @@ const MainSection = styled.div`
 
 const SideSection = styled.div`
   width: 360px;
-  height: 100vh;
+  height: auto;
   background: ${({ theme }) => theme.primaryLight};
-  @media (max-width: 767px) {
+  @media (min-width: 767px) {
     width: 100%;
-    height: 230px;
+    height: 100vh;
   }
 `;
 

@@ -34,10 +34,6 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
   const [topstyle, setTopstyle] = useState({ style: "", color: "" });
   // Initialize other features as needed
 
-   useEffect(() => {
-     console.log("Hairstyle state:", hairstyle);
-   }, [hairstyle]);
-
 
   const values: StyleColorContextProps & StyleColorContextActions = {
     hairstyle,

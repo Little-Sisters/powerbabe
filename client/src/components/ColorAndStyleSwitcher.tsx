@@ -62,41 +62,69 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   };
 
   const goToNextStyle = () => {
-    setCurrentStyleIndex((prevIndex) => (prevIndex + 1) % styleKeys.length);
-    setCurrentColorIndex(0); // Reset color index when changing styles
-    setCurrentStyle(styleKeys[currentStyleIndex], currentStyleColors[0]);
+    const nextStyleIndex = (currentStyleIndex + 1) % styleKeys.length;
+    const nextStyleKey = styleKeys[nextStyleIndex];
+    const nextStyleColors = stylesAndColors[nextStyleKey];
+
+    // Check if the current color is present in the next style's colors
+    const currentColor = currentStyleColors[currentColorIndex];
+    const isCurrentColorInNextStyle = nextStyleColors.includes(currentColor);
+
+    setCurrentStyleIndex(nextStyleIndex);
+    setCurrentColorIndex(
+      isCurrentColorInNextStyle ? nextStyleColors.indexOf(currentColor) : 0
+    );
+    setCurrentStyle(
+      nextStyleKey,
+      isCurrentColorInNextStyle ? currentColor : nextStyleColors[0]
+    );
   };
 
   const goToPreviousStyle = () => {
-    setCurrentStyleIndex(
-      (prevIndex) => (prevIndex - 1 + styleKeys.length) % styleKeys.length
-    );
-    setCurrentColorIndex(0); // Reset color index when changing styles
-    setCurrentStyle(styleKeys[currentStyleIndex], currentStyleColors[0]);
-  };
+    const prevStyleIndex =
+      (currentStyleIndex - 1 + styleKeys.length) % styleKeys.length;
+    const prevStyleKey = styleKeys[prevStyleIndex];
+    const prevStyleColors = stylesAndColors[prevStyleKey];
 
-  const goToNextColor = () => {
+    // Check if the current color is present in the previous style's colors
+    const currentColor = currentStyleColors[currentColorIndex];
+    const isCurrentColorInPrevStyle = prevStyleColors.includes(currentColor);
+
+    setCurrentStyleIndex(prevStyleIndex);
     setCurrentColorIndex(
-      (prevIndex) =>
-        (prevIndex + 1) % stylesAndColors[styleKeys[currentStyleIndex]].length
+      isCurrentColorInPrevStyle ? prevStyleColors.indexOf(currentColor) : 0
     );
     setCurrentStyle(
-      styleKeys[currentStyleIndex],
-      currentStyleColors[currentColorIndex]
+      prevStyleKey,
+      isCurrentColorInPrevStyle ? currentColor : prevStyleColors[0]
     );
   };
 
-  const goToPreviousColor = () => {
-    setCurrentColorIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + stylesAndColors[styleKeys[currentStyleIndex]].length) %
-        stylesAndColors[styleKeys[currentStyleIndex]].length
-    );
-    setCurrentStyle(
-      styleKeys[currentStyleIndex],
-      currentStyleColors[currentColorIndex]
-    );
-  };
+ const goToNextColor = () => {
+   const colors = stylesAndColors[styleKeys[currentStyleIndex]];
+   setCurrentColorIndex((prevIndex) => {
+     const nextIndex = (prevIndex + 1) % colors.length;
+     return colors.includes(currentStyleColors[nextIndex]) ? nextIndex : 0;
+   });
+   setCurrentStyle(
+     styleKeys[currentStyleIndex],
+     currentStyleColors[currentColorIndex + 1]
+   );
+ };
+
+ const goToPreviousColor = () => {
+   const colors = stylesAndColors[styleKeys[currentStyleIndex]];
+   setCurrentColorIndex((prevIndex) => {
+     const prevIndexWrapped = (prevIndex - 1 + colors.length) % colors.length;
+     return colors.includes(currentStyleColors[prevIndexWrapped])
+       ? prevIndexWrapped
+       : 0;
+   });
+   setCurrentStyle(
+     styleKeys[currentStyleIndex],
+     currentStyleColors[currentColorIndex - 1]
+   );
+ };
 
   return (
     <Switcher>
@@ -119,11 +147,11 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
         {/* Display the current style and color combination */}
         <p>Available Colors:</p>
-        <ul>
+        <div>
           {currentStyleColors.map((color, index) => (
-            <li key={index}>{color}</li>
+            <span key={index}>{color + ' '}</span>
           ))}
-        </ul>
+        </div>
       </SwitcherContentWrapper>
     </Switcher>
   );
@@ -134,6 +162,7 @@ const Switcher = styled.div`
   width: 250px;
   padding: 1rem;
   margin-bottom:1rem;
+  font-size: 12px;
   text-align: center;
 `;
 const SwitcherContentWrapper = styled.div`
