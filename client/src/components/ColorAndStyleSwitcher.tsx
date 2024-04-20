@@ -15,9 +15,14 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     hairstyle,
     eyestyle,
     topstyle,
+    bottomstyle,
     setEyestyle,
     setHairstyle,
-    setTopstyle /* Add more features as needed */,
+    setTopstyle,
+    setBottomstyle,
+    setEyeBrowStyle,
+    setLipstyle
+    /* Add more features as needed */
   } = useStyleColor();
 
   const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
@@ -35,7 +40,16 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
       case "eyestyle":
         setCurrentStyle(styleKeys[0], currentStyleColors[0]);
         break;
+      case "lipstyle":
+        setCurrentStyle(styleKeys[0], currentStyleColors[0]);
+        break;
+      case "eyebrowstyle":
+        setCurrentStyle(styleKeys[0], currentStyleColors[0]);
+        break;
       case "topstyle":
+        setCurrentStyle(styleKeys[0], currentStyleColors[0]);
+        break;
+      case "bottomstyle":
         setCurrentStyle(styleKeys[0], currentStyleColors[0]);
         break;
       // Add more features as needed
@@ -54,8 +68,17 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
       case "eyestyle":
         setEyestyle(style, color);
         break;
+      case "lipstyle":
+        setLipstyle(style, color);
+        break;
+      case "eyebrowstyle":
+        setEyeBrowStyle(style, color);
+        break;
       case "topstyle":
         setTopstyle(style, color);
+        break;
+      case "bottomstyle":
+        setBottomstyle(style, color);
         break;
       // Add more features as needed
       default:
@@ -102,36 +125,36 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     );
   };
 
- const goToNextColor = () => {
-   const colors = stylesAndColors[styleKeys[currentStyleIndex]];
-   console.log(colors); // Just for debugging, to check if colors are retrieved correctly
+  const goToNextColor = () => {
+    const colors = stylesAndColors[styleKeys[currentStyleIndex]];
+    console.log(colors); // Just for debugging, to check if colors are retrieved correctly
 
-   setCurrentColorIndex((prevIndex) => {
-     const nextIndex = (prevIndex + 1) % colors.length;
-     return colors.includes(currentStyleColors[nextIndex]) ? nextIndex : 0;
-   });
+    setCurrentColorIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % colors.length;
+      return colors.includes(currentStyleColors[nextIndex]) ? nextIndex : 0;
+    });
 
-   // Calculate nextIndex again because it's needed outside of setCurrentColorIndex
-   const nextIndex = (currentColorIndex + 1) % colors.length;
+    // Calculate nextIndex again because it's needed outside of setCurrentColorIndex
+    const nextIndex = (currentColorIndex + 1) % colors.length;
 
-   setCurrentStyle(styleKeys[currentStyleIndex], colors[nextIndex]);
- };
+    setCurrentStyle(styleKeys[currentStyleIndex], colors[nextIndex]);
+  };
 
- const goToPreviousColor = () => {
-   const colors = stylesAndColors[styleKeys[currentStyleIndex]];
+  const goToPreviousColor = () => {
+    const colors = stylesAndColors[styleKeys[currentStyleIndex]];
 
-   setCurrentColorIndex((prevIndex) => {
-     const prevIndexWrapped = (prevIndex - 1 + colors.length) % colors.length;
-     return colors.includes(currentStyleColors[prevIndexWrapped])
-       ? prevIndexWrapped
-       : 0;
-   });
+    setCurrentColorIndex((prevIndex) => {
+      const prevIndexWrapped = (prevIndex - 1 + colors.length) % colors.length;
+      return colors.includes(currentStyleColors[prevIndexWrapped])
+        ? prevIndexWrapped
+        : 0;
+    });
 
-   // Calculate prevIndex again because it's needed outside of setCurrentColorIndex
-   const prevIndex = (currentColorIndex - 1 + colors.length) % colors.length;
+    // Calculate prevIndex again because it's needed outside of setCurrentColorIndex
+    const prevIndex = (currentColorIndex - 1 + colors.length) % colors.length;
 
-   setCurrentStyle(styleKeys[currentStyleIndex], colors[prevIndex]);
- };
+    setCurrentStyle(styleKeys[currentStyleIndex], colors[prevIndex]);
+  };
 
   return (
     <Switcher>
@@ -169,15 +192,15 @@ const Switcher = styled.div`
   z-index: 1000;
   background: ${({ theme }) => theme.primaryLight};
   width: 250px;
-  padding: 1rem;
-  margin-bottom:1rem;
+  padding: .5rem;
+  margin-bottom: 1rem;
   font-size: 12px;
   text-align: center;
 `;
 const SwitcherContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap:1rem;
+  gap: .5rem;
   justify-content: space-between;
 `;
 
@@ -186,7 +209,8 @@ const PickerBox = styled.div`
   display: flex;
   justify-content: space-between;
   button {
-    font-size: 10px;
+    font-size: 8px;
+    padding: 3px;
   }
 `;
 
