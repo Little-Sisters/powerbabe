@@ -44,6 +44,8 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     }
   }, []);
 
+  //** */
+
   const setCurrentStyle = (style: string, color: string) => {
     switch (feature) {
       case "hairstyle":
@@ -102,28 +104,33 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
  const goToNextColor = () => {
    const colors = stylesAndColors[styleKeys[currentStyleIndex]];
+   console.log(colors); // Just for debugging, to check if colors are retrieved correctly
+
    setCurrentColorIndex((prevIndex) => {
      const nextIndex = (prevIndex + 1) % colors.length;
      return colors.includes(currentStyleColors[nextIndex]) ? nextIndex : 0;
    });
-   setCurrentStyle(
-     styleKeys[currentStyleIndex],
-     currentStyleColors[currentColorIndex + 1]
-   );
+
+   // Calculate nextIndex again because it's needed outside of setCurrentColorIndex
+   const nextIndex = (currentColorIndex + 1) % colors.length;
+
+   setCurrentStyle(styleKeys[currentStyleIndex], colors[nextIndex]);
  };
 
  const goToPreviousColor = () => {
    const colors = stylesAndColors[styleKeys[currentStyleIndex]];
+
    setCurrentColorIndex((prevIndex) => {
      const prevIndexWrapped = (prevIndex - 1 + colors.length) % colors.length;
      return colors.includes(currentStyleColors[prevIndexWrapped])
        ? prevIndexWrapped
        : 0;
    });
-   setCurrentStyle(
-     styleKeys[currentStyleIndex],
-     currentStyleColors[currentColorIndex - 1]
-   );
+
+   // Calculate prevIndex again because it's needed outside of setCurrentColorIndex
+   const prevIndex = (currentColorIndex - 1 + colors.length) % colors.length;
+
+   setCurrentStyle(styleKeys[currentStyleIndex], colors[prevIndex]);
  };
 
   return (
@@ -145,13 +152,14 @@ const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
           <button onClick={goToNextColor}>Next Color</button>
         </PickerBox>
 
-        {/* Display the current style and color combination */}
-        <p>Available Colors:</p>
+        {/* Display the current style and color combination
+         <p>Available Colors:</p>
         <div>
           {currentStyleColors.map((color, index) => (
             <span key={index}>{color + ' '}</span>
           ))}
-        </div>
+        </div>      
+        */}
       </SwitcherContentWrapper>
     </Switcher>
   );
