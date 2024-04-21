@@ -70,6 +70,21 @@ export const hairstyleData: StylesAndColorsData = {
       ],
     },
   ],
+  "5": [
+    {
+      colors: [
+        "brown",
+        "black",
+        "blonde",
+        "ginger",
+        "green",
+        "pink",
+        "blue",
+        "red",
+      ],
+      pose:1
+    },
+  ],
 };
 
 export const eyestyleData: StylesAndColorsData = {
