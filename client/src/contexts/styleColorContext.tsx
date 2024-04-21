@@ -61,6 +61,11 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
   });
   const [headstyle, setHeadstyle] = useState({ color: "medium" });
 
+  useEffect(() => {
+    console.log(bottomstyle)
+    
+  }, [bottomstyle]);
+
   // Initialize other features as needed
 
   const values: StyleColorContextProps & StyleColorContextActions = {

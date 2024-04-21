@@ -29,17 +29,17 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
   const styleKeys = Object.keys(stylesAndColors);
 
-  useEffect(() => {
-    setCurrentStyle(styleKeys[currentStyleIndex], currentColorIndex);
-  }, [currentStyleIndex, currentColorIndex]);
+   useEffect(() => {
+     setCurrentStyle(styleKeys[currentStyleIndex], currentColorIndex);
+   }, [currentStyleIndex, currentColorIndex]);
 
  const setCurrentStyle = (styleKey: string, colorIndex: number) => {
    const currentPoseStyles = stylesAndColors[styleKey];
    const currentPose = currentPoseStyles[0]; // Get the first pose
    const colors = currentPose.colors;
-   const currentColor = colors[currentColorIndex];
+   const currentColor = colors[colorIndex]; // Use colorIndex directly
 
-   // Check if the current pose has the pose property defined
+   // Handle setting style based on the pose property
    if (currentPose.pose !== undefined) {
      // Set front to true if pose attribute exists, otherwise false
      const front = currentPose.pose !== undefined;
@@ -81,17 +81,18 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
      }
    }
 
-   // Check if the next style contains the current color
-   const nextStyleKey = styleKeys[(currentStyleIndex + 1) % styleKeys.length];
-   const nextColors = stylesAndColors[nextStyleKey][0].colors;
-   const nextColorIndex = nextColors.indexOf(currentColor);
+   // Check if we're switching styles
+   if (
+     currentColor !==
+     stylesAndColors[styleKeys[currentStyleIndex]][0].colors[currentColorIndex]
+   ) {
+     // Get the next style key
+     const nextStyleKey = styleKeys[(currentStyleIndex + 1) % styleKeys.length];
+     const nextColors = stylesAndColors[nextStyleKey][0].colors;
 
-   if (nextColorIndex === -1) {
-     // If the color doesn't exist in the next style, set the color index to 0
-     setCurrentColorIndex(0);
-   } else {
-     // If the color exists in the next style, set the color index to its position
-     setCurrentColorIndex(nextColorIndex);
+     // Set the next color index to the index of the current color in the next style
+     const nextColorIndex = nextColors.indexOf(currentColor);
+     setCurrentColorIndex(nextColorIndex !== -1 ? nextColorIndex : 0);
    }
  };
 
@@ -109,12 +110,13 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   const goToNextColor = () => {
     const colors = stylesAndColors[styleKeys[currentStyleIndex]][0].colors;
     setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+    console.log(currentColorIndex);
   };
 
   const goToPreviousColor = () => {
     const colors = stylesAndColors[styleKeys[currentStyleIndex]][0].colors;
-    setCurrentColorIndex((prevIndex) =>
-      prevIndex === 0 ? colors.length - 1 : prevIndex - 1
+    setCurrentColorIndex(
+      (prevIndex) => (prevIndex - 1 + colors.length) % colors.length
     );
   };
 
@@ -142,6 +144,14 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
           </div>
           <button onClick={goToNextColor}>Next Color</button>
         </PickerBox>
+        <span>
+          {/* Map through the colors array for the current style and display each color */}
+          {stylesAndColors[styleKeys[currentStyleIndex]][0].colors.map(
+            (color, index) => (
+              <span key={index} style={{ backgroundColor: color }} />
+            )
+          )}
+        </span>
       </SwitcherContentWrapper>
     </Switcher>
   );
