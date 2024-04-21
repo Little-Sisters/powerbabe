@@ -17,9 +17,10 @@ export const hairstyleData: StylesAndColorsData = {
   "1": [
     {
       colors: [
+        "platinum",
+        "blonde",
         "brown",
         "black",
-        "blonde",
         "ginger",
         "green",
         "pink",
@@ -31,9 +32,10 @@ export const hairstyleData: StylesAndColorsData = {
   "2": [
     {
       colors: [
+        "platinum",
+        "blonde",
         "brown",
         "black",
-        "blonde",
         "ginger",
         "green",
         "pink",
@@ -45,9 +47,10 @@ export const hairstyleData: StylesAndColorsData = {
   "3": [
     {
       colors: [
+        "platinum",
+        "blonde",
         "brown",
         "black",
-        "blonde",
         "ginger",
         "green",
         "pink",
@@ -59,9 +62,10 @@ export const hairstyleData: StylesAndColorsData = {
   "4": [
     {
       colors: [
+        "platinum",
+        "blonde",
         "brown",
         "black",
-        "blonde",
         "ginger",
         "green",
         "pink",
@@ -73,24 +77,42 @@ export const hairstyleData: StylesAndColorsData = {
   "5": [
     {
       colors: [
+        "platinum",
+        "blonde",
         "brown",
         "black",
-        "blonde",
         "ginger",
         "green",
         "pink",
         "blue",
         "red",
       ],
-      pose:1
+      pose: 1,
+    },
+  ],
+  "6": [
+    {
+      colors: [
+        "platinum",
+        "blonde",
+        "brown",
+        "black",
+        "ginger",
+        "green",
+        "pink",
+        "blue",
+        "red",
+      ],
+      pose: 1,
     },
   ],
 };
 
 export const eyestyleData: StylesAndColorsData = {
-  "1": [{ colors: ["blue", "brown", "green"] }],
-  "2": [{ colors: ["blue", "brown", "green"] }],
-  "3": [{ colors: ["blue", "brown", "green"] }],
+  "1": [{ colors: ["blue", "green", "brown", "black"] }],
+  "2": [{ colors: ["blue", "green", "brown", "black"] }],
+  "3": [{ colors: ["blue", "green", "brown", "black"] }],
+  "4": [{ colors: ["blue", "green", "brown", "black"] }],
 };
 
 export const eyebrowstyleData: StylesAndColorsData = {
@@ -99,9 +121,58 @@ export const eyebrowstyleData: StylesAndColorsData = {
 };
 
 export const lipstyleData: StylesAndColorsData = {
-  "1": [{ colors: ["burgundy", "hotpink", "red"] }],
-  "2": [{ colors: ["burgundy", "hotpink", "red"] }],
-  "3": [{ colors: ["burgundy", "hotpink", "red"] }],
+  "1": [
+    {
+      colors: [
+        "burgundy",
+        "hotpink",
+        "bubblegum",
+        "orange",
+        "red",
+        "darkred",
+        "brown",
+      ],
+    },
+  ],
+  "2": [
+    {
+      colors: [
+        "burgundy",
+        "hotpink",
+        "bubblegum",
+        "orange",
+        "red",
+        "darkred",
+        "brown",
+      ],
+    },
+  ],
+  "3": [
+    {
+      colors: [
+        "burgundy",
+        "hotpink",
+        "bubblegum",
+        "orange",
+        "red",
+        "darkred",
+        "brown",
+      ],
+    },
+  ],
+  "4": [
+    {
+      colors: [
+        "burgundy",
+        "hotpink",
+        "bubblegum",
+        "orange",
+        "red",
+        "darkred",
+        "brown",
+      ],
+    },
+  ],
 };
 
 export const topstyleData: StylesAndColorsData = {
