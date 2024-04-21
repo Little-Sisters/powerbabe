@@ -1,7 +1,18 @@
 import styled from "styled-components";
-import ColorAndStyleSwitcher from "../components/ColorAndStyleSwitcher";
+import { ColorAndStyleSwitcher} from "../components/ColorAndStyleSwitcher";
 import { ImageComponent } from "../components/ImageComponent";
+import SkinColorSwitcher from "../components/SkinColorSwitcher";
 import { useStyleColor } from "../contexts/styleColorContext";
+import {
+  StylesAndColorsData,
+  skinColors,
+  hairstyleData,
+  eyestyleData,
+  eyebrowstyleData,
+  lipstyleData,
+  topstyleData,
+  bottomstyleData,
+} from "../assets/data";
 
 function DressingRoomPage({}) {
   const {
@@ -12,7 +23,7 @@ function DressingRoomPage({}) {
     eyebrowstyle,
     upperbodystyle,
     lowerbodystyle,
-    lipstyle
+    lipstyle,
   } = useStyleColor();
 
   return (
@@ -23,6 +34,7 @@ function DressingRoomPage({}) {
           color={hairstyle.color}
           part="hair"
           zIndex={9}
+          front={hairstyle.front}
         />
         <ImageComponent
           style={eyestyle.style}
@@ -74,163 +86,30 @@ function DressingRoomPage({}) {
         />
       </MainSection>
       <SideSection>
+        <SkinColorSwitcher feature="skin" colors={skinColors} />
         <ColorAndStyleSwitcher
           feature="hairstyle"
-          stylesAndColors={{
-            1: [
-              "brown",
-              "black",
-              "blonde",
-              "ginger",
-              "green",
-              "pink",
-              "blue",
-              "red",
-            ],
-            2: [
-              "brown",
-              "black",
-              "blonde",
-              "ginger",
-              "green",
-              "pink",
-              "blue",
-              "red",
-            ],
-            3: [
-              "brown",
-              "black",
-              "blonde",
-              "ginger",
-              "green",
-              "pink",
-              "blue",
-              "red",
-            ],
-            4: [
-              "brown",
-              "black",
-              "blonde",
-              "ginger",
-              "green",
-              "pink",
-              "blue",
-              "red",
-            ],
-          }}
+          stylesAndColors={hairstyleData}
         />
         <ColorAndStyleSwitcher
           feature="eyestyle"
-          stylesAndColors={{
-            1: ["blue", "brown", "green"],
-            2: ["blue", "brown", "green"],
-            3: ["blue", "brown", "green"],
-          }}
+          stylesAndColors={eyestyleData}
         />
         <ColorAndStyleSwitcher
           feature="eyebrowstyle"
-          stylesAndColors={{
-            1: ["brown", "black", "blonde"],
-            2: ["brown", "black", "blonde"],
-          }}
+          stylesAndColors={eyebrowstyleData}
         />
         <ColorAndStyleSwitcher
           feature="lipstyle"
-          stylesAndColors={{
-            1: ["burgundy", "hotpink", "red"],
-            2: ["burgundy", "hotpink", "red"],
-            3: ["burgundy", "hotpink", "red"],
-          }}
+          stylesAndColors={lipstyleData}
         />
         <ColorAndStyleSwitcher
           feature="topstyle"
-          stylesAndColors={{
-            1: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-            2: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-            3: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-            4: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-          }}
+          stylesAndColors={topstyleData}
         />
         <ColorAndStyleSwitcher
           feature="bottomstyle"
-          stylesAndColors={{
-            1: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-            2: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-            3: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-            4: [
-              "blue",
-              "green",
-              "black",
-              "yellow",
-              "red",
-              "hotpink",
-              "pastelpink",
-              "purple",
-            ],
-          }}
+          stylesAndColors={bottomstyleData}
         />
       </SideSection>
     </DressingRoomContainer>
@@ -243,7 +122,6 @@ const DressingRoomContainer = styled.section`
   height: auto;
   @media (max-width: 768px) {
     flex-direction: column;
-    background: red;
     height: 100vh;
   }
 `;
@@ -251,7 +129,7 @@ const DressingRoomContainer = styled.section`
 const MainSection = styled.div`
   flex: 1;
   position: relative;
-  background: #888888;
+  background: #a3a3a3;
   background-size: cover;
   width: 100%;
   height: auto;
@@ -263,7 +141,7 @@ const MainSection = styled.div`
 `;
 
 const SideSection = styled.div`
-  width: 360px;
+  width: 380px;
   padding: 1rem;
   height: 100vh;
   display: flex;
