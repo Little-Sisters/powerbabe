@@ -92,7 +92,13 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
      // Set the next color index to the index of the current color in the next style
      const nextColorIndex = nextColors.indexOf(currentColor);
-     setCurrentColorIndex(nextColorIndex !== -1 ? nextColorIndex : 0);
+
+     // If the next color array contains the current color, set the index to that position
+     if (nextColorIndex !== -1) {
+       setCurrentColorIndex(nextColorIndex);
+     } else {
+       setCurrentColorIndex(0); // Otherwise, set it to 0 to start from the beginning
+     }
    }
  };
 
