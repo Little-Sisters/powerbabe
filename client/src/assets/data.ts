@@ -19,6 +19,7 @@ export const hairstyleData: StylesAndColorsData = {
       colors: [
         "platinum",
         "blonde",
+        "caramel",
         "brown",
         "black",
         "ginger",
@@ -34,6 +35,7 @@ export const hairstyleData: StylesAndColorsData = {
       colors: [
         "platinum",
         "blonde",
+        "caramel",
         "brown",
         "black",
         "ginger",
@@ -49,6 +51,7 @@ export const hairstyleData: StylesAndColorsData = {
       colors: [
         "platinum",
         "blonde",
+        "caramel",
         "brown",
         "black",
         "ginger",
@@ -64,6 +67,7 @@ export const hairstyleData: StylesAndColorsData = {
       colors: [
         "platinum",
         "blonde",
+        "caramel",
         "brown",
         "black",
         "ginger",
@@ -79,6 +83,7 @@ export const hairstyleData: StylesAndColorsData = {
       colors: [
         "platinum",
         "blonde",
+        "caramel",
         "brown",
         "black",
         "ginger",
@@ -95,6 +100,7 @@ export const hairstyleData: StylesAndColorsData = {
       colors: [
         "platinum",
         "blonde",
+        "caramel",
         "brown",
         "black",
         "ginger",
