@@ -112,6 +112,23 @@ export const hairstyleData: StylesAndColorsData = {
       pose: 1,
     },
   ],
+  "7": [
+    {
+      colors: [
+        "platinum",
+        "blonde",
+        "caramel",
+        "brown",
+        "black",
+        "ginger",
+        "green",
+        "pink",
+        "blue",
+        "red",
+      ],
+      pose: 1,
+    },
+  ],
 };
 
 export const eyestyleData: StylesAndColorsData = {
@@ -119,11 +136,13 @@ export const eyestyleData: StylesAndColorsData = {
   "2": [{ colors: ["blue", "green", "brown", "black"] }],
   "3": [{ colors: ["blue", "green", "brown", "black"] }],
   "4": [{ colors: ["blue", "green", "brown", "black"] }],
+  "5": [{ colors: ["blue", "green", "brown", "black"] }],
 };
 
 export const eyebrowstyleData: StylesAndColorsData = {
   "1": [{ colors: ["brown", "black", "blonde"] }],
   "2": [{ colors: ["brown", "black", "blonde"] }],
+  "3": [{ colors: ["brown", "black", "blonde"] }],
 };
 
 export const lipstyleData: StylesAndColorsData = {
@@ -263,6 +282,12 @@ export const topstyleData: StylesAndColorsData = {
       pose: 3,
     },
   ],
+  "7": [
+    {
+      colors: ["blue", "lightblue", "grey", "black", "white"],
+      pose: 2,
+    },
+  ],
 };
 
 export const bottomstyleData: StylesAndColorsData = {
@@ -300,6 +325,12 @@ export const bottomstyleData: StylesAndColorsData = {
     {
       colors: ["blue", "green", "black", "yellow", "red", "hotpink", "purple"],
       pose: 1,
+    },
+  ],
+  "7": [
+    {
+      colors: ["blue", "lightblue", "grey", "black", "white"],
+      pose: 3,
     },
   ],
 };
