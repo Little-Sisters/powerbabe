@@ -5,6 +5,7 @@ import {
   Switcher,
   SwitcherContentWrapper,
 } from "./ColorAndStyleSwitcher";
+import ButtonWithIcon from "./SwitcherButtons";
 
 interface Props {
   feature: string;
@@ -49,7 +50,7 @@ const ColorAndStyleSwitcher: React.FC<Props> = ({ feature, colors }) => {
       <SwitcherContentWrapper>
         <p>{feature}</p>
         <PickerBox>
-          <button onClick={goToPreviousColor}>Prev Color</button>
+        <ButtonWithIcon onClick={goToPreviousColor} direction="prev" />
           <div>
             <span>
               {
@@ -57,7 +58,7 @@ const ColorAndStyleSwitcher: React.FC<Props> = ({ feature, colors }) => {
               }
             </span>
           </div>
-          <button onClick={goToNextColor}>Next Color</button>
+          <ButtonWithIcon onClick={goToNextColor} direction="next" />
         </PickerBox>
       </SwitcherContentWrapper>
     </Switcher>

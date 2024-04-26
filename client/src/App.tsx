@@ -38,9 +38,6 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme === "pink" ? pinkTheme : blackTheme}>
         <StyleColorProvider
-          initialHairstyle={initialHairstyle}
-          initialEyestyle={initialEyestyle}
-          initialTopstyle={initialTopstyle}
         >
           <GlobalStyles />
           <Header theme={theme} themeToggler={themeToggler} />

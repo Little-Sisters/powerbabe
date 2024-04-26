@@ -1,18 +1,16 @@
 import styled from "styled-components";
-import { ColorAndStyleSwitcher} from "../components/ColorAndStyleSwitcher";
+import { ColorAndStyleSwitcher } from "../components/ColorAndStyleSwitcher";
 import { ImageComponent } from "../components/ImageComponent";
 import SkinColorSwitcher from "../components/SkinColorSwitcher";
 import { useStyleColor } from "../contexts/styleColorContext";
-import {
-  StylesAndColorsData,
-  skinColors,
-  hairstyleData,
-  eyestyleData,
-  eyebrowstyleData,
-  lipstyleData,
-  topstyleData,
-  bottomstyleData,
-} from "../assets/data";
+import { bottomstyleData } from "../assets/bottomData";
+import { topstyleData } from "../assets/topsData";
+import { lipstyleData } from "../assets/lipsData";
+import { eyebrowstyleData } from "../assets/eyebrowsData";
+import { eyestyleData } from "../assets/eyesData";
+import { hairstyleData } from "../assets/hairData";
+import { skinColors } from "../assets/bodyData";
+
 
 function DressingRoomPage({}) {
   const {
