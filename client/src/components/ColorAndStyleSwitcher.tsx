@@ -106,7 +106,7 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   return (
     <Switcher>
       <SwitcherContentWrapper>
-        <p>{feature}</p>
+        <Feauture>{feature}</Feauture>
         <PickerBox>
           <SwitcherButton onClick={goToPreviousStyle} direction='prev' />
           <div>
@@ -139,6 +139,13 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     </Switcher>
   );
 };
+export const Feauture = styled.p`
+  color: ${({ theme }) => theme.text};
+ font-weight: bold;
+ text-transform: uppercase;
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+`;
+
 
 export const Switcher = styled.div`
   z-index: 1000;

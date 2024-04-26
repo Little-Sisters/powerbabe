@@ -20,7 +20,7 @@ const SwitcherButton: React.FC<Props>= ({ onClick, direction }) => {
   cursor: pointer;
   height: 1.5rem;
   width: 1.5rem;
-  background-color: grey;
+  background-color: white;
   color: black;
   display: flex;
   justify-content: center; /* Center horizontally */

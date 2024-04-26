@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStyleColor } from "../contexts/styleColorContext";
 import {
+  Feauture,
   PickerBox,
   Switcher,
   SwitcherContentWrapper,
@@ -48,7 +49,7 @@ const ColorAndStyleSwitcher: React.FC<Props> = ({ feature, colors }) => {
   return (
     <Switcher>
       <SwitcherContentWrapper>
-        <p>{feature}</p>
+      <Feauture>{feature}</Feauture>
         <PickerBox>
         <ButtonWithIcon onClick={goToPreviousColor} direction="prev" />
           <div>
