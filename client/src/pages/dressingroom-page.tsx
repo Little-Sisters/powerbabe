@@ -10,11 +10,13 @@ import { eyebrowstyleData } from "../assets/eyebrowsData";
 import { eyestyleData } from "../assets/eyesData";
 import { hairstyleData } from "../assets/hairData";
 import { skinColors } from "../assets/bodyData";
+import { useEffect } from "react";
 
 
 function DressingRoomPage({}) {
   const {
     hairstyle,
+    headstyle,
     eyestyle,
     topstyle,
     bottomstyle,
@@ -22,7 +24,29 @@ function DressingRoomPage({}) {
     upperbodystyle,
     lowerbodystyle,
     lipstyle,
+    setHairstyle,
+    setEyestyle,
+    setLipstyle,
+    setTopstyle,
+    setBottomstyle,
+    setEyeBrowStyle,
+    setUpperBodystyle,
+    setLowerBodystyle,
+    setHeadstyle,
   } = useStyleColor();
+
+  //grab the innitial values frmo 
+    useEffect(() => {
+        setHairstyle(hairstyle.style, hairstyle.color, hairstyle.front);
+        setEyestyle(eyestyle.style, eyestyle.color);
+        setLipstyle(lipstyle.style, lipstyle.color);
+        setTopstyle(topstyle.style, topstyle.color);
+        setBottomstyle(bottomstyle.style, bottomstyle.color);
+        setEyeBrowStyle(eyebrowstyle.style, eyebrowstyle.color);
+        setUpperBodystyle(upperbodystyle.style, upperbodystyle.color);
+        setLowerBodystyle(lowerbodystyle.style, lowerbodystyle.color);
+        setHeadstyle(headstyle.color);
+    }, []);
 
   return (
     <DressingRoomContainer>

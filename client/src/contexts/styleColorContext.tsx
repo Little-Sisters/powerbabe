@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useLocalStorageState } from "../hooks/useLocalStorage";
 
 interface StyleColorContextProps {
   hairstyle: { style: string; color: string , front:boolean };
@@ -41,30 +42,47 @@ export const useStyleColor = () => {
 export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [hairstyle, setHairstyle] = useState({
-    style: "",
-    color: "",
-    front: false,
-  });
-  const [eyestyle, setEyestyle] = useState({ style: "", color: "" });
-  const [lipstyle, setLipstyle] = useState({ style: "", color: "" });
-  const [eyebrowstyle, setEyeBrowstyle] = useState({ style: "", color: "" });
-  const [topstyle, setTopstyle] = useState({ style: "", color: "" });
-  const [bottomstyle, setBottomstyle] = useState({ style: "", color: "" });
-  const [upperbodystyle, setUpperBodystyle] = useState({
-    style: "1",
-    color: "medium",
-  });
-  const [lowerbodystyle, setLowerBodystyle] = useState({
-    style: "1",
-    color: "medium",
-  });
-  const [headstyle, setHeadstyle] = useState({ color: "medium" });
+  const [hairstyle, setHairstyle] = useLocalStorageState(
+    {
+      style: "",
+      color: "",
+      front: false,
+    },
+    "hairstyle"
+  );
+  const [eyestyle, setEyestyle] = useLocalStorageState(
+    { style: "", color: "" },
+    "eyestyle"
+  );
+  const [lipstyle, setLipstyle] = useLocalStorageState(
+    { style: "", color: "" },
+    "lipstyle"
+  );
+  const [eyebrowstyle, setEyeBrowstyle] = useLocalStorageState(
+    { style: "", color: "" },
+    "eyebrowstyle"
+  );
+  const [topstyle, setTopstyle] = useLocalStorageState(
+    { style: "", color: "" },
+    "topstyle"
+  );
+  const [bottomstyle, setBottomstyle] = useLocalStorageState(
+    { style: "", color: "" },
+    "bottomstyle"
+  );
+  const [upperbodystyle, setUpperBodystyle] = useLocalStorageState(
+    { style: "1", color: "medium" },
+    "upperbodystyle"
+  );
+  const [lowerbodystyle, setLowerBodystyle] = useLocalStorageState(
+    { style: "1", color: "medium" },
+    "lowerbodystyle"
+  );
+  const [headstyle, setHeadstyle] = useLocalStorageState(
+    { color: "medium" },
+    "headstyle"
+  );
 
-  useEffect(() => {
-    console.log(bottomstyle)
-    
-  }, [bottomstyle]);
 
   // Initialize other features as needed
 

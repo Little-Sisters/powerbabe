@@ -14,9 +14,19 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   feature,
   stylesAndColors,
 }) => {
+  
+  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
+    hairstyle,
+    headstyle,
+    eyestyle,
+    topstyle,
+    bottomstyle,
+    eyebrowstyle,
     upperbodystyle,
     lowerbodystyle,
+    lipstyle,
     setEyestyle,
     setHairstyle,
     setTopstyle,
@@ -28,10 +38,68 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     /* Add more features as needed */
   } = useStyleColor();
 
-  const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
 
   const styleKeys = Object.keys(stylesAndColors);
+
+ const setInitialValues = (feature: string) => {
+   // Retrieve style and color from local storage based on the feature
+   let storedStyle = "";
+   let storedColor = "";
+
+   switch (feature) {
+     case "hairstyle":
+       storedStyle = hairstyle.style;
+       storedColor = hairstyle.color;
+       break;
+     case "eyestyle":
+       storedStyle = eyestyle.style;
+       storedColor = eyestyle.color;
+       break;
+     case "lipstyle":
+       storedStyle = lipstyle.style;
+       storedColor = lipstyle.color;
+       break;
+     case "topstyle":
+       storedStyle = topstyle.style;
+       storedColor = topstyle.color;
+       break;
+     case "eyebrowstyle":
+       storedStyle = eyebrowstyle.style;
+       storedColor = eyebrowstyle.color;
+       break;
+     case "bottomstyle":
+       storedStyle = bottomstyle.style;
+       storedColor = bottomstyle.color;
+       break;
+     case "upperbodystyle":
+       storedStyle = upperbodystyle.style;
+       storedColor = upperbodystyle.color;
+       break;
+     case "lowerbodystyle":
+       storedStyle = lowerbodystyle.style;
+       storedColor = lowerbodystyle.color;
+       break;
+     case "headstyle":
+       storedColor = headstyle.color;
+       break;
+     // Add cases for other features as needed
+     default:
+       break;
+   }
+
+   // Find the initial style and color indexes
+   const initialStyleIndex = styleKeys.findIndex((key) => key === storedStyle);
+   const initialColorIndex = stylesAndColors[storedStyle][0].colors.findIndex(
+     (color) => color === storedColor
+   );
+
+   if (initialStyleIndex !== -1) setCurrentStyleIndex(initialStyleIndex);
+   if (initialColorIndex !== -1) setCurrentColorIndex(initialColorIndex);
+ };
+
+useEffect(() => {
+  setInitialValues(feature);
+}, []);
 
   useEffect(() => {
     setCurrentStyle(styleKeys[currentStyleIndex], currentColorIndex);
