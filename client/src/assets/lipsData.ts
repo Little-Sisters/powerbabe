@@ -53,4 +53,30 @@ export const lipstyleData: StylesAndColorsData = {
       ],
     },
   ],
+  "5": [
+    {
+      colors: [
+        "burgundy",
+        "hotpink",
+        "bubblegum",
+        "orange",
+        "red",
+        "darkred",
+        "brown",
+      ],
+    },
+  ],
+  "6": [
+    {
+      colors: [
+        "burgundy",
+        "hotpink",
+        "bubblegum",
+        "orange",
+        "red",
+        "darkred",
+        "brown",
+      ],
+    },
+  ],
 };

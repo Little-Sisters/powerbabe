@@ -116,4 +116,21 @@ export const hairstyleData: StylesAndColorsData = {
       pose: 1,
     },
   ],
+  "8": [
+    {
+      colors: [
+        "platinum",
+        "blonde",
+        "caramel",
+        "brown",
+        "black",
+        "ginger",
+        "green",
+        "pink",
+        "blue",
+        "red",
+      ],
+      pose: 1,
+    },
+  ],
 };

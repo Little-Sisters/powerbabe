@@ -4,4 +4,5 @@ export const eyebrowstyleData: StylesAndColorsData = {
   "1": [{ colors: ["brown", "black", "blonde"] }],
   "2": [{ colors: ["brown", "black", "blonde"] }],
   "3": [{ colors: ["brown", "black", "blonde"] }],
+  "4": [{ colors: ["brown", "black", "blonde", "orange"] }],
 };

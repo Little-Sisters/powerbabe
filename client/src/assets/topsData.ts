@@ -88,4 +88,20 @@ export const topstyleData: StylesAndColorsData = {
       pose: 2,
     },
   ],
+  "8": [
+    {
+      colors: [
+        "blue",
+        "green",
+        "black",
+        "yellow",
+        "grey",
+        "red",
+        "hotpink",
+        "pastelpink",
+        "black",
+      ],
+      pose: 3,
+    },
+  ],
 };
