@@ -18,8 +18,8 @@ const SwitcherButton: React.FC<Props>= ({ onClick, direction }) => {
   const StyledSwitcherButton = styled.div`
   font-size: 10px;
   cursor: pointer;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1.2rem;
+  width: 1.2rem;
   background-color: white;
   color: black;
   display: flex;

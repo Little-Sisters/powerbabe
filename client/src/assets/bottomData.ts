@@ -43,4 +43,20 @@ export const bottomstyleData: StylesAndColorsData = {
       pose: 3,
     },
   ],
+  "8": [
+    {
+      colors: [
+        "blue",
+        "lightblue",
+        "white",
+        "beige",
+        "grey",
+        "green",
+        "black",
+        "red",
+        "hotpink",
+      ],
+      pose: 3,
+    },
+  ],
 };

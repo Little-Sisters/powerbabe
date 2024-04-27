@@ -101,7 +101,7 @@ export const topstyleData: StylesAndColorsData = {
         "pastelpink",
         "black",
       ],
-      pose: 3,
+      pose: 1,
     },
   ],
 };

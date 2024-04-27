@@ -48,53 +48,57 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
    switch (feature) {
      case "hairstyle":
-       storedStyle = hairstyle.style;
-       storedColor = hairstyle.color;
+       storedStyle = hairstyle.style || "";
+       storedColor = hairstyle.color || "";
        break;
      case "eyestyle":
-       storedStyle = eyestyle.style;
-       storedColor = eyestyle.color;
+       storedStyle = eyestyle.style || "";
+       storedColor = eyestyle.color || "";
        break;
      case "lipstyle":
-       storedStyle = lipstyle.style;
-       storedColor = lipstyle.color;
+       storedStyle = lipstyle.style || "";
+       storedColor = lipstyle.color || "";
        break;
      case "topstyle":
-       storedStyle = topstyle.style;
-       storedColor = topstyle.color;
+       storedStyle = topstyle.style || "";
+       storedColor = topstyle.color || "";
        break;
      case "eyebrowstyle":
-       storedStyle = eyebrowstyle.style;
-       storedColor = eyebrowstyle.color;
+       storedStyle = eyebrowstyle.style || "";
+       storedColor = eyebrowstyle.color || "";
        break;
      case "bottomstyle":
-       storedStyle = bottomstyle.style;
-       storedColor = bottomstyle.color;
+       storedStyle = bottomstyle.style || "";
+       storedColor = bottomstyle.color || "";
        break;
      case "upperbodystyle":
-       storedStyle = upperbodystyle.style;
-       storedColor = upperbodystyle.color;
+       storedStyle = upperbodystyle.style || "";
+       storedColor = upperbodystyle.color || "";
        break;
      case "lowerbodystyle":
-       storedStyle = lowerbodystyle.style;
-       storedColor = lowerbodystyle.color;
+       storedStyle = lowerbodystyle.style || "";
+       storedColor = lowerbodystyle.color || "";
        break;
      case "headstyle":
-       storedColor = headstyle.color;
+       storedColor = headstyle.color || "";
        break;
      // Add cases for other features as needed
      default:
        break;
    }
 
-   // Find the initial style and color indexes
-   const initialStyleIndex = styleKeys.findIndex((key) => key === storedStyle);
-   const initialColorIndex = stylesAndColors[storedStyle][0].colors.findIndex(
-     (color) => color === storedColor
-   );
+   // If the values are empty strings, set the index to 0
+   const initialStyleIndex =
+     storedStyle !== "" ? styleKeys.findIndex((key) => key === storedStyle) : 0;
+   const initialColorIndex =
+     storedColor !== ""
+       ? stylesAndColors[storedStyle][0].colors.findIndex(
+           (color) => color === storedColor
+         )
+       : 0;
 
-   if (initialStyleIndex !== -1) setCurrentStyleIndex(initialStyleIndex);
-   if (initialColorIndex !== -1) setCurrentColorIndex(initialColorIndex);
+   setCurrentStyleIndex(initialStyleIndex);
+   setCurrentColorIndex(initialColorIndex);
  };
 
 useEffect(() => {
@@ -222,7 +226,7 @@ export const Switcher = styled.div`
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 10px;
   text-align: center;
 `;
 export const SwitcherContentWrapper = styled.div`
@@ -236,6 +240,7 @@ export const PickerBox = styled.div`
   width: 100%;
   display: flex;
   background-color: white;
+  height: 1.2rem;
   border-radius: 1rem;
   justify-content: space-between;
 `;

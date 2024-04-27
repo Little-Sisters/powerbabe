@@ -44,30 +44,30 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [hairstyle, setHairstyle] = useLocalStorageState(
     {
-      style: "",
-      color: "",
+      style: "1",
+      color: "platinum",
       front: false,
     },
     "hairstyle"
   );
   const [eyestyle, setEyestyle] = useLocalStorageState(
-    { style: "", color: "" },
+    { style: "1", color: "blue" },
     "eyestyle"
   );
   const [lipstyle, setLipstyle] = useLocalStorageState(
-    { style: "", color: "" },
+    { style: "1", color: "burgundy" },
     "lipstyle"
   );
   const [eyebrowstyle, setEyeBrowstyle] = useLocalStorageState(
-    { style: "", color: "" },
+    { style: "1", color: "brown" },
     "eyebrowstyle"
   );
   const [topstyle, setTopstyle] = useLocalStorageState(
-    { style: "", color: "" },
+    { style: "1", color: "blue" },
     "topstyle"
   );
   const [bottomstyle, setBottomstyle] = useLocalStorageState(
-    { style: "", color: "" },
+    { style: "1", color: "blue" },
     "bottomstyle"
   );
   const [upperbodystyle, setUpperBodystyle] = useLocalStorageState(

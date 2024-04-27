@@ -86,7 +86,7 @@ function DressingRoomPage({}) {
           style={bottomstyle.style}
           color={bottomstyle.color}
           part="bottoms"
-          zIndex={20}
+          zIndex={11}
         />
         <ImageComponent
           style={upperbodystyle.style}
@@ -151,7 +151,7 @@ const DressingRoomContainer = styled.section`
 const MainSection = styled.div`
   flex: 1;
   position: relative;
-  background: #a3a3a3;
+  background-color: #5c5c5c;
   background-size: cover;
   width: 100%;
   height: auto;
