@@ -3,6 +3,7 @@ import { StylesAndColorsData } from "./IStylesAndColors";
 export const lipstyleData: StylesAndColorsData = {
   "1": [
     {
+      title: "Bold",
       colors: [
         "burgundy",
         "hotpink",
@@ -16,6 +17,7 @@ export const lipstyleData: StylesAndColorsData = {
   ],
   "2": [
     {
+      title: "Neutral",
       colors: [
         "burgundy",
         "hotpink",
@@ -29,6 +31,7 @@ export const lipstyleData: StylesAndColorsData = {
   ],
   "3": [
     {
+      title: "Vibrant",
       colors: [
         "burgundy",
         "hotpink",
@@ -42,6 +45,7 @@ export const lipstyleData: StylesAndColorsData = {
   ],
   "4": [
     {
+      title: "Subtle",
       colors: [
         "burgundy",
         "hotpink",
@@ -55,6 +59,7 @@ export const lipstyleData: StylesAndColorsData = {
   ],
   "5": [
     {
+      title: "Natural",
       colors: [
         "burgundy",
         "hotpink",

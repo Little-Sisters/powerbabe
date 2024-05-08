@@ -13,7 +13,7 @@ import { skinColors } from "../assets/bodyData";
 import { useEffect } from "react";
 
 
-function DressingRoomPage({}) {
+function DressingRoomPage() {
   const {
     hairstyle,
     headstyle,
@@ -35,108 +35,98 @@ function DressingRoomPage({}) {
     setHeadstyle,
   } = useStyleColor();
 
-  //grab the innitial values frmo 
-    useEffect(() => {
-        setHairstyle(hairstyle.style, hairstyle.color, hairstyle.front);
-        setEyestyle(eyestyle.style, eyestyle.color);
-        setLipstyle(lipstyle.style, lipstyle.color);
-        setTopstyle(topstyle.style, topstyle.color);
-        setBottomstyle(bottomstyle.style, bottomstyle.color);
-        setEyeBrowStyle(eyebrowstyle.style, eyebrowstyle.color);
-        setUpperBodystyle(upperbodystyle.style, upperbodystyle.color);
-        setLowerBodystyle(lowerbodystyle.style, lowerbodystyle.color);
-        setHeadstyle(headstyle.color);
-    }, []);
+  useEffect(() => {
+    setHairstyle(hairstyle.style, hairstyle.color, hairstyle.front);
+    setEyestyle(eyestyle.style, eyestyle.color);
+    setLipstyle(lipstyle.style, lipstyle.color);
+    setTopstyle(topstyle.style, topstyle.color);
+    setBottomstyle(bottomstyle.style, bottomstyle.color);
+    setEyeBrowStyle(eyebrowstyle.style, eyebrowstyle.color);
+    setUpperBodystyle(upperbodystyle.style, upperbodystyle.color);
+    setLowerBodystyle(lowerbodystyle.style, lowerbodystyle.color);
+    setHeadstyle(headstyle.color);
+  }, []);
+
+  const imageComponents = [
+    {
+      style: hairstyle.style,
+      color: hairstyle.color,
+      part: "hair",
+      zIndex: 9,
+      front: hairstyle.front,
+    },
+    { style: eyestyle.style, color: eyestyle.color, part: "eyes", zIndex: 20 },
+    {
+      style: eyebrowstyle.style,
+      color: eyebrowstyle.color,
+      part: "eyebrows",
+      zIndex: 7,
+    },
+    { style: lipstyle.style, color: lipstyle.color, part: "lips", zIndex: 7 },
+    { style: topstyle.style, color: topstyle.color, part: "top", zIndex: 21 },
+    {
+      style: bottomstyle.style,
+      color: bottomstyle.color,
+      part: "bottoms",
+      zIndex: 11,
+    },
+    {
+      style: upperbodystyle.style,
+      color: upperbodystyle.color,
+      part: "upperbody",
+      zIndex: 12,
+    },
+    {
+      style: lowerbodystyle.style,
+      color: lowerbodystyle.color,
+      part: "lowerbody",
+      zIndex: 10,
+    },
+    {
+      style: upperbodystyle.style,
+      color: upperbodystyle.color,
+      part: "head",
+      zIndex: 6,
+    },
+  ];
+
+  const styleSwitchers = [
+    { feature: "hairstyle", stylesAndColors: hairstyleData },
+    { feature: "eyestyle", stylesAndColors: eyestyleData },
+    { feature: "eyebrowstyle", stylesAndColors: eyebrowstyleData },
+    { feature: "lipstyle", stylesAndColors: lipstyleData },
+    { feature: "topstyle", stylesAndColors: topstyleData },
+    { feature: "bottomstyle", stylesAndColors: bottomstyleData },
+  ];
 
   return (
     <DressingRoomContainer>
       <MainSection>
-        <ImageComponent
-          style={hairstyle.style}
-          color={hairstyle.color}
-          part="hair"
-          zIndex={9}
-          front={hairstyle.front}
-        />
-        <ImageComponent
-          style={eyestyle.style}
-          color={eyestyle.color}
-          part="eyes"
-          zIndex={20}
-        />
-        <ImageComponent
-          style={eyebrowstyle.style}
-          color={eyebrowstyle.color}
-          part="eyebrows"
-          zIndex={7}
-        />
-        <ImageComponent
-          style={lipstyle.style}
-          color={lipstyle.color}
-          part="lips"
-          zIndex={7}
-        />
-        <ImageComponent
-          style={topstyle.style}
-          color={topstyle.color}
-          part="top"
-          zIndex={21}
-        />
-        <ImageComponent
-          style={bottomstyle.style}
-          color={bottomstyle.color}
-          part="bottoms"
-          zIndex={11}
-        />
-        <ImageComponent
-          style={upperbodystyle.style}
-          color={upperbodystyle.color}
-          part="upperbody"
-          zIndex={12}
-        />
-        <ImageComponent
-          style={lowerbodystyle.style}
-          color={lowerbodystyle.color}
-          part="lowerbody"
-          zIndex={10}
-        />
-        <ImageComponent
-          style={upperbodystyle.style}
-          color={upperbodystyle.color}
-          part="head"
-          zIndex={6}
-        />
+        {imageComponents.map((component, index) => (
+          <ImageComponent
+            key={index}
+            style={component.style}
+            color={component.color}
+            part={component.part}
+            zIndex={component.zIndex}
+            front={component.front}
+          />
+        ))}
       </MainSection>
       <SideSection>
         <SkinColorSwitcher feature="skin" colors={skinColors} />
-        <ColorAndStyleSwitcher
-          feature="hairstyle"
-          stylesAndColors={hairstyleData}
-        />
-        <ColorAndStyleSwitcher
-          feature="eyestyle"
-          stylesAndColors={eyestyleData}
-        />
-        <ColorAndStyleSwitcher
-          feature="eyebrowstyle"
-          stylesAndColors={eyebrowstyleData}
-        />
-        <ColorAndStyleSwitcher
-          feature="lipstyle"
-          stylesAndColors={lipstyleData}
-        />
-        <ColorAndStyleSwitcher
-          feature="topstyle"
-          stylesAndColors={topstyleData}
-        />
-        <ColorAndStyleSwitcher
-          feature="bottomstyle"
-          stylesAndColors={bottomstyleData}
-        />
+        {styleSwitchers.map((switcher, index) => (
+          <ColorAndStyleSwitcher
+            key={index}
+            feature={switcher.feature}
+            stylesAndColors={switcher.stylesAndColors}
+          />
+        ))}
       </SideSection>
     </DressingRoomContainer>
   );
 }
+
 
 const DressingRoomContainer = styled.section`
   display: flex;

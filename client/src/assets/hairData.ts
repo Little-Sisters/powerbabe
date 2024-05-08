@@ -15,6 +15,7 @@ export const hairstyleData: StylesAndColorsData = {
         "blue",
         "red",
       ],
+      title: "Blonde fringe",
     },
   ],
   "2": [
@@ -31,6 +32,7 @@ export const hairstyleData: StylesAndColorsData = {
         "blue",
         "red",
       ],
+      title: "Blonde fringe",
     },
   ],
   "3": [
@@ -47,6 +49,7 @@ export const hairstyleData: StylesAndColorsData = {
         "blue",
         "red",
       ],
+      title: "Blonde fringe",
     },
   ],
   "4": [
@@ -63,6 +66,7 @@ export const hairstyleData: StylesAndColorsData = {
         "blue",
         "red",
       ],
+      title: "Blonde fringe",
     },
   ],
   "5": [
@@ -80,6 +84,7 @@ export const hairstyleData: StylesAndColorsData = {
         "red",
       ],
       pose: 1,
+      title: "Blonde fringe",
     },
   ],
   "6": [
@@ -97,6 +102,7 @@ export const hairstyleData: StylesAndColorsData = {
         "red",
       ],
       pose: 1,
+      title: "Blonde fringe",
     },
   ],
   "7": [
@@ -114,6 +120,7 @@ export const hairstyleData: StylesAndColorsData = {
         "red",
       ],
       pose: 1,
+      title: "Blonde fringe",
     },
   ],
   "8": [
@@ -131,6 +138,7 @@ export const hairstyleData: StylesAndColorsData = {
         "red",
       ],
       pose: 1,
+      title: "Blonde fringe",
     },
   ],
 };

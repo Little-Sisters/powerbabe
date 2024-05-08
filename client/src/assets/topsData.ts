@@ -14,6 +14,7 @@ export const topstyleData: StylesAndColorsData = {
         "purple",
       ],
       pose: 1,
+      title: "yoga top",
     },
   ],
   "2": [
@@ -29,6 +30,7 @@ export const topstyleData: StylesAndColorsData = {
         "purple",
       ],
       pose: 2,
+      title: "boatstyle",
     },
   ],
   "3": [
@@ -44,6 +46,7 @@ export const topstyleData: StylesAndColorsData = {
         "purple",
       ],
       pose: 1,
+      title: "Lindsay",
     },
   ],
   "4": [
@@ -59,12 +62,14 @@ export const topstyleData: StylesAndColorsData = {
         "purple",
       ],
       pose: 2,
+      title: "stripes",
     },
   ],
   "5": [
     {
       colors: ["blue", "green", "black", "beige", "hotpink", "purple"],
       pose: 2,
+      title: "Mean girls hoodie",
     },
   ],
   "6": [
@@ -80,12 +85,14 @@ export const topstyleData: StylesAndColorsData = {
         "purple",
       ],
       pose: 3,
+      title: "Bikini top",
     },
   ],
   "7": [
     {
       colors: ["blue", "lightblue", "grey", "black", "white"],
       pose: 2,
+      title: "Jeans jacket",
     },
   ],
   "8": [
@@ -102,6 +109,7 @@ export const topstyleData: StylesAndColorsData = {
         "black",
       ],
       pose: 1,
+      title: "scuba funnel"
     },
   ],
 };

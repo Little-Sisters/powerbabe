@@ -8,7 +8,7 @@ import SwitcherButton from "./SwitcherButtons";
 
 interface ColorAndStyleSwitcherProps {
   feature: string; // e.g., "hairstyle", "eyestyle", "topstyle"
-  stylesAndColors: Record<string, { colors: string[]; pose?: number }[]>;
+  stylesAndColors: Record<string, { colors: string[]; pose?: number; title:string }[]>;
 }
 export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   feature,
@@ -180,14 +180,16 @@ useEffect(() => {
       <SwitcherContentWrapper>
         <Feauture>{feature}</Feauture>
         <PickerBox>
-          <SwitcherButton onClick={goToPreviousStyle} direction='prev' />
+          <SwitcherButton onClick={goToPreviousStyle} direction="prev" />
           <div>
-            <span>{styleKeys[currentStyleIndex]}</span>
+            <span>
+              {stylesAndColors[styleKeys[currentStyleIndex]][0].title}
+            </span>
           </div>
-          <SwitcherButton onClick={goToNextStyle} direction='next' />
+          <SwitcherButton onClick={goToNextStyle} direction="next" />
         </PickerBox>
         <PickerBox>
-          <SwitcherButton onClick={goToPreviousColor} direction='prev' />
+          <SwitcherButton onClick={goToPreviousColor} direction="prev" />
           <div>
             <span>
               {
@@ -197,7 +199,7 @@ useEffect(() => {
               }
             </span>
           </div>
-          <SwitcherButton onClick={goToNextColor} direction='next' />
+          <SwitcherButton onClick={goToNextColor} direction="next" />
         </PickerBox>
         <span>
           {/* Map through the colors array for the current style and display each color */}
@@ -211,6 +213,8 @@ useEffect(() => {
     </Switcher>
   );
 };
+
+
 export const Feauture = styled.p`
   color: ${({ theme }) => theme.text};
  font-weight: bold;
