@@ -1,15 +1,7 @@
+
 export interface StylesAndColorsData {
-  [key: string]: {
-    colors: string[];
-    pose?: number;
-    title: string;
-  }[];
+  number: string;
+  title: string;
+  colors: string[];
+  pose?: number;
 }
-
-
-
-
-
-
-
-

@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { StylesAndColorsData } from "../assets/IStylesAndColors";
 import { useStyleColor } from "../contexts/styleColorContext";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
-import ButtonWithIcon from "./SwitcherButtons";
 import SwitcherButton from "./SwitcherButtons";
 
 interface ColorAndStyleSwitcherProps {
-  feature: string; // e.g., "hairstyle", "eyestyle", "topstyle"
-  stylesAndColors: Record<string, { colors: string[]; pose?: number; title:string }[]>;
+  feature: string;
+  stylesAndColors: StylesAndColorsData[];
 }
+
 export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   feature,
   stylesAndColors,
 }) => {
-  
   const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
@@ -35,93 +33,105 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     setLipstyle,
     setLowerBodystyle,
     setUpperBodystyle,
-    /* Add more features as needed */
   } = useStyleColor();
 
+  const setInitialValues = (feature: string) => {
+    // Retrieve style and color from local storage based on the feature
+    let storedStyle = "";
+    let storedColor = "";
 
-  const styleKeys = Object.keys(stylesAndColors);
+    switch (feature) {
+      case "hairstyle":
+        storedStyle = hairstyle.style || "";
+        storedColor = hairstyle.color || "";
+        break;
+      case "eyestyle":
+        storedStyle = eyestyle.style || "";
+        storedColor = eyestyle.color || "";
+        break;
+      case "lipstyle":
+        storedStyle = lipstyle.style || "";
+        storedColor = lipstyle.color || "";
+        break;
+      case "topstyle":
+        storedStyle = topstyle.style || "";
+        storedColor = topstyle.color || "";
+        break;
+      case "eyebrowstyle":
+        storedStyle = eyebrowstyle.style || "";
+        storedColor = eyebrowstyle.color || "";
+        break;
+      case "bottomstyle":
+        storedStyle = bottomstyle.style || "";
+        storedColor = bottomstyle.color || "";
+        break;
+      case "upperbodystyle":
+        storedStyle = upperbodystyle.style || "";
+        storedColor = upperbodystyle.color || "";
+        break;
+      case "lowerbodystyle":
+        storedStyle = lowerbodystyle.style || "";
+        storedColor = lowerbodystyle.color || "";
+        break;
+      case "headstyle":
+        storedColor = headstyle.color || "";
+        break;
+      // Add cases for other features as needed
+      default:
+        break;
+    }
 
- const setInitialValues = (feature: string) => {
-   // Retrieve style and color from local storage based on the feature
-   let storedStyle = "";
-   let storedColor = "";
+    // If the values are empty strings, set the index to 0
+    const initialStyleIndex =
+      storedStyle !== ""
+        ? stylesAndColors.findIndex((item) => item.number === storedStyle)
+        : 0;
+    const initialColorIndex =
+      storedColor !== ""
+        ? stylesAndColors[initialStyleIndex].colors.findIndex(
+            (color) => color === storedColor
+          )
+        : 0;
 
-   switch (feature) {
-     case "hairstyle":
-       storedStyle = hairstyle.style || "";
-       storedColor = hairstyle.color || "";
-       break;
-     case "eyestyle":
-       storedStyle = eyestyle.style || "";
-       storedColor = eyestyle.color || "";
-       break;
-     case "lipstyle":
-       storedStyle = lipstyle.style || "";
-       storedColor = lipstyle.color || "";
-       break;
-     case "topstyle":
-       storedStyle = topstyle.style || "";
-       storedColor = topstyle.color || "";
-       break;
-     case "eyebrowstyle":
-       storedStyle = eyebrowstyle.style || "";
-       storedColor = eyebrowstyle.color || "";
-       break;
-     case "bottomstyle":
-       storedStyle = bottomstyle.style || "";
-       storedColor = bottomstyle.color || "";
-       break;
-     case "upperbodystyle":
-       storedStyle = upperbodystyle.style || "";
-       storedColor = upperbodystyle.color || "";
-       break;
-     case "lowerbodystyle":
-       storedStyle = lowerbodystyle.style || "";
-       storedColor = lowerbodystyle.color || "";
-       break;
-     case "headstyle":
-       storedColor = headstyle.color || "";
-       break;
-     // Add cases for other features as needed
-     default:
-       break;
-   }
-
-   // If the values are empty strings, set the index to 0
-   const initialStyleIndex =
-     storedStyle !== "" ? styleKeys.findIndex((key) => key === storedStyle) : 0;
-   const initialColorIndex =
-     storedColor !== ""
-       ? stylesAndColors[storedStyle][0].colors.findIndex(
-           (color) => color === storedColor
-         )
-       : 0;
-
-   setCurrentStyleIndex(initialStyleIndex);
-   setCurrentColorIndex(initialColorIndex);
- };
-
-useEffect(() => {
-  setInitialValues(feature);
-}, []);
+    setCurrentStyleIndex(initialStyleIndex);
+    setCurrentColorIndex(initialColorIndex);
+  };
 
   useEffect(() => {
-    setCurrentStyle(styleKeys[currentStyleIndex], currentColorIndex);
+    setInitialValues(feature);
+  }, [feature, stylesAndColors]);
+
+  useEffect(() => {
+    setCurrentStyle(
+      stylesAndColors[currentStyleIndex].number,
+      currentColorIndex
+    );
   }, [currentStyleIndex, currentColorIndex]);
 
+  
   const setCurrentStyle = (styleKey: string, colorIndex: number) => {
-    const currentStyle = stylesAndColors[styleKey][0];
+    const currentStyle = stylesAndColors.find(
+      (style) => style.number === styleKey
+    );
+    if (!currentStyle) return;
+
     const colors = currentStyle.colors;
     const currentColor = colors[colorIndex];
 
     // Updating the respective feature based on 'feature' prop
     switch (feature) {
       case "topstyle":
-        setUpperBodystyle(currentStyle.pose!.toString(), upperbodystyle.color);
+        setUpperBodystyle(
+          currentStyle.pose?.toString() ?? "",
+          upperbodystyle.color
+        );
         setTopstyle(styleKey, currentColor);
         break;
       case "bottomstyle":
-        setLowerBodystyle(currentStyle.pose!.toString(), lowerbodystyle.color);
+        setLowerBodystyle(
+          currentStyle.pose?.toString() ?? "",
+          lowerbodystyle.color
+        );
         setBottomstyle(styleKey, currentColor);
         break;
       case "hairstyle":
@@ -141,40 +151,44 @@ useEffect(() => {
     }
   };
 
-  const updateColorIndexForNewStyle = (newStyleKey: any) => {
+  const updateColorIndexForNewStyle = (newStyleKey: string) => {
     const currentColor =
-      stylesAndColors[styleKeys[currentStyleIndex]][0].colors[
-        currentColorIndex
-      ];
-    const newColors = stylesAndColors[newStyleKey][0].colors;
-    const newColorIndex = newColors.indexOf(currentColor);
+      stylesAndColors[currentStyleIndex].colors[currentColorIndex];
+    const newStyle = stylesAndColors.find(
+      (style) => style.number === newStyleKey
+    );
+    if (!newStyle) return;
+
+    const newColorIndex = newStyle.colors.indexOf(currentColor);
     setCurrentColorIndex(newColorIndex !== -1 ? newColorIndex : 0);
   };
 
   const goToNextStyle = () => {
-    const nextStyleIndex = (currentStyleIndex + 1) % styleKeys.length;
-    updateColorIndexForNewStyle(styleKeys[nextStyleIndex]);
+    const nextStyleIndex = (currentStyleIndex + 1) % stylesAndColors.length;
+    updateColorIndexForNewStyle(stylesAndColors[nextStyleIndex].number);
     setCurrentStyleIndex(nextStyleIndex);
   };
 
   const goToPreviousStyle = () => {
     const prevStyleIndex =
-      (currentStyleIndex - 1 + styleKeys.length) % styleKeys.length;
-    updateColorIndexForNewStyle(styleKeys[prevStyleIndex]);
+      (currentStyleIndex - 1 + stylesAndColors.length) % stylesAndColors.length;
+    updateColorIndexForNewStyle(stylesAndColors[prevStyleIndex].number);
     setCurrentStyleIndex(prevStyleIndex);
   };
   const goToNextColor = () => {
-    const colors = stylesAndColors[styleKeys[currentStyleIndex]][0].colors;
+    const currentStyle = stylesAndColors[currentStyleIndex];
+    const colors = currentStyle.colors;
     setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
-    console.log(currentColorIndex);
   };
 
   const goToPreviousColor = () => {
-    const colors = stylesAndColors[styleKeys[currentStyleIndex]][0].colors;
+    const currentStyle = stylesAndColors[currentStyleIndex];
+    const colors = currentStyle.colors;
     setCurrentColorIndex(
       (prevIndex) => (prevIndex - 1 + colors.length) % colors.length
     );
   };
+
   return (
     <Switcher>
       <SwitcherContentWrapper>
@@ -182,9 +196,7 @@ useEffect(() => {
         <PickerBox>
           <SwitcherButton onClick={goToPreviousStyle} direction="prev" />
           <div>
-            <span>
-              {stylesAndColors[styleKeys[currentStyleIndex]][0].title}
-            </span>
+            <span>{stylesAndColors[currentStyleIndex].title}</span>
           </div>
           <SwitcherButton onClick={goToNextStyle} direction="next" />
         </PickerBox>
@@ -192,36 +204,28 @@ useEffect(() => {
           <SwitcherButton onClick={goToPreviousColor} direction="prev" />
           <div>
             <span>
-              {
-                stylesAndColors[styleKeys[currentStyleIndex]][0].colors[
-                  currentColorIndex
-                ]
-              }
+              {stylesAndColors[currentStyleIndex].colors[currentColorIndex]}
             </span>
           </div>
           <SwitcherButton onClick={goToNextColor} direction="next" />
         </PickerBox>
         <span>
           {/* Map through the colors array for the current style and display each color */}
-          {stylesAndColors[styleKeys[currentStyleIndex]][0].colors.map(
-            (color, index) => (
-              <span key={index} style={{ backgroundColor: color }} />
-            )
-          )}
+          {stylesAndColors[currentStyleIndex].colors.map((color, index) => (
+            <span key={index} style={{ backgroundColor: color }} />
+          ))}
         </span>
       </SwitcherContentWrapper>
     </Switcher>
   );
 };
 
-
 export const Feauture = styled.p`
   color: ${({ theme }) => theme.text};
- font-weight: bold;
- text-transform: uppercase;
+  font-weight: bold;
+  text-transform: uppercase;
   border-bottom: 1px solid ${({ theme }) => theme.text};
 `;
-
 
 export const Switcher = styled.div`
   z-index: 1000;

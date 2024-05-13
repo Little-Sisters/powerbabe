@@ -15,6 +15,7 @@ export const pinkTheme = {
   black: "#FFFFFF",
 };
 
+
 export const blackTheme = {
   mode: "black",
   text: "#F4F4F4",

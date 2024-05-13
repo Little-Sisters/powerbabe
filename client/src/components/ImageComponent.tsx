@@ -18,7 +18,7 @@ interface ImageComponentProps {
   color: string;
   part: string;
   front?: boolean;
-  zIndex?:number;
+  zindex?: number;
 }
 
 export const ImageComponent: React.FC<ImageComponentProps> = ({
@@ -26,16 +26,15 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   color,
   part,
   front,
-  zIndex
+  zindex,
 }) => {
-  const [z, setZIndex] = useState<number | undefined>(zIndex);
+  const [z, setzindex] = useState<number | undefined>(zindex);
 
   useEffect(() => {
-    
     if (part === "hair" && front) {
-      setZIndex(1000);
+      setzindex(1000);
     } else {
-      setZIndex(zIndex);
+      setzindex(zindex);
     }
   }, [style, color, part, front]);
 
@@ -54,19 +53,19 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     <ImageBody
       src={imageString}
       alt={`${style}-${color}-${part}`}
-      zIndex={z}
+      $zindex={z}
     />
   );
 };
 
-const ImageBody = styled.img<{ zIndex?: number }>`
+const ImageBody = styled.img<{ $zindex?: number }>`
   position: absolute;
   scale: 97%;
   height: 100%;
   left: 50%;
-  top: -4%;
+  top: 0%;
   transform: translate(-50%);
-  z-index: ${(props) => (props.zIndex ? props.zIndex : 20)};
+  z-index: ${(props) => (props.$zindex ? props.$zindex : 20)};
   @media (max-width: 768px) {
     scale: 100%;
     top: 0%;
