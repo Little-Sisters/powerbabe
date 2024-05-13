@@ -230,9 +230,8 @@ export const Feauture = styled.p`
 export const Switcher = styled.div`
   z-index: 1000;
   background: ${({ theme }) => theme.primaryLight};
-  width: 250px;
+  width: 270px;
   padding: 0.5rem;
-  margin-bottom: 1rem;
   border-radius: 5px;
   font-size: 10px;
   text-align: center;

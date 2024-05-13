@@ -1,17 +1,16 @@
 import styled from "styled-components";
+import Character from "../components/Character";
 import DesktopSideContentDressup from "../components/DesktopSideContentDressup";
 import MobileSideContentDressup from "../components/MobileSideContentDressup";
 import useMediaQuery from "../hooks/useMediaQuery";
-import Character from "../components/Character";
 
 function DressingRoomPage() {
-
-  const isMobile = useMediaQuery({ breakpoint: 768 });
+  const isMobile = useMediaQuery({ breakpoint: 870 });
 
   return (
     <DressingRoomContainer>
       <MainSection>
-        <Character/>
+        <Character />
       </MainSection>
       <SideSection>
         {isMobile ? (
@@ -27,16 +26,21 @@ function DressingRoomPage() {
 const DressingRoomContainer = styled.section`
   display: flex;
   color: #000000;
-  overflow-x: visible;
-  height: auto;
+  min-height: 770px;
+  height: 94vh;
   padding: 1rem;
-  @media (max-width: 768px) {
+  padding-bottom: 2rem;
+  @media (max-width: 870px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    min-height: 100vh;
     width: 100%;
     padding: 0rem;
+  }
+  @media (max-height: 901px) {
+    height: 93vh;
   }
 `;
 
@@ -45,11 +49,10 @@ const MainSection = styled.div`
   position: relative;
   border-bottom-left-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
-  background-color: #5c5c5c;
   background-size: cover;
   height: auto;
   background-position: bottom;
-  @media (max-width: 767px) {
+  @media (max-width: 870px) {
     width: 100%;
     height: 400px;
     border-radius: 0rem;
@@ -66,7 +69,7 @@ const SideSection = styled.div`
   border-bottom-right-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   background: ${({ theme }) => theme.primaryLight};
-  @media (max-width: 767px) {
+  @media (max-width: 870px) {
     width: 100%;
     height: 14rem;
     border-radius: 0rem;
