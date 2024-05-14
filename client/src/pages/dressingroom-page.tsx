@@ -51,6 +51,7 @@ const MainSection = styled.div`
   border-top-left-radius: 0.5rem;
   background-size: cover;
   height: auto;
+  background-image: url('./backgrounds/y.jpg');
   background-position: bottom;
   @media (max-width: 870px) {
     width: 100%;

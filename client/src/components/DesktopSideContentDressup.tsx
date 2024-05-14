@@ -142,6 +142,8 @@ const Tab = styled.div<TabProps>`
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   width: 50%;
   background-color: ${({ active, theme }) =>
     active ? theme.button : "transparent"};

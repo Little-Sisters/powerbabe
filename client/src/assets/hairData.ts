@@ -3,7 +3,7 @@ import { StylesAndColorsData } from "./IStylesAndColors";
 export const hairstyleData: StylesAndColorsData[] = [
   {
     number: "1",
-    title: "Blonde fringe",
+    title: "Bob",
     colors: [
       "platinum",
       "blonde",

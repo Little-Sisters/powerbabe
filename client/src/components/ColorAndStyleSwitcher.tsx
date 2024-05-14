@@ -209,12 +209,6 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
           </div>
           <SwitcherButton onClick={goToNextColor} direction="next" />
         </PickerBox>
-        <span>
-          {/* Map through the colors array for the current style and display each color */}
-          {stylesAndColors[currentStyleIndex].colors.map((color, index) => (
-            <span key={index} style={{ backgroundColor: color }} />
-          ))}
-        </span>
       </SwitcherContentWrapper>
     </Switcher>
   );
@@ -233,7 +227,7 @@ export const Switcher = styled.div`
   width: 270px;
   padding: 0.5rem;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: .8rem;
   text-align: center;
 `;
 export const SwitcherContentWrapper = styled.div`
