@@ -1,14 +1,21 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import Character from "../components/Character";
-import DesktopSideContentDressup from "../components/DesktopSideContentDressup";
 import MobileSideContentDressup from "../components/MobileSideContentDressup";
 import useMediaQuery from "../hooks/useMediaQuery";
+import DesktopSideContentDressupWardrobe from "../components/DesktopSideContentDressupWardrobe";
+import DesktopSideContentDressupStyle from "../components/DesktopSideContentDressupStyle";
 
 function DressingRoomPage() {
-  const isMobile = useMediaQuery({ breakpoint: 870 });
+  const isMobile = useMediaQuery({ breakpoint: 1051 });
+  const myTheme = useTheme();
 
   return (
     <DressingRoomContainer>
+      {!isMobile && (
+        <SideSection>
+          <DesktopSideContentDressupStyle />
+        </SideSection>
+      )}
       <MainSection>
         <Character />
       </MainSection>
@@ -16,7 +23,7 @@ function DressingRoomPage() {
         {isMobile ? (
           <MobileSideContentDressup />
         ) : (
-          <DesktopSideContentDressup />
+          <DesktopSideContentDressupWardrobe />
         )}
       </SideSection>
     </DressingRoomContainer>
@@ -30,7 +37,7 @@ const DressingRoomContainer = styled.section`
   height: 94vh;
   padding: 1rem;
   padding-bottom: 2rem;
-  @media (max-width: 870px) {
+  @media (max-width: 1051px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -51,9 +58,10 @@ const MainSection = styled.div`
   border-top-left-radius: 0.5rem;
   background-size: cover;
   height: auto;
-  background-image: url('./backgrounds/y.jpg');
+  background-color: #d8d8d8;
+  background-image: url('./backgrounds/pink.png');
   background-position: bottom;
-  @media (max-width: 870px) {
+  @media (max-width: 1051px) {
     width: 100%;
     height: 400px;
     border-radius: 0rem;
@@ -61,19 +69,20 @@ const MainSection = styled.div`
 `;
 
 const SideSection = styled.div`
-  width: 380px;
+  width: 20rem;
   padding: 1rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom-right-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  border-radius: 5px;
   background: ${({ theme }) => theme.primaryLight};
-  @media (max-width: 870px) {
+  @media (max-width: 1051px) {
     width: 100%;
-    height: 14rem;
-    border-radius: 0rem;
+    height: 16rem;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 0rem;
   }
 `;
 

@@ -66,7 +66,7 @@ const ImageBody = styled.img<{ $zindex?: number }>`
   top: 0%;
   transform: translate(-50%);
   z-index: ${(props) => (props.$zindex ? props.$zindex : 20)};
-  @media (max-width: 870px) {
+  @media (max-width: 1050px) {
     scale: 100%;
     top: 0%;
   }

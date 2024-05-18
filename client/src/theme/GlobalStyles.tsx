@@ -23,6 +23,7 @@ input {
 button {
     background: ${({ theme }) => theme.button};
     padding: .5rem 1rem;
+    font-weight:bold;
     color: ${({ theme }) => theme.text};
     transition: all 0.30s linear;
     border: none;

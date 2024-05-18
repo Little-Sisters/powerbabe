@@ -40,17 +40,16 @@ function Header({ themeToggler, theme }: HeaderProps) {
         backdropFilter: backdropFilter,
       }}
     >
-        <HeaderFlex>
-          <div>
-            <h2>PowerGirl</h2>
-          </div>
-          <Nav>
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/dressing-room">Dressingroom</StyledNavLink>
-            <button onClick={themeToggler}>Toggle</button>
-          </Nav>
-        </HeaderFlex>
-
+      <HeaderFlex>
+        <div>
+          <h2>PowerGirl</h2>
+        </div>
+        <Nav>
+          <button onClick={themeToggler}>Toggle</button>
+          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledNavLink to="/dressing-room">Dressingroom</StyledNavLink>
+        </Nav>
+      </HeaderFlex>
     </StyledHeader>
   );
 }
@@ -83,6 +82,7 @@ const Nav = styled.nav`
   }
 `;
 
-const StyledNavLink = styled(NavLink)``;
+const StyledNavLink = styled(NavLink)`
+font-weight:bold`;
 
 export default Header;

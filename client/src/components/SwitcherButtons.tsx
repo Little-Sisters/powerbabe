@@ -16,11 +16,9 @@ const SwitcherButton: React.FC<Props>= ({ onClick, direction }) => {
   };
 
   const StyledSwitcherButton = styled.div`
-  font-size: 10px;
+  font-size: 12px;
   cursor: pointer;
-  height: 1.2rem;
-  width: 1.2rem;
-  background-color: white;
+  width: 1.4rem;
   color: black;
   display: flex;
   justify-content: center; /* Center horizontally */

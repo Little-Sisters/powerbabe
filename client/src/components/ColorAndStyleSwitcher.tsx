@@ -224,11 +224,14 @@ export const Feauture = styled.p`
 export const Switcher = styled.div`
   z-index: 1000;
   background: ${({ theme }) => theme.primaryLight};
-  width: 270px;
   padding: 0.5rem;
   border-radius: 5px;
-  font-size: .8rem;
+  font-size: 1rem;
   text-align: center;
+  width: 100%;
+  @media (max-width: 1051px) {
+    padding: 1rem;
+  }
 `;
 export const SwitcherContentWrapper = styled.div`
   display: flex;
@@ -241,7 +244,7 @@ export const PickerBox = styled.div`
   width: 100%;
   display: flex;
   background-color: white;
-  height: 1.2rem;
+  padding: 2px;
   border-radius: 1rem;
   justify-content: space-between;
 `;
