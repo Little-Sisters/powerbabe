@@ -18,7 +18,7 @@ export const hairstyleData: StylesAndColorsData[] = [
     ],
   },
   {
-    number: "2",
+    number: "Long straight",
     title: "Blonde fringe",
     colors: [
       "platinum",
@@ -35,7 +35,7 @@ export const hairstyleData: StylesAndColorsData[] = [
   },
   {
     number: "3",
-    title: "Blonde fringe",
+    title: "Long curly",
     colors: [
       "platinum",
       "blonde",
@@ -51,7 +51,7 @@ export const hairstyleData: StylesAndColorsData[] = [
   },
   {
     number: "4",
-    title: "Blonde fringe",
+    title: "Messy bun",
     colors: [
       "platinum",
       "blonde",
@@ -67,7 +67,7 @@ export const hairstyleData: StylesAndColorsData[] = [
   },
   {
     number: "5",
-    title: "Blonde fringe",
+    title: "Lindsay",
     colors: [
       "platinum",
       "blonde",
@@ -84,7 +84,7 @@ export const hairstyleData: StylesAndColorsData[] = [
   },
   {
     number: "6",
-    title: "Blonde fringe",
+    title: "Long straight bangs",
     colors: [
       "platinum",
       "blonde",
@@ -101,7 +101,7 @@ export const hairstyleData: StylesAndColorsData[] = [
   },
   {
     number: "7",
-    title: "Blonde fringe",
+    title: "Low Ponytail",
     colors: [
       "platinum",
       "blonde",

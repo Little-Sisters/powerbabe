@@ -13,7 +13,7 @@ interface Props {
   colors: string[];
 }
 
-const ColorAndStyleSwitcher: React.FC<Props> = ({ feature, colors }) => {
+const SkinColorSwitcher: React.FC<Props> = ({ feature, colors }) => {
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
     headstyle,
@@ -66,4 +66,4 @@ const ColorAndStyleSwitcher: React.FC<Props> = ({ feature, colors }) => {
   );
 };
 
-export default ColorAndStyleSwitcher;
+export default SkinColorSwitcher;

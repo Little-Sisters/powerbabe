@@ -13,6 +13,7 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   feature,
   stylesAndColors,
 }) => {
+  console.log( "feauture:",feature)
   const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
@@ -40,10 +41,13 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     let storedStyle = "";
     let storedColor = "";
 
+    console.log(currentStyleIndex, currentColorIndex);
+  
     switch (feature) {
       case "hairstyle":
         storedStyle = hairstyle.style || "";
         storedColor = hairstyle.color || "";
+        console.log("stored",storedColor, storedStyle)
         break;
       case "eyestyle":
         storedStyle = eyestyle.style || "";
@@ -92,13 +96,22 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
             (color) => color === storedColor
           )
         : 0;
+ if (feature === "hairstyle") {
+   console.log("initial:",initialColorIndex, initialColorIndex);
+ }
 
     setCurrentStyleIndex(initialStyleIndex);
     setCurrentColorIndex(initialColorIndex);
   };
 
   useEffect(() => {
+    console.log("setting initial values: ", feature)
     setInitialValues(feature);
+    if (feature === "hairstyle") {
+      console.log(currentStyleIndex, currentColorIndex)
+   
+  }
+
   }, [feature, stylesAndColors]);
 
   useEffect(() => {
@@ -221,16 +234,24 @@ export const Feauture = styled.p`
   border-bottom: 1px solid ${({ theme }) => theme.text};
 `;
 
+
 export const Switcher = styled.div`
   z-index: 1000;
-  background: ${({ theme }) => theme.primaryLight};
+  background: linear-gradient(
+    to bottom,
+    ${({ theme }) => theme.primary},
+    ${({ theme }) => theme.primaryLight}
+  );
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Basic box shadow */
   padding: 0.5rem;
   border-radius: 5px;
   font-size: 1rem;
   text-align: center;
   width: 100%;
+  height: 100%;
   @media (max-width: 1051px) {
     padding: 1rem;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3)
   }
 `;
 export const SwitcherContentWrapper = styled.div`

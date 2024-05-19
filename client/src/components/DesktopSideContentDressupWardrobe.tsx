@@ -84,6 +84,7 @@ export const SwitcherContainer = styled.div`
   width: 100%;
   height: auto;
   background-color: ${({ theme }) => theme.background};
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Basic box shadow */
   border-radius: 5px;
 `;
 
