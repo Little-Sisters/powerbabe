@@ -7,7 +7,6 @@ import DesktopSideContentDressupStyle from "../components/DesktopSideContentDres
 
 function DressingRoomPage() {
   const isMobile = useMediaQuery({ breakpoint: 1051 });
-  const myTheme = useTheme();
 
   return (
     <DressingRoomContainer>
@@ -34,8 +33,7 @@ const DressingRoomContainer = styled.section`
   display: flex;
   color: #000000;
   min-height: 770px;
-  height: 94vh;
-  padding: 1rem;
+  height: 100vh;
   padding-bottom: 2rem;
   @media (max-width: 1051px) {
     flex-direction: column;
@@ -45,9 +43,6 @@ const DressingRoomContainer = styled.section`
     min-height: 100vh;
     width: 100%;
     padding: 0rem;
-  }
-  @media (max-height: 901px) {
-    height: 93vh;
   }
 `;
 

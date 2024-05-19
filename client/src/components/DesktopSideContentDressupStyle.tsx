@@ -11,26 +11,23 @@ import {
   SwitcherContainer,
 } from "./DesktopSideContentDressupWardrobe";
 import SkinColorSwitcher from "./SkinColorSwitcher";
+import { useWardrobe } from "../contexts/WardrobeContext";
 
 const DesktopSideContentDressupStyle: React.FC = () => {
-  const styleSwitchers = [
-    {
-      feature: "hairstyle",
-      stylesAndColors: hairstyleData,
-    },
-    {
-      feature: "eyestyle",
-      stylesAndColors: eyestyleData,
-    },
-    {
-      feature: "eyebrowstyle",
-      stylesAndColors: eyebrowstyleData,
-    },
-    {
-      feature: "lipstyle",
-      stylesAndColors: lipstyleData,
-    },
-  ];
+    const {
+      hairstyleData,
+      eyestyleData,
+      eyebrowstyleData,
+      lipstyleData,
+      skinColors,
+    } = useWardrobe();
+
+    const styleSwitchers = [
+      { feature: "hairstyle", stylesAndColors: hairstyleData },
+      { feature: "eyestyle", stylesAndColors: eyestyleData },
+      { feature: "eyebrowstyle", stylesAndColors: eyebrowstyleData },
+      { feature: "lipstyle", stylesAndColors: lipstyleData },
+    ];
 
   const renderSwitchers = () => {
     return (

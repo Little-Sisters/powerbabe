@@ -18,8 +18,8 @@ export const hairstyleData: StylesAndColorsData[] = [
     ],
   },
   {
-    number: "Long straight",
-    title: "Blonde fringe",
+    number: "2",
+    title: "Long straight",
     colors: [
       "platinum",
       "blonde",

@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { StylesAndColorsData } from "../assets/IStylesAndColors";
-import { skinColors } from "../assets/bodyData";
-import { bottomstyleData } from "../assets/bottomData";
-import { eyebrowstyleData } from "../assets/eyebrowsData";
-import { eyestyleData } from "../assets/eyesData";
-import { hairstyleData } from "../assets/hairData";
 import BottomsIcon from "../assets/icons/BottomsIcon";
 import SkinIcon from "../assets/icons/SkinIcon";
 import TopIcon from "../assets/icons/TopIcon";
@@ -13,12 +8,21 @@ import EyeBrowIcon from "../assets/icons/eyebrowstyle";
 import EyeIcon from "../assets/icons/eyestyle";
 import HairIcon from "../assets/icons/hairstyle";
 import LipsIcon from "../assets/icons/lipsIcon";
-import { lipstyleData } from "../assets/lipsData";
-import { topstyleData } from "../assets/topsData";
 import { ColorAndStyleSwitcher } from "./ColorAndStyleSwitcher";
 import SkinColorSwitcher from "./SkinColorSwitcher";
+import { useWardrobe } from "../contexts/WardrobeContext";
 
 const MobileSideContentDressup: React.FC = () => {
+
+    const {
+      hairstyleData,
+      eyestyleData,
+      eyebrowstyleData,
+      lipstyleData,
+      skinColors,
+      bottomStyleData,
+      topStylesData,
+    } = useWardrobe();
   const styleSwitchers = [
     {
       feature: "skincolor",
@@ -47,12 +51,12 @@ const MobileSideContentDressup: React.FC = () => {
     },
     {
       feature: "topstyle",
-      stylesAndColors: topstyleData,
+      stylesAndColors: topStylesData,
       icon: <TopIcon color="#000000" />,
     },
     {
       feature: "bottomstyle",
-      stylesAndColors: bottomstyleData,
+      stylesAndColors: bottomStyleData,
       icon: <BottomsIcon color="#000000" />,
     },
   ];

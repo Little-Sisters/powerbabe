@@ -41,8 +41,6 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     let storedStyle = "";
     let storedColor = "";
 
-    console.log(currentStyleIndex, currentColorIndex);
-  
     switch (feature) {
       case "hairstyle":
         storedStyle = hairstyle.style || "";
@@ -96,9 +94,6 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
             (color) => color === storedColor
           )
         : 0;
- if (feature === "hairstyle") {
-   console.log("initial:",initialColorIndex, initialColorIndex);
- }
 
     setCurrentStyleIndex(initialStyleIndex);
     setCurrentColorIndex(initialColorIndex);

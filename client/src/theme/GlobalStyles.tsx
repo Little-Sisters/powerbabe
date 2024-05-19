@@ -28,8 +28,9 @@ button {
     transition: all 0.30s linear;
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
 
-    
     &:hover {
        cursor: pointer;
        background: ${({ theme }) => theme.primaryLight};

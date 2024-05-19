@@ -1,21 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { bottomstyleData } from "../assets/bottomData";
-import { topstyleData } from "../assets/topsData";
 import { ColorAndStyleSwitcher } from "./ColorAndStyleSwitcher";
 import { SideSectionTitle } from "./DesktopSideContentDressupStyle";
+import { useWardrobe } from "../contexts/WardrobeContext";
 
 const DesktopSideContentDressupWardrobe: React.FC = () => {
 
+  const {
+    bottomStyleData,
+    topStylesData,
+  } = useWardrobe();
+
   const wardrobeSwitchers = [
-    {
-      feature: "topstyle",
-      stylesAndColors: topstyleData,
-    },
-    {
-      feature: "bottomstyle",
-      stylesAndColors: bottomstyleData,
-    },
+    { feature: "topstyle", stylesAndColors: topStylesData },
+    { feature: "bottomstyle", stylesAndColors: bottomStyleData },
   ];
 
 

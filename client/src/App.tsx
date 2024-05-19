@@ -10,6 +10,9 @@ import { GlobalStyles } from "./theme/GlobalStyles";
 import { pinkTheme, blackTheme } from "./theme/Themes";
 import { StyleColorProvider } from "./contexts/styleColorContext";
 import isPropValid from "@emotion/is-prop-valid";
+import { WardrobeProvider } from "./contexts/WardrobeContext";
+import { ShopProvider } from "./contexts/ShopContext";
+import ShopPage from "./pages/ShopPage";
 
 
 function App() {
@@ -26,32 +29,44 @@ function App() {
     <div className="App">
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
         <ThemeProvider theme={theme === "pink" ? pinkTheme : blackTheme}>
-          <StyleColorProvider>
-            <GlobalStyles />
-            <Header theme={theme} themeToggler={themeToggler} />
-            <Main>
-              <AnimatePresence initial={false} mode="wait">
-                <Routes location={location} key={locationArr[1]}>
-                  <Route
-                    path="/"
-                    element={
-                      <Page>
-                        <StartPage />
-                      </Page>
-                    }
-                  />
-                  <Route
-                    path="/dressing-room"
-                    element={
-                      <Page>
-                        <DressingRoomPage />
-                      </Page>
-                    }
-                  />
-                </Routes>
-              </AnimatePresence>
-            </Main>
-          </StyleColorProvider>
+          <ShopProvider>
+            <WardrobeProvider>
+              <StyleColorProvider>
+                <GlobalStyles />
+                <Header theme={theme} themeToggler={themeToggler} />
+                <Main>
+                  <AnimatePresence initial={false} mode="wait">
+                    <Routes location={location} key={locationArr[1]}>
+                      <Route
+                        path="/"
+                        element={
+                          <Page>
+                            <StartPage />
+                          </Page>
+                        }
+                      />
+                      <Route
+                        path="/dressing-room"
+                        element={
+                          <Page>
+                            <DressingRoomPage />
+                          </Page>
+                        }
+                      />
+                      <Route
+                        path="/shop"
+                        element={
+                          <Page>
+                            <ShopPage />
+                          </Page>
+                        }
+                      />
+                    </Routes>
+                  </AnimatePresence>
+                </Main>
+              </StyleColorProvider>
+            </WardrobeProvider>
+          </ShopProvider>
         </ThemeProvider>
       </StyleSheetManager>
     </div>
