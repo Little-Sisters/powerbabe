@@ -1,33 +1,28 @@
-import styled from "styled-components";
-import { skinColors } from "../assets/bodyData";
-import { eyebrowstyleData } from "../assets/eyebrowsData";
-import { eyestyleData } from "../assets/eyesData";
-import { hairstyleData } from "../assets/hairData";
-import { lipstyleData } from "../assets/lipsData";
-import { ColorAndStyleSwitcher } from "./ColorAndStyleSwitcher";
+import styled from 'styled-components';
+import { ColorAndStyleSwitcher } from './ColorAndStyleSwitcher';
 import {
   FlexContainer,
   SideContentFooter,
   SwitcherContainer,
-} from "./DesktopSideContentDressupWardrobe";
-import SkinColorSwitcher from "./SkinColorSwitcher";
-import { useWardrobe } from "../contexts/WardrobeContext";
+} from './DesktopSideContentDressupWardrobe';
+import SkinColorSwitcher from './SkinColorSwitcher';
+import { useWardrobe } from '../contexts/WardrobeContext';
 
 const DesktopSideContentDressupStyle: React.FC = () => {
-    const {
-      hairstyleData,
-      eyestyleData,
-      eyebrowstyleData,
-      lipstyleData,
-      skinColors,
-    } = useWardrobe();
+  const {
+    hairstyleData,
+    eyestyleData,
+    eyebrowstyleData,
+    lipstyleData,
+    skinColors,
+  } = useWardrobe();
 
-    const styleSwitchers = [
-      { feature: "hairstyle", stylesAndColors: hairstyleData },
-      { feature: "eyestyle", stylesAndColors: eyestyleData },
-      { feature: "eyebrowstyle", stylesAndColors: eyebrowstyleData },
-      { feature: "lipstyle", stylesAndColors: lipstyleData },
-    ];
+  const styleSwitchers = [
+    { feature: 'hairstyle', stylesAndColors: hairstyleData },
+    { feature: 'eyestyle', stylesAndColors: eyestyleData },
+    { feature: 'eyebrowstyle', stylesAndColors: eyebrowstyleData },
+    { feature: 'lipstyle', stylesAndColors: lipstyleData },
+  ];
 
   const renderSwitchers = () => {
     return (
@@ -54,7 +49,7 @@ const DesktopSideContentDressupStyle: React.FC = () => {
 };
 
 export const SideSectionTitle = styled.h2`
-  margin: 0; 
+  margin: 0;
   text-align: center;
   color: #ffffff;
 `;

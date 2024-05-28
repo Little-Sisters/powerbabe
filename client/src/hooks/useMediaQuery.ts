@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 interface MediaQueryProps {
   breakpoint: number;
@@ -6,7 +6,7 @@ interface MediaQueryProps {
 
 const useMediaQuery = ({ breakpoint }: MediaQueryProps): boolean => {
   const [matches, setMatches] = useState<boolean>(
-    window.innerWidth < breakpoint
+    window.innerWidth < breakpoint,
   );
 
   useEffect(() => {
@@ -14,10 +14,10 @@ const useMediaQuery = ({ breakpoint }: MediaQueryProps): boolean => {
       setMatches(window.innerWidth < breakpoint);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [breakpoint]);
 

@@ -1,32 +1,26 @@
-import React from "react";
-import styled from "styled-components";
-import { ColorAndStyleSwitcher } from "./ColorAndStyleSwitcher";
-import { SideSectionTitle } from "./DesktopSideContentDressupStyle";
-import { useWardrobe } from "../contexts/WardrobeContext";
+import React from 'react';
+import styled from 'styled-components';
+import { ColorAndStyleSwitcher } from './ColorAndStyleSwitcher';
+import { SideSectionTitle } from './DesktopSideContentDressupStyle';
+import { useWardrobe } from '../contexts/WardrobeContext';
 
 const DesktopSideContentDressupWardrobe: React.FC = () => {
-
-  const {
-    bottomStyleData,
-    topStylesData,
-  } = useWardrobe();
+  const { bottomStyleData, topStylesData } = useWardrobe();
 
   const wardrobeSwitchers = [
-    { feature: "topstyle", stylesAndColors: topStylesData },
-    { feature: "bottomstyle", stylesAndColors: bottomStyleData },
+    { feature: 'topstyle', stylesAndColors: topStylesData },
+    { feature: 'bottomstyle', stylesAndColors: bottomStyleData },
   ];
 
-
   const renderSwitchers = () => {
-   
-      return wardrobeSwitchers.map((switcher, index) => (
-        <ColorAndStyleSwitcher
-          key={index}
-          feature={switcher.feature}
-          stylesAndColors={switcher.stylesAndColors}
-        />
-      ));
-    }
+    return wardrobeSwitchers.map((switcher, index) => (
+      <ColorAndStyleSwitcher
+        key={index}
+        feature={switcher.feature}
+        stylesAndColors={switcher.stylesAndColors}
+      />
+    ));
+  };
 
   return (
     <>
@@ -44,7 +38,6 @@ const DesktopSideContentDressupWardrobe: React.FC = () => {
     </>
   );
 };
-
 
 export const SideContentFooter = styled.div`
   display: flex;

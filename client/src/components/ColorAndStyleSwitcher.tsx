@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { StylesAndColorsData } from "../assets/IStylesAndColors";
-import { useStyleColor } from "../contexts/styleColorContext";
-import SwitcherButton from "./SwitcherButtons";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import { useStyleColor } from '../contexts/styleColorContext';
+import SwitcherButton from './SwitcherButtons';
 
 interface ColorAndStyleSwitcherProps {
   feature: string;
@@ -13,7 +13,7 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   feature,
   stylesAndColors,
 }) => {
-  console.log( "feauture:",feature)
+  console.log('feauture:', feature);
   const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
@@ -38,45 +38,45 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
   const setInitialValues = (feature: string) => {
     // Retrieve style and color from local storage based on the feature
-    let storedStyle = "";
-    let storedColor = "";
+    let storedStyle = '';
+    let storedColor = '';
 
     switch (feature) {
-      case "hairstyle":
-        storedStyle = hairstyle.style || "";
-        storedColor = hairstyle.color || "";
-        console.log("stored",storedColor, storedStyle)
+      case 'hairstyle':
+        storedStyle = hairstyle.style || '';
+        storedColor = hairstyle.color || '';
+        console.log('stored', storedColor, storedStyle);
         break;
-      case "eyestyle":
-        storedStyle = eyestyle.style || "";
-        storedColor = eyestyle.color || "";
+      case 'eyestyle':
+        storedStyle = eyestyle.style || '';
+        storedColor = eyestyle.color || '';
         break;
-      case "lipstyle":
-        storedStyle = lipstyle.style || "";
-        storedColor = lipstyle.color || "";
+      case 'lipstyle':
+        storedStyle = lipstyle.style || '';
+        storedColor = lipstyle.color || '';
         break;
-      case "topstyle":
-        storedStyle = topstyle.style || "";
-        storedColor = topstyle.color || "";
+      case 'topstyle':
+        storedStyle = topstyle.style || '';
+        storedColor = topstyle.color || '';
         break;
-      case "eyebrowstyle":
-        storedStyle = eyebrowstyle.style || "";
-        storedColor = eyebrowstyle.color || "";
+      case 'eyebrowstyle':
+        storedStyle = eyebrowstyle.style || '';
+        storedColor = eyebrowstyle.color || '';
         break;
-      case "bottomstyle":
-        storedStyle = bottomstyle.style || "";
-        storedColor = bottomstyle.color || "";
+      case 'bottomstyle':
+        storedStyle = bottomstyle.style || '';
+        storedColor = bottomstyle.color || '';
         break;
-      case "upperbodystyle":
-        storedStyle = upperbodystyle.style || "";
-        storedColor = upperbodystyle.color || "";
+      case 'upperbodystyle':
+        storedStyle = upperbodystyle.style || '';
+        storedColor = upperbodystyle.color || '';
         break;
-      case "lowerbodystyle":
-        storedStyle = lowerbodystyle.style || "";
-        storedColor = lowerbodystyle.color || "";
+      case 'lowerbodystyle':
+        storedStyle = lowerbodystyle.style || '';
+        storedColor = lowerbodystyle.color || '';
         break;
-      case "headstyle":
-        storedColor = headstyle.color || "";
+      case 'headstyle':
+        storedColor = headstyle.color || '';
         break;
       // Add cases for other features as needed
       default:
@@ -85,13 +85,13 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
     // If the values are empty strings, set the index to 0
     const initialStyleIndex =
-      storedStyle !== ""
-        ? stylesAndColors.findIndex((item) => item.number === storedStyle)
+      storedStyle !== ''
+        ? stylesAndColors.findIndex(item => item.number === storedStyle)
         : 0;
     const initialColorIndex =
-      storedColor !== ""
+      storedColor !== ''
         ? stylesAndColors[initialStyleIndex].colors.findIndex(
-            (color) => color === storedColor
+            color => color === storedColor,
           )
         : 0;
 
@@ -100,26 +100,23 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   };
 
   useEffect(() => {
-    console.log("setting initial values: ", feature)
+    console.log('setting initial values: ', feature);
     setInitialValues(feature);
-    if (feature === "hairstyle") {
-      console.log(currentStyleIndex, currentColorIndex)
-   
-  }
-
+    if (feature === 'hairstyle') {
+      console.log(currentStyleIndex, currentColorIndex);
+    }
   }, [feature, stylesAndColors]);
 
   useEffect(() => {
     setCurrentStyle(
       stylesAndColors[currentStyleIndex].number,
-      currentColorIndex
+      currentColorIndex,
     );
   }, [currentStyleIndex, currentColorIndex]);
 
-  
   const setCurrentStyle = (styleKey: string, colorIndex: number) => {
     const currentStyle = stylesAndColors.find(
-      (style) => style.number === styleKey
+      style => style.number === styleKey,
     );
     if (!currentStyle) return;
 
@@ -128,30 +125,30 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
 
     // Updating the respective feature based on 'feature' prop
     switch (feature) {
-      case "topstyle":
+      case 'topstyle':
         setUpperBodystyle(
-          currentStyle.pose?.toString() ?? "",
-          upperbodystyle.color
+          currentStyle.pose?.toString() ?? '',
+          upperbodystyle.color,
         );
         setTopstyle(styleKey, currentColor);
         break;
-      case "bottomstyle":
+      case 'bottomstyle':
         setLowerBodystyle(
-          currentStyle.pose?.toString() ?? "",
-          lowerbodystyle.color
+          currentStyle.pose?.toString() ?? '',
+          lowerbodystyle.color,
         );
         setBottomstyle(styleKey, currentColor);
         break;
-      case "hairstyle":
+      case 'hairstyle':
         setHairstyle(styleKey, currentColor, currentStyle.pose !== undefined);
         break;
-      case "eyestyle":
+      case 'eyestyle':
         setEyestyle(styleKey, currentColor);
         break;
-      case "lipstyle":
+      case 'lipstyle':
         setLipstyle(styleKey, currentColor);
         break;
-      case "eyebrowstyle":
+      case 'eyebrowstyle':
         setEyeBrowStyle(styleKey, currentColor);
         break;
       default:
@@ -163,7 +160,7 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     const currentColor =
       stylesAndColors[currentStyleIndex].colors[currentColorIndex];
     const newStyle = stylesAndColors.find(
-      (style) => style.number === newStyleKey
+      style => style.number === newStyleKey,
     );
     if (!newStyle) return;
 
@@ -186,14 +183,14 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   const goToNextColor = () => {
     const currentStyle = stylesAndColors[currentStyleIndex];
     const colors = currentStyle.colors;
-    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+    setCurrentColorIndex(prevIndex => (prevIndex + 1) % colors.length);
   };
 
   const goToPreviousColor = () => {
     const currentStyle = stylesAndColors[currentStyleIndex];
     const colors = currentStyle.colors;
     setCurrentColorIndex(
-      (prevIndex) => (prevIndex - 1 + colors.length) % colors.length
+      prevIndex => (prevIndex - 1 + colors.length) % colors.length,
     );
   };
 
@@ -229,7 +226,6 @@ export const Feauture = styled.p`
   border-bottom: 1px solid ${({ theme }) => theme.text};
 `;
 
-
 export const Switcher = styled.div`
   z-index: 1000;
   background: linear-gradient(
@@ -246,7 +242,7 @@ export const Switcher = styled.div`
   height: 100%;
   @media (max-width: 1051px) {
     padding: 1rem;
-    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3)
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);
   }
 `;
 export const SwitcherContentWrapper = styled.div`

@@ -1,8 +1,7 @@
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom"
-import styled, { useTheme } from "styled-components";
-
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import styled, { useTheme } from 'styled-components';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -10,27 +9,27 @@ interface HeaderProps {
 }
 
 function Header({ themeToggler, theme }: HeaderProps) {
-  const [backdropFilter, setBackdropFilter] = useState("none");
+  const [backdropFilter, setBackdropFilter] = useState('none');
   // const [backgroundColor, setBackgroundColor] = useState("transparent");
   const { scrollY } = useScroll();
-  const myTheme = useTheme()
+  const myTheme = useTheme();
 
   useEffect(() => {
     if (scrollY.get() > 5) {
       // setBackgroundColor(myTheme.bodyOpacity);
-      setBackdropFilter("blur(6px)");
+      setBackdropFilter('blur(6px)');
     }
     if (scrollY.get() < 5) {
       //setBackgroundColor("transparent");
-      setBackdropFilter("none");
+      setBackdropFilter('none');
     }
   }, [theme, myTheme.bodyOpacity, scrollY]);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const newBackgroundColor = latest > 0 ? myTheme.bodyOpacity : "transparent";
+  useMotionValueEvent(scrollY, 'change', latest => {
+    // const newBackgroundColor = latest > 0 ? myTheme.bodyOpacity : 'transparent';
     //setBackgroundColor(newBackgroundColor);
     if (latest > 0) {
-      setBackdropFilter("blur(6px)");
+      setBackdropFilter('blur(6px)');
     }
   });
 
@@ -58,8 +57,7 @@ const StyledHeader = styled(motion.header)`
   width: 100%;
   padding: 0 1rem;
   position: fixed;
-  background: ${({ theme }) =>
-  theme.primary}; // Black overlay with 50% opacity
+  background: ${({ theme }) => theme.primary}; // Black overlay with 50% opacity
   height: 3rem;
   top: 0;
   z-index: 10000;
@@ -84,6 +82,7 @@ const Nav = styled.nav`
 `;
 
 const StyledNavLink = styled(NavLink)`
-font-weight:bold`;
+  font-weight: bold;
+`;
 
 export default Header;

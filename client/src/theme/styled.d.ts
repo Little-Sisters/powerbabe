@@ -25,4 +25,3 @@ export interface DefaultTheme {
   overlay?: string;
   overlay2?: string;
 }
-

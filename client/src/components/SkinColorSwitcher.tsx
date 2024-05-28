@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useStyleColor } from "../contexts/styleColorContext";
+import React, { useState } from 'react';
+import { useStyleColor } from '../contexts/styleColorContext';
 import {
   Feauture,
   PickerBox,
   Switcher,
   SwitcherContentWrapper,
-} from "./ColorAndStyleSwitcher";
-import ButtonWithIcon from "./SwitcherButtons";
+} from './ColorAndStyleSwitcher';
+import ButtonWithIcon from './SwitcherButtons';
 
 interface Props {
   feature: string;
@@ -25,16 +25,16 @@ const SkinColorSwitcher: React.FC<Props> = ({ feature, colors }) => {
   } = useStyleColor();
 
   const goToNextColor = () => {
-    setCurrentColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+    setCurrentColorIndex(prevIndex => (prevIndex + 1) % colors.length);
     updateStyles((currentColorIndex + 1) % colors.length);
   };
 
   const goToPreviousColor = () => {
-    setCurrentColorIndex((prevIndex) =>
-      prevIndex === 0 ? colors.length - 1 : prevIndex - 1
+    setCurrentColorIndex(prevIndex =>
+      prevIndex === 0 ? colors.length - 1 : prevIndex - 1,
     );
     updateStyles(
-      currentColorIndex === 0 ? colors.length - 1 : currentColorIndex - 1
+      currentColorIndex === 0 ? colors.length - 1 : currentColorIndex - 1,
     );
   };
 
@@ -49,15 +49,11 @@ const SkinColorSwitcher: React.FC<Props> = ({ feature, colors }) => {
   return (
     <Switcher>
       <SwitcherContentWrapper>
-      <Feauture>{feature}</Feauture>
+        <Feauture>{feature}</Feauture>
         <PickerBox>
-        <ButtonWithIcon onClick={goToPreviousColor} direction="prev" />
+          <ButtonWithIcon onClick={goToPreviousColor} direction="prev" />
           <div>
-            <span>
-              {
-                headstyle.color
-              }
-            </span>
+            <span>{headstyle.color}</span>
           </div>
           <ButtonWithIcon onClick={goToNextColor} direction="next" />
         </PickerBox>

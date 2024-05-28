@@ -1,4 +1,3 @@
-
 export interface StylesAndColorsData {
   number: string;
   title: string;

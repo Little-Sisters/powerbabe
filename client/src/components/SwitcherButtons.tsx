@@ -7,15 +7,15 @@ interface Props {
   direction: 'next' | 'prev';
 }
 
-const SwitcherButton: React.FC<Props>= ({ onClick, direction }) => {
-    return (
-      <StyledSwitcherButton onClick={onClick}>
-        {direction === 'next' ? <IoIosArrowForward /> : <IoIosArrowBack />}
-      </StyledSwitcherButton>
-    );
-  };
+const SwitcherButton: React.FC<Props> = ({ onClick, direction }) => {
+  return (
+    <StyledSwitcherButton onClick={onClick}>
+      {direction === 'next' ? <IoIosArrowForward /> : <IoIosArrowBack />}
+    </StyledSwitcherButton>
+  );
+};
 
-  const StyledSwitcherButton = styled.div`
+const StyledSwitcherButton = styled.div`
   font-size: 12px;
   cursor: pointer;
   width: 1.4rem;
