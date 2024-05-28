@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { useLocalStorageState } from "../hooks/useLocalStorage";
+import { createContext, useContext } from 'react';
+import { useLocalStorageState } from '../hooks/useLocalStorage';
 
 interface StyleColorContextProps {
-  hairstyle: { style: string; color: string , front:boolean };
+  hairstyle: { style: string; color: string; front: boolean };
   eyestyle: { style: string; color: string };
   lipstyle: { style: string; color: string };
   topstyle: { style: string; color: string };
@@ -15,7 +15,7 @@ interface StyleColorContextProps {
 }
 
 interface StyleColorContextActions {
-  setHairstyle: (style: string, color: string, front:boolean) => void;
+  setHairstyle: (style: string, color: string, front: boolean) => void;
   setEyestyle: (style: string, color: string) => void;
   setLipstyle: (style: string, color: string) => void;
   setTopstyle: (style: string, color: string) => void;
@@ -34,7 +34,7 @@ const StyleColorContext = createContext<
 export const useStyleColor = () => {
   const context = useContext(StyleColorContext);
   if (!context) {
-    throw new Error("useStyleColor must be used within a StyleColorProvider");
+    throw new Error('useStyleColor must be used within a StyleColorProvider');
   }
   return context;
 };
@@ -44,45 +44,44 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [hairstyle, setHairstyle] = useLocalStorageState(
     {
-      style: "1",
-      color: "platinum",
+      style: '1',
+      color: 'platinum',
       front: false,
     },
-    "hairstyle"
+    'hairstyle',
   );
   const [eyestyle, setEyestyle] = useLocalStorageState(
-    { style: "1", color: "blue" },
-    "eyestyle"
+    { style: '1', color: 'blue' },
+    'eyestyle',
   );
   const [lipstyle, setLipstyle] = useLocalStorageState(
-    { style: "1", color: "burgundy" },
-    "lipstyle"
+    { style: '1', color: 'burgundy' },
+    'lipstyle',
   );
   const [eyebrowstyle, setEyeBrowstyle] = useLocalStorageState(
-    { style: "1", color: "brown" },
-    "eyebrowstyle"
+    { style: '1', color: 'brown' },
+    'eyebrowstyle',
   );
   const [topstyle, setTopstyle] = useLocalStorageState(
-    { style: "1", color: "blue" },
-    "topstyle"
+    { style: '1', color: 'blue' },
+    'topstyle',
   );
   const [bottomstyle, setBottomstyle] = useLocalStorageState(
-    { style: "1", color: "blue" },
-    "bottomstyle"
+    { style: '1', color: 'blue' },
+    'bottomstyle',
   );
   const [upperbodystyle, setUpperBodystyle] = useLocalStorageState(
-    { style: "1", color: "medium" },
-    "upperbodystyle"
+    { style: '1', color: 'medium' },
+    'upperbodystyle',
   );
   const [lowerbodystyle, setLowerBodystyle] = useLocalStorageState(
-    { style: "1", color: "medium" },
-    "lowerbodystyle"
+    { style: '1', color: 'medium' },
+    'lowerbodystyle',
   );
   const [headstyle, setHeadstyle] = useLocalStorageState(
-    { color: "medium" },
-    "headstyle"
+    { color: 'medium' },
+    'headstyle',
   );
-
 
   // Initialize other features as needed
 
@@ -105,7 +104,7 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
     setBottomstyle: (style, color) => setBottomstyle({ style, color }),
     setUpperBodystyle: (style, color) => setUpperBodystyle({ style, color }),
     setLowerBodystyle: (style, color) => setLowerBodystyle({ style, color }),
-    setHeadstyle: (color) => setHeadstyle({ color }),
+    setHeadstyle: color => setHeadstyle({ color }),
     // Add more setter functions as needed
   };
 

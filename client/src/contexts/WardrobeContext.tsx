@@ -1,15 +1,14 @@
 // WardrobeContext.tsx
-import React, { createContext, useContext } from "react";
-import { StylesAndColorsData } from "../assets/IStylesAndColors";
-import { skinColors } from "../assets/bodyData";
-import { bottomstyleData } from "../assets/bottomData";
-import { eyebrowstyleData } from "../assets/eyebrowsData";
-import { eyestyleData } from "../assets/eyesData";
-import { hairstyleData } from "../assets/hairData";
-import { lipstyleData } from "../assets/lipsData";
-import { topstyleData } from "../assets/topsData";
-import { useLocalStorageState } from "../hooks/useLocalStorage";
-
+import React, { createContext, useContext } from 'react';
+import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import { skinColors } from '../assets/bodyData';
+import { bottomstyleData } from '../assets/bottomData';
+import { eyebrowstyleData } from '../assets/eyebrowsData';
+import { eyestyleData } from '../assets/eyesData';
+import { hairstyleData } from '../assets/hairData';
+import { lipstyleData } from '../assets/lipsData';
+import { topstyleData } from '../assets/topsData';
+import { useLocalStorageState } from '../hooks/useLocalStorage';
 
 interface WardrobeContextProps {
   hairstyleData: StylesAndColorsData[];
@@ -23,7 +22,7 @@ interface WardrobeContextProps {
 }
 
 const WardrobeContext = createContext<WardrobeContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export const WardrobeProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -31,49 +30,49 @@ export const WardrobeProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [hairStyles, setHairStyles] = useLocalStorageState<
     StylesAndColorsData[]
-  >(hairstyleData, "hairStyles");
+  >(hairstyleData, 'hairStyles');
   const [eyeStyles, setEyeStyles] = useLocalStorageState<StylesAndColorsData[]>(
     eyestyleData,
-    "eyeStyles"
+    'eyeStyles',
   );
   const [eyebrowStyles, setEyebrowStyles] = useLocalStorageState<
     StylesAndColorsData[]
-  >(eyebrowstyleData, "eyebrowStyles");
+  >(eyebrowstyleData, 'eyebrowStyles');
   const [lipStyles, setLipStyles] = useLocalStorageState<StylesAndColorsData[]>(
     lipstyleData,
-    "lipStyles"
+    'lipStyles',
   );
   const [bottomStyles, setBottomStyles] = useLocalStorageState<
     StylesAndColorsData[]
-  >(bottomstyleData, "bottomStyles");
+  >(bottomstyleData, 'bottomStyles');
   const [topStyles, setTopStyles] = useLocalStorageState<StylesAndColorsData[]>(
     topstyleData,
-    "topStyles"
+    'topStyles',
   );
   const [skinColorOptions] = useLocalStorageState<string[]>(
     skinColors,
-    "skinColors"
+    'skinColors',
   );
 
   const addToWardrobe = (type: string, item: StylesAndColorsData) => {
     item.purchased = true;
     switch (type) {
-      case "hair":
+      case 'hair':
         setHairStyles([...hairStyles, item]);
         break;
-      case "eyes":
+      case 'eyes':
         setEyeStyles([...eyeStyles, item]);
         break;
-      case "eyebrows":
+      case 'eyebrows':
         setEyebrowStyles([...eyebrowStyles, item]);
         break;
-      case "lips":
+      case 'lips':
         setLipStyles([...lipStyles, item]);
         break;
-      case "bottom":
+      case 'bottom':
         setBottomStyles([...bottomStyles, item]);
         break;
-      case "top":
+      case 'top':
         setTopStyles([...topStyles, item]);
         break;
       default:
@@ -102,7 +101,7 @@ export const WardrobeProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useWardrobe = (): WardrobeContextProps => {
   const context = useContext(WardrobeContext);
   if (!context) {
-    throw new Error("useWardrobe must be used within a WardrobeProvider");
+    throw new Error('useWardrobe must be used within a WardrobeProvider');
   }
   return context;
 };

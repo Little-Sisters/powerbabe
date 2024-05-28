@@ -1,61 +1,60 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { StylesAndColorsData } from "../assets/IStylesAndColors";
-import BottomsIcon from "../assets/icons/BottomsIcon";
-import SkinIcon from "../assets/icons/SkinIcon";
-import TopIcon from "../assets/icons/TopIcon";
-import EyeBrowIcon from "../assets/icons/eyebrowstyle";
-import EyeIcon from "../assets/icons/eyestyle";
-import HairIcon from "../assets/icons/hairstyle";
-import LipsIcon from "../assets/icons/lipsIcon";
-import { ColorAndStyleSwitcher } from "./ColorAndStyleSwitcher";
-import SkinColorSwitcher from "./SkinColorSwitcher";
-import { useWardrobe } from "../contexts/WardrobeContext";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import BottomsIcon from '../assets/icons/BottomsIcon';
+import SkinIcon from '../assets/icons/SkinIcon';
+import TopIcon from '../assets/icons/TopIcon';
+import EyeBrowIcon from '../assets/icons/eyebrowstyle';
+import EyeIcon from '../assets/icons/eyestyle';
+import HairIcon from '../assets/icons/hairstyle';
+import LipsIcon from '../assets/icons/lipsIcon';
+import { ColorAndStyleSwitcher } from './ColorAndStyleSwitcher';
+import SkinColorSwitcher from './SkinColorSwitcher';
+import { useWardrobe } from '../contexts/WardrobeContext';
 
 const MobileSideContentDressup: React.FC = () => {
-
-    const {
-      hairstyleData,
-      eyestyleData,
-      eyebrowstyleData,
-      lipstyleData,
-      skinColors,
-      bottomStyleData,
-      topStylesData,
-    } = useWardrobe();
+  const {
+    hairstyleData,
+    eyestyleData,
+    eyebrowstyleData,
+    lipstyleData,
+    skinColors,
+    bottomStyleData,
+    topStylesData,
+  } = useWardrobe();
   const styleSwitchers = [
     {
-      feature: "skincolor",
+      feature: 'skincolor',
       stylesAndColors: skinColors, // Add skin color data if available
       icon: <SkinIcon color="#000000" />,
     },
     {
-      feature: "hairstyle",
+      feature: 'hairstyle',
       stylesAndColors: hairstyleData,
       icon: <HairIcon color="#000000" />,
     },
     {
-      feature: "eyestyle",
+      feature: 'eyestyle',
       stylesAndColors: eyestyleData,
       icon: <EyeIcon color="#000000" />,
     },
     {
-      feature: "eyebrowstyle",
+      feature: 'eyebrowstyle',
       stylesAndColors: eyebrowstyleData,
       icon: <EyeBrowIcon color="#000000" />,
     },
     {
-      feature: "lipstyle",
+      feature: 'lipstyle',
       stylesAndColors: lipstyleData,
       icon: <LipsIcon color="#000000" />,
     },
     {
-      feature: "topstyle",
+      feature: 'topstyle',
       stylesAndColors: topStylesData,
       icon: <TopIcon color="#000000" />,
     },
     {
-      feature: "bottomstyle",
+      feature: 'bottomstyle',
       stylesAndColors: bottomStyleData,
       icon: <BottomsIcon color="#000000" />,
     },
@@ -69,10 +68,10 @@ const MobileSideContentDressup: React.FC = () => {
 
   const getActiveSwitcher = () => {
     const activeSwitcher = styleSwitchers.find(
-      (switcher) => switcher.feature === activeTab
+      switcher => switcher.feature === activeTab,
     );
     if (activeSwitcher) {
-      if (activeSwitcher.feature === "skincolor") {
+      if (activeSwitcher.feature === 'skincolor') {
         // Render a different kind of switcher for skin color
         return (
           <SkinColorSwitcher
@@ -98,7 +97,7 @@ const MobileSideContentDressup: React.FC = () => {
     <Wrapper>
       <TabsWrapper>
         <MobileSwitcherTabs>
-          {styleSwitchers.map((switcher) => (
+          {styleSwitchers.map(switcher => (
             <Tab
               key={switcher.feature}
               isActive={activeTab === switcher.feature}
@@ -120,7 +119,6 @@ const MobileSideContentDressup: React.FC = () => {
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  
 `;
 
 const TabsWrapper = styled.div`
@@ -137,7 +135,9 @@ const MobileSwitcherTabs = styled.div`
   border-top-left-radius: 5px;
   height: 3rem;
   justify-content: space-around;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3), 0px 4px -4px rgba(0, 0, 0, 0.3); /* Top and bottom box shadow */
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.3),
+    0px 4px -4px rgba(0, 0, 0, 0.3); /* Top and bottom box shadow */
 `;
 
 const Tab = styled.div<{ isActive: boolean }>`
@@ -145,8 +145,8 @@ const Tab = styled.div<{ isActive: boolean }>`
   padding: 5px;
   cursor: pointer;
   background-color: ${({ isActive, theme }) =>
-    isActive ? theme.button : "transparent"};
-  color: ${({ isActive }) => (isActive ? "black" : "white")};
+    isActive ? theme.button : 'transparent'};
+  color: ${({ isActive }) => (isActive ? 'black' : 'white')};
 `;
 
 const SwitcherInside = styled.div`

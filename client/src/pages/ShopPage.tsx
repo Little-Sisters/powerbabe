@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { StylesAndColorsData } from "../assets/IStylesAndColors";
-import { useShop } from "../contexts/ShopContext";
-import { useWardrobe } from "../contexts/WardrobeContext";
+import React from 'react';
+import styled from 'styled-components';
+import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import { useShop } from '../contexts/ShopContext';
+import { useWardrobe } from '../contexts/WardrobeContext';
 
 const ShopPage: React.FC = () => {
   const { SHOPtopStyles } = useShop();
@@ -10,12 +10,12 @@ const ShopPage: React.FC = () => {
   const { addToWardrobe } = useWardrobe();
 
   const handleBuy = (style: StylesAndColorsData) => {
-    addToWardrobe("top", style);
+    addToWardrobe('top', style);
   };
   console.log(SHOPtopStyles);
 
   const renderTopStyles = () => {
-    return SHOPtopStyles.map((style) => (
+    return SHOPtopStyles.map(style => (
       <Card key={style.number}>
         <CardTitle>{style.title}</CardTitle>
         {style.SHOPimage && <ShopImage src={style.SHOPimage} />}
@@ -30,7 +30,7 @@ const ShopPage: React.FC = () => {
             onClick={() => handleBuy(style)}
             disabled={style.purchased}
           >
-            {style.purchased ? "Purchased" : "Buy"}
+            {style.purchased ? 'Purchased' : 'Buy'}
           </FilledButton>
         </ButtonContainer>
       </Card>
@@ -55,9 +55,9 @@ const OutLinedButton = styled.button`
 const FilledButton = styled.button<{ disabled: boolean }>`
   flex: 1;
   background-color: ${({ theme, disabled }) =>
-    disabled ? "#ccc" : theme.button};
-  color: ${({ disabled }) => (disabled ? "#666" : "white")};
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+    disabled ? '#ccc' : theme.button};
+  color: ${({ disabled }) => (disabled ? '#666' : 'white')};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 `;
 
 const ShopImage = styled.img`

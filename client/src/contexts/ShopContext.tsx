@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
-import { StylesAndColorsData } from "../assets/IStylesAndColors";
-import { SHOPtopstyleData } from "../assets/topsData";
-import { useLocalStorageState } from "../hooks/useLocalStorage";
+import React, { createContext, useContext } from 'react';
+import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import { SHOPtopstyleData } from '../assets/topsData';
+import { useLocalStorageState } from '../hooks/useLocalStorage';
 
 interface ShopContextProps {
   SHOPtopStyles: StylesAndColorsData[];
@@ -13,17 +13,15 @@ const ShopContext = createContext<ShopContextProps | undefined>(undefined);
 export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [SHOPtopStyles, setSHOPTopStyles] =
-    useLocalStorageState<StylesAndColorsData[]>(
-    SHOPtopstyleData,
-    "topStyles"
-  );
+  const [SHOPtopStyles, setSHOPTopStyles] = useLocalStorageState<
+    StylesAndColorsData[]
+  >(SHOPtopstyleData, 'topStyles');
 
   const updatePurchased = (number: string) => {
-    setSHOPTopStyles((prevStyles) =>
-      prevStyles.map((style) =>
-        style.number === number ? { ...style, purchased: true } : style
-      )
+    setSHOPTopStyles(prevStyles =>
+      prevStyles.map(style =>
+        style.number === number ? { ...style, purchased: true } : style,
+      ),
     );
   };
 
@@ -37,7 +35,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useShop = (): ShopContextProps => {
   const context = useContext(ShopContext);
   if (!context) {
-    throw new Error("useShop must be used within a ShopProvider");
+    throw new Error('useShop must be used within a ShopProvider');
   }
   return context;
 };

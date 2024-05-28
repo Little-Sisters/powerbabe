@@ -1,11 +1,9 @@
-import React from "react";
-import { useStyleColor } from "../contexts/styleColorContext";
-import { ImageComponent } from "./ImageComponent";
-
+import React from 'react';
+import { useStyleColor } from '../contexts/styleColorContext';
+import { ImageComponent } from './ImageComponent';
 
 const Character: React.FC = () => {
-    
-    const {
+  const {
     hairstyle,
     eyestyle,
     topstyle,
@@ -20,45 +18,44 @@ const Character: React.FC = () => {
     {
       style: hairstyle.style,
       color: hairstyle.color,
-      part: "hair",
+      part: 'hair',
       zindex: 9,
       front: hairstyle.front,
     },
-    { style: eyestyle.style, color: eyestyle.color, part: "eyes", zindex: 20 },
+    { style: eyestyle.style, color: eyestyle.color, part: 'eyes', zindex: 20 },
     {
       style: eyebrowstyle.style,
       color: eyebrowstyle.color,
-      part: "eyebrows",
+      part: 'eyebrows',
       zindex: 7,
     },
-    { style: lipstyle.style, color: lipstyle.color, part: "lips", zindex: 7 },
-    { style: topstyle.style, color: topstyle.color, part: "top", zindex: 21 },
+    { style: lipstyle.style, color: lipstyle.color, part: 'lips', zindex: 7 },
+    { style: topstyle.style, color: topstyle.color, part: 'top', zindex: 21 },
     {
       style: bottomstyle.style,
       color: bottomstyle.color,
-      part: "bottoms",
+      part: 'bottoms',
       zindex: 11,
     },
     {
       style: upperbodystyle.style,
       color: upperbodystyle.color,
-      part: "upperbody",
+      part: 'upperbody',
       zindex: 12,
     },
     {
       style: lowerbodystyle.style,
       color: lowerbodystyle.color,
-      part: "lowerbody",
+      part: 'lowerbody',
       zindex: 10,
     },
     {
       style: upperbodystyle.style,
       color: upperbodystyle.color,
-      part: "head",
+      part: 'head',
       zindex: 6,
     },
   ];
-
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 // Page content wrapper, with animation .
 export const Page = ({
@@ -10,7 +10,7 @@ export const Page = ({
     <motion.div
       className="motion-div"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, width: "100%", height: "100%", y: 0 }}
+      animate={{ opacity: 1, width: '100%', height: '100%', y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >

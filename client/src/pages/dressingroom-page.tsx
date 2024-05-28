@@ -1,9 +1,9 @@
-import styled, { useTheme } from "styled-components";
-import Character from "../components/Character";
-import MobileSideContentDressup from "../components/MobileSideContentDressup";
-import useMediaQuery from "../hooks/useMediaQuery";
-import DesktopSideContentDressupWardrobe from "../components/DesktopSideContentDressupWardrobe";
-import DesktopSideContentDressupStyle from "../components/DesktopSideContentDressupStyle";
+import styled from 'styled-components';
+import Character from '../components/Character';
+import MobileSideContentDressup from '../components/MobileSideContentDressup';
+import useMediaQuery from '../hooks/useMediaQuery';
+import DesktopSideContentDressupWardrobe from '../components/DesktopSideContentDressupWardrobe';
+import DesktopSideContentDressupStyle from '../components/DesktopSideContentDressupStyle';
 
 function DressingRoomPage() {
   const isMobile = useMediaQuery({ breakpoint: 1051 });
