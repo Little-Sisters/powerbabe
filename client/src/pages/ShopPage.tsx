@@ -12,8 +12,6 @@ const ShopPage: React.FC = () => {
   const handleBuy = (style: StylesAndColorsData) => {
     addToWardrobe('top', style);
   };
-  console.log(SHOPtopStyles);
-
   const renderTopStyles = () => {
     return SHOPtopStyles.map(style => (
       <Card key={style.number}>

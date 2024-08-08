@@ -5,14 +5,15 @@
 
 export const pinkTheme = {
   mode: 'pink',
-  text: '#F9F1F1',
+  text: '#FFFFFF',
   primary: '#FF25E9',
   primaryLight: '#FF6BDF',
   input: '#FFFFFF',
-  card: '#FFF4F9',
+  card: '#FF25E9',
   background: '#FFDEEE',
   button: '#FF13AF',
   black: '#FFFFFF',
+  white: 'white',
 };
 
 export const blackTheme = {
@@ -25,4 +26,5 @@ export const blackTheme = {
   background: '#FBF7F8',
   button: '#100F10',
   black: '#FFFFFF',
+  white: 'white',
 };

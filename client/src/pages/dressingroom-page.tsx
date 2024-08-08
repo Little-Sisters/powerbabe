@@ -70,7 +70,6 @@ const SideSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Basic box shadow */
   background: ${({ theme }) => theme.primaryLight};
   @media (max-width: 1051px) {

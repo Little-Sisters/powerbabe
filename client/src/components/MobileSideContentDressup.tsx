@@ -119,6 +119,7 @@ const MobileSideContentDressup: React.FC = () => {
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 `;
 
 const TabsWrapper = styled.div`
@@ -126,6 +127,8 @@ const TabsWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: white;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 `;
 
 const MobileSwitcherTabs = styled.div`
@@ -156,7 +159,7 @@ const SwitcherInside = styled.div`
   justify-content: center;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.primary},
+    ${({ theme }) => theme.card},
     ${({ theme }) => theme.primaryLight}
   );
 `;

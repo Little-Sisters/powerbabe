@@ -13,7 +13,6 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   feature,
   stylesAndColors,
 }) => {
-  console.log('feauture:', feature);
   const [currentStyleIndex, setCurrentStyleIndex] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
@@ -45,7 +44,6 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
       case 'hairstyle':
         storedStyle = hairstyle.style || '';
         storedColor = hairstyle.color || '';
-        console.log('stored', storedColor, storedStyle);
         break;
       case 'eyestyle':
         storedStyle = eyestyle.style || '';
@@ -100,11 +98,7 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
   };
 
   useEffect(() => {
-    console.log('setting initial values: ', feature);
     setInitialValues(feature);
-    if (feature === 'hairstyle') {
-      console.log(currentStyleIndex, currentColorIndex);
-    }
   }, [feature, stylesAndColors]);
 
   useEffect(() => {
@@ -201,7 +195,12 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
         <PickerBox>
           <SwitcherButton onClick={goToPreviousStyle} direction="prev" />
           <div>
-            <span>{stylesAndColors[currentStyleIndex].title}</span>
+            <span>
+              {stylesAndColors[currentStyleIndex] &&
+              stylesAndColors[currentStyleIndex].title
+                ? stylesAndColors[currentStyleIndex].title
+                : 'Default Title'}
+            </span>
           </div>
           <SwitcherButton onClick={goToNextStyle} direction="next" />
         </PickerBox>
@@ -209,7 +208,10 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
           <SwitcherButton onClick={goToPreviousColor} direction="prev" />
           <div>
             <span>
-              {stylesAndColors[currentStyleIndex].colors[currentColorIndex]}
+              {stylesAndColors[currentStyleIndex] &&
+              stylesAndColors[currentStyleIndex].colors
+                ? stylesAndColors[currentStyleIndex].colors[currentColorIndex]
+                : 'Default color'}
             </span>
           </div>
           <SwitcherButton onClick={goToNextColor} direction="next" />
@@ -230,7 +232,7 @@ export const Switcher = styled.div`
   z-index: 1000;
   background: linear-gradient(
     to bottom,
-    ${({ theme }) => theme.primary},
+    ${({ theme }) => theme.card},
     ${({ theme }) => theme.primaryLight}
   );
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Basic box shadow */

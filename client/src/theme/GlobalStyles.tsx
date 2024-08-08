@@ -24,7 +24,7 @@ button {
     background: ${({ theme }) => theme.button};
     padding: .5rem 1rem;
     font-weight:bold;
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.white};
     transition: all 0.30s linear;
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
