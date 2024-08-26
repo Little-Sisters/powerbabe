@@ -23,7 +23,7 @@ const ShopPage: React.FC = () => {
           ))}
         </ColorsContainer>
         <ButtonContainer>
-          <OutLinedButton>1$</OutLinedButton>
+          <OutLinedButton>10$</OutLinedButton>
           <FilledButton
             onClick={() => handleBuy(style)}
             disabled={style.purchased}
