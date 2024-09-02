@@ -1,17 +1,21 @@
 // ShopPage.tsx
 import React from 'react';
 import styled from 'styled-components';
+import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import ShopCard from '../components/ShopCard';
 import { useShop } from '../contexts/ShopContext';
 import { useWardrobe } from '../contexts/WardrobeContext';
-import ShopCard from './ShopCard';
 
 const ShopPage: React.FC = () => {
-  const { SHOPtopStyles } = useShop();
+  const { SHOPtopStyles, updatePurchased } = useShop();
   const { addToWardrobe } = useWardrobe();
 
   const handleBuy = (style: StylesAndColorsData) => {
     addToWardrobe('top', style);
+    updatePurchased(style.number);
   };
+
+  console.log('shopstyles:', SHOPtopStyles);
 
   return (
     <PageContainer>

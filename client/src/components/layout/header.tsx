@@ -44,7 +44,7 @@ function Header({ themeToggler, theme }: HeaderProps) {
           <h2>PowerGirl</h2>
         </div>
         <Nav>
-          <button onClick={themeToggler}>Toggle</button>
+          <button onClick={themeToggler}>Theme</button>
           <StyledNavLink to="/">Home</StyledNavLink>
           <StyledNavLink to="/shop">Shop</StyledNavLink>
           <StyledNavLink to="/dressing-room">Dressing room</StyledNavLink>

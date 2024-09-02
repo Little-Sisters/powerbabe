@@ -9,6 +9,7 @@ interface ShopCardProps {
 }
 
 const ShopCard: React.FC<ShopCardProps> = ({ style, onBuy }) => {
+  console.log('card', style);
   return (
     <Card>
       <CardTitle>{style.title}</CardTitle>

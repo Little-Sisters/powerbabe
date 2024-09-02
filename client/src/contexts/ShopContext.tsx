@@ -15,7 +15,9 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [SHOPtopStyles, setSHOPTopStyles] = useLocalStorageState<
     StylesAndColorsData[]
-  >(SHOPtopstyleData, 'topStyles');
+  >(SHOPtopstyleData, 'SHOPtopStyles');
+
+  console.log(SHOPtopstyleData, SHOPtopStyles);
 
   const updatePurchased = (number: string) => {
     setSHOPTopStyles(prevStyles =>
@@ -24,6 +26,10 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({
       ),
     );
   };
+
+  // Debugging: Verify the data loaded from local storage and the current state
+  console.log('Initial Data:', SHOPtopstyleData);
+  console.log('Local Storage Data:', SHOPtopStyles);
 
   return (
     <ShopContext.Provider value={{ SHOPtopStyles, updatePurchased }}>
