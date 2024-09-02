@@ -14,6 +14,7 @@ export const topstyleData: StylesAndColorsData[] = [
       'lightpink',
       'purple',
     ],
+    purchased: true,
     pose: 1,
   },
   {
@@ -29,6 +30,7 @@ export const topstyleData: StylesAndColorsData[] = [
       'lightpink',
       'purple',
     ],
+    purchased: true,
     pose: 2,
   },
   {
@@ -44,6 +46,7 @@ export const topstyleData: StylesAndColorsData[] = [
       'lightpink',
       'purple',
     ],
+    purchased: true,
     pose: 1,
   },
   {
@@ -60,6 +63,7 @@ export const topstyleData: StylesAndColorsData[] = [
       'purple',
     ],
     pose: 2,
+    purchased: true,
   },
 ];
 

@@ -13,6 +13,7 @@ export const lipstyleData: StylesAndColorsData[] = [
       'darkred',
       'brown',
     ],
+    purchased: true,
   },
   {
     number: '2',
@@ -26,6 +27,7 @@ export const lipstyleData: StylesAndColorsData[] = [
       'darkred',
       'brown',
     ],
+    purchased: true,
   },
   {
     number: '3',
@@ -39,6 +41,7 @@ export const lipstyleData: StylesAndColorsData[] = [
       'darkred',
       'brown',
     ],
+    purchased: true,
   },
   {
     number: '4',
@@ -52,10 +55,12 @@ export const lipstyleData: StylesAndColorsData[] = [
       'darkred',
       'brown',
     ],
+    purchased: true,
   },
   {
     number: '5',
     title: 'Natural',
     colors: ['burgundy', 'hotpink', 'bubblegum', 'orange', 'darkred', 'brown'],
+    purchased: true,
   },
 ];

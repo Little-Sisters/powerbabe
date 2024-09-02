@@ -3,6 +3,6 @@ export interface StylesAndColorsData {
   title: string;
   colors: string[];
   pose?: number;
-  purchased?: boolean; // Add this property
+  purchased: boolean; // Add this property
   SHOPimage?: string; // Add this property
 }

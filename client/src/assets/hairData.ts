@@ -16,6 +16,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
   },
   {
     number: '2',
@@ -32,6 +33,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
   },
   {
     number: '3',
@@ -48,6 +50,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
   },
   {
     number: '4',
@@ -64,6 +67,8 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+
+    purchased: true,
   },
   {
     number: '5',
@@ -80,6 +85,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
     pose: 1,
   },
   {
@@ -97,6 +103,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
     pose: 1,
   },
   {
@@ -114,6 +121,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
     pose: 1,
   },
   {
@@ -131,6 +139,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
+    purchased: true,
     pose: 1,
   },
 ];
