@@ -18,7 +18,8 @@ const ThemeToggler: React.FC<Props> = ({ themeToggler, theme }) => {
 const ThemeToggleButton = styled.button`
   padding: 0.5rem;
   border-radius: 50%;
-  border: 1px solid white;
+  border: 1px solid ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.white};
   background-color: transparent;
   display: flex;
   align-items: center;

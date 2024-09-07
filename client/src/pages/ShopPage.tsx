@@ -5,6 +5,7 @@ import { StylesAndColorsData } from '../assets/IStylesAndColors';
 import ShopCard from '../components/ShopCard';
 import { useShop } from '../contexts/ShopContext';
 import { useWardrobe } from '../contexts/WardrobeContext';
+import PageContentWrapper from '../components/layout/styled';
 
 const ShopPage: React.FC = () => {
   const { SHOPtopStyles, updatePurchased } = useShop();
@@ -18,26 +19,34 @@ const ShopPage: React.FC = () => {
   console.log('shopstyles:', SHOPtopStyles);
 
   return (
-    <PageContainer>
-      <Title>Shop</Title>
+    <PageContentWrapper>
+      <TitleBox>
+        <PageTitle>Shop</PageTitle>
+      </TitleBox>
       <CardsContainer>
         {SHOPtopStyles.map(style => (
           <ShopCard key={style.number} style={style} onBuy={handleBuy} />
         ))}
       </CardsContainer>
-    </PageContainer>
+    </PageContentWrapper>
   );
 };
 
 export default ShopPage;
 
 // Styled components for ShopPage
-const PageContainer = styled.article`
-  padding: 1rem;
+
+export const TitleBox = styled.div`
+  width: 100%;
+  display: flex;
+  padding-bottom: 1.5rem;
 `;
 
-const Title = styled.h1`
-  color: black;
+export const PageTitle = styled.h1`
+  font-size: 2rem;
+  padding: 4px;
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+  width: 100%;
 `;
 
 const CardsContainer = styled.div`

@@ -33,9 +33,8 @@ export default ShopCard;
 
 // Styled components (you can keep them here or in a separate file)
 const Card = styled.div`
-  background: #fff;
-  color: black;
-  border: 1px solid #ddd;
+  background: ${({ theme }) => theme.card};
+  color: ${({ theme }) => theme.text};
   border-radius: 8px;
   padding: 0.6rem;
   width: 100%;
@@ -43,7 +42,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @media (min-width: 576px) {
     padding: 1rem;
@@ -52,6 +51,7 @@ const Card = styled.div`
 
 const ShopImage = styled.img`
   width: 100%;
+  padding-top: 10px;
 `;
 
 const CardTitle = styled.p`
@@ -82,14 +82,19 @@ const ColorDot = styled.div`
 const ButtonContainer = styled.div`
   width: 100%;
   display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+  gap: 0.5rem;
+  flex-direction: column;
+  @media (min-width: 568px) {
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 1rem;
+  }
 `;
 
 const OutLinedButton = styled.button`
   background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.button};
-  color: ${({ theme }) => theme.button};
+  border: 1px solid ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.text};
   flex: 1;
 `;
 

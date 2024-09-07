@@ -51,4 +51,7 @@ footer {
     background: ${({ theme }) => theme.footer};
     transition: all 0.30s linear;
 }
+header {
+    color:  ${({ theme }) => theme.white};
+}
 `;
