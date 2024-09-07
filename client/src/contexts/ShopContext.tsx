@@ -1,11 +1,12 @@
 import React, { createContext, useContext } from 'react';
 import { StylesAndColorsData } from '../assets/IStylesAndColors';
 import { SHOPtopstyleData } from '../assets/topsData';
+import { SHOPHairStyleData } from '../assets/hairData';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 
 interface ShopContextProps {
-  SHOPtopStyles: StylesAndColorsData[];
-  updatePurchased: (number: string) => void;
+  SHOPstyles: Record<string, StylesAndColorsData[]>;
+  updatePurchased: (category: string, number: string) => void;
 }
 
 const ShopContext = createContext<ShopContextProps | undefined>(undefined);
@@ -13,26 +14,28 @@ const ShopContext = createContext<ShopContextProps | undefined>(undefined);
 export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [SHOPtopStyles, setSHOPTopStyles] = useLocalStorageState<
-    StylesAndColorsData[]
-  >(SHOPtopstyleData, 'SHOPtopStyles');
+  const [SHOPstyles, setSHOPStyles] = useLocalStorageState<
+    Record<string, StylesAndColorsData[]>
+  >(
+    {
+      tops: SHOPtopstyleData,
+      hair: SHOPHairStyleData,
+      // Add other categories here like bottoms, eyes, lips, etc.
+    },
+    'SHOPstyles',
+  );
 
-  console.log(SHOPtopstyleData, SHOPtopStyles);
-
-  const updatePurchased = (number: string) => {
-    setSHOPTopStyles(prevStyles =>
-      prevStyles.map(style =>
+  const updatePurchased = (category: string, number: string) => {
+    setSHOPStyles(prevStyles => ({
+      ...prevStyles,
+      [category]: prevStyles[category].map(style =>
         style.number === number ? { ...style, purchased: true } : style,
       ),
-    );
+    }));
   };
 
-  // Debugging: Verify the data loaded from local storage and the current state
-  console.log('Initial Data:', SHOPtopstyleData);
-  console.log('Local Storage Data:', SHOPtopStyles);
-
   return (
-    <ShopContext.Provider value={{ SHOPtopStyles, updatePurchased }}>
+    <ShopContext.Provider value={{ SHOPstyles, updatePurchased }}>
       {children}
     </ShopContext.Provider>
   );

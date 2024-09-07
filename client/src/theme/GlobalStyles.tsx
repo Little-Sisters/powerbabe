@@ -9,18 +9,63 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
 }
-body {
-    background: ${({ theme }) => theme.background};
+ body {
+    background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
-     transition: all 0.30s linear;
-}
-input {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: all 0.25s linear;
+  }
+  input {
     background: ${({ theme }) => theme.body};
     border: 1px solid ${({ theme }) => theme.text};
+  }
+
+  // Primary Button Styles
+  .btn-primary {
+    background-color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.white || theme.text};
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.primaryLight || theme.primary};
+    }
+  }
+
+  // Secondary Button Styles
+  .btn-secondary {
+    background-color: ${({ theme }) => theme.secondary || theme.primary};
     color: ${({ theme }) => theme.text};
-    transition: all 0.30s linear;
-}
-button {
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.secondaryLight || theme.secondary};
+    }
+  }
+
+  // Optional: Additional styles for button variants
+  .btn-primary-dark {
+    background-color: ${({ theme }) => theme.primaryDark || theme.primary};
+    color: ${({ theme }) => theme.white || theme.text};
+  }
+  .btn-secondary-dark {
+    background-color: ${({ theme }) => theme.secondaryDark || theme.secondary};
+    color: ${({ theme }) => theme.text};
+  }
+  
+  // General Button Styles
+ button {
     background: ${({ theme }) => theme.button};
     padding: .5rem 1rem;
     font-weight:bold;
@@ -30,12 +75,16 @@ button {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     text-transform: uppercase;
+    transition: all 0.30s linear; }
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 
     &:hover {
        cursor: pointer;
        background: ${({ theme }) => theme.primaryLight};
     }
-}
 a {
     color: ${({ theme }) => theme.text};
     transition: all 0.30s linear;

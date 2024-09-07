@@ -106,6 +106,9 @@ export const hairstyleData: StylesAndColorsData[] = [
     purchased: true,
     pose: 1,
   },
+];
+
+export const SHOPHairStyleData: StylesAndColorsData[] = [
   {
     number: '7',
     title: 'Low Ponytail',
@@ -121,7 +124,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
-    purchased: true,
+    purchased: false,
     pose: 1,
   },
   {
@@ -139,7 +142,7 @@ export const hairstyleData: StylesAndColorsData[] = [
       'blue',
       'red',
     ],
-    purchased: true,
+    purchased: false,
     pose: 1,
   },
 ];

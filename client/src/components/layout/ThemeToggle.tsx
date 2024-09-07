@@ -23,6 +23,7 @@ const ThemeToggleButton = styled.button`
   background-color: transparent;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 export default ThemeToggler;
