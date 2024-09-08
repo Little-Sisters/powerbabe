@@ -96,6 +96,7 @@ const OutLinedButton = styled.button`
   border: 1px solid ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.text};
   flex: 1;
+  cursor: pointer;
 `;
 
 const FilledButton = styled.button<{ disabled: boolean }>`

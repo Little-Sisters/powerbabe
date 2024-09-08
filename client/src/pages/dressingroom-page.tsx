@@ -1,13 +1,26 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Character from '../components/Character';
+import DesktopSideContentDressupStyle from '../components/DesktopSideContentDressupStyle';
+import DesktopSideContentDressupWardrobe from '../components/DesktopSideContentDressupWardrobe';
 import MobileSideContentDressup from '../components/MobileSideContentDressup';
 import useMediaQuery from '../hooks/useMediaQuery';
-import DesktopSideContentDressupWardrobe from '../components/DesktopSideContentDressupWardrobe';
-import DesktopSideContentDressupStyle from '../components/DesktopSideContentDressupStyle';
 
 function DressingRoomPage() {
   const isMobile = useMediaQuery({ breakpoint: 1051 });
+  const backgrounds = [
+    './backgrounds/room1.png',
+    './backgrounds/room_pink.png',
+    './backgrounds/room_black.png',
+  ];
 
+  const [currentBackgroundIndex, setCurrentBackgroundIndex] = useState(0);
+
+  const handleChangeBackground = () => {
+    setCurrentBackgroundIndex(
+      prevIndex => (prevIndex + 1) % backgrounds.length,
+    );
+  };
   return (
     <DressingRoomContainer>
       {!isMobile && (
@@ -15,8 +28,14 @@ function DressingRoomPage() {
           <DesktopSideContentDressupStyle />
         </SideSection>
       )}
-      <MainSection>
+      <MainSection backgroundImage={backgrounds[currentBackgroundIndex]}>
         <Character />
+        <ChangeBackgroundButton
+          onClick={handleChangeBackground}
+          className="btn-secondary"
+        >
+          Change room
+        </ChangeBackgroundButton>
       </MainSection>
       <SideSection>
         {isMobile ? (
@@ -46,7 +65,11 @@ const DressingRoomContainer = styled.section`
   }
 `;
 
-const MainSection = styled.div`
+interface MainSectionProps {
+  backgroundImage: string;
+}
+
+const MainSection = styled.div<MainSectionProps>`
   flex: 1;
   position: relative;
   border-bottom-left-radius: 0.5rem;
@@ -54,7 +77,7 @@ const MainSection = styled.div`
   background-size: cover;
   height: auto;
   background-color: #d8d8d8;
-  background-image: url('./backgrounds/pink.png');
+  background-image: url(${props => props.backgroundImage});
   background-position: bottom;
   @media (max-width: 1051px) {
     width: 100%;
@@ -79,6 +102,14 @@ const SideSection = styled.div`
     border-top-left-radius: 5px;
     padding: 0rem;
   }
+`;
+
+const ChangeBackgroundButton = styled.button`
+  position: absolute;
+  bottom: 3%;
+  left: 10px;
+  z-index: 500;
+  cursor: pointer;
 `;
 
 export default DressingRoomPage;

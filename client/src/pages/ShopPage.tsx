@@ -39,8 +39,6 @@ const ShopPage: React.FC = () => {
         </Tab>
         {/* Add more tabs as needed */}
       </Tabs>
-      <button className="btn-primary">Primary Button</button>
-      <button className="btn-secondary">Secondary Button</button>
       <CardsContainer>
         {SHOPstyles[selectedTab].map(style => (
           <ShopCard key={style.number} style={style} onBuy={handleBuy} />
@@ -78,8 +76,8 @@ export const Tab = styled.button<{ active: boolean }>`
   font-size: 1rem;
   cursor: pointer;
   background-color: ${({ active, theme }) =>
-    active ? theme.primary : theme.primaryLight};
-  color: ${({ active, theme }) => (active ? theme.background : theme.text)};
+    active ? theme.button : theme.primaryLight};
+  color: ${({ active, theme }) => (active ? theme.white : theme.text)};
   border: none;
   border-bottom: ${({ active, theme }) =>
     active ? `2px solid ${theme.primary}` : 'none'};

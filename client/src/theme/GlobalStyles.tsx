@@ -28,7 +28,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.white || theme.text};
     border: none;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -44,11 +43,9 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
     border: none;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-
     &:hover {
       background-color: ${({ theme }) => theme.secondaryLight || theme.secondary};
     }
@@ -83,7 +80,7 @@ export const GlobalStyles = createGlobalStyle`
 
     &:hover {
        cursor: pointer;
-       background: ${({ theme }) => theme.primaryLight};
+       background: ${({ theme }) => theme.ButtonHover};
     }
 a {
     color: ${({ theme }) => theme.text};

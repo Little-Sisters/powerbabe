@@ -26,19 +26,19 @@ export const pinkTheme = {
 export const blackTheme = {
   mode: 'black',
   text: '#F4F4F4', // Light grey for readability
-  primary: '#8B2A56', // Darker pink (main color)
-  primaryLight: '#A23B69', // Slightly lighter pink
-  primaryLighter: '#B94C7C', // Even lighter pink
-  primaryDark: '#702043', // Dark pink
-  primaryDarker: '#571836', // Darker shade of dark pink
+  primary: '#2F262A', // Darker pink (main color)
+  primaryLight: '#4E3B43', // Slightly lighter pink
+  primaryLighter: '#755461', // Even lighter pink
+  primaryDark: '#231C1F', // Dark pink
+  primaryDarker: '#181315', // Darker shade of dark pink
   secondary: '#585759', // Grey for secondary elements
   secondaryLight: '#6E6D6F', // Lighter grey
   secondaryDark: '#414041', // Darker grey
   input: '#2B2829', // Dark grey input background
   card: '#3A3638', // Dark grey for cards
   background: '#1E1C1D', // Almost black background
-  button: '#571836', // Dark pink for buttons
-  buttonHover: '#702043', // Darker pink for button hover
+  button: '#7D2254', // Dark pink for buttons
+  buttonHover: '#962C65', // Darker pink for button hover
   black: '#FFFFFF', // Text on dark backgrounds (white)
   white: '#F4F4F4', // Text on dark pink backgrounds (light grey)
 };
