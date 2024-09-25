@@ -10,9 +10,9 @@ import { useWardrobe } from '../contexts/WardrobeContext';
 const ShopPage: React.FC = () => {
   const { SHOPstyles, updatePurchased } = useShop();
   const { addToWardrobe } = useWardrobe();
-  const [selectedTab, setSelectedTab] = useState<'tops' | 'hair' | 'bottoms'>(
-    'tops',
-  ); // Add more tabs as needed
+  const [selectedTab, setSelectedTab] = useState<
+    'tops' | 'hair' | 'bottoms' | 'eyes'
+  >('tops'); // Add more tabs as needed
 
   const handleBuy = (style: StylesAndColorsData) => {
     addToWardrobe(selectedTab, style);
@@ -34,6 +34,12 @@ const ShopPage: React.FC = () => {
         <Tab
           onClick={() => setSelectedTab('hair')}
           active={selectedTab === 'hair'}
+        >
+          Hair
+        </Tab>
+        <Tab
+          onClick={() => setSelectedTab('eyes')}
+          active={selectedTab === 'eyes'}
         >
           Hair
         </Tab>
