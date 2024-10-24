@@ -63,6 +63,7 @@ export const GlobalStyles = createGlobalStyle`
   
   // General Button Styles
  button {
+   cursor: pointer;
     background: ${({ theme }) => theme.button};
     padding: .5rem 1rem;
     font-weight:bold;
@@ -74,14 +75,11 @@ export const GlobalStyles = createGlobalStyle`
     text-transform: uppercase;
     transition: all 0.30s linear; }
     font-size: 1rem;
-    cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-
     &:hover {
-       cursor: pointer;
-       background: ${({ theme }) => theme.ButtonHover};
-    }
+     background: ${({ theme }) => theme.ButtonHover};
+   }
 a {
     color: ${({ theme }) => theme.text};
     transition: all 0.30s linear;

@@ -21,10 +21,12 @@ export const pinkTheme = {
   buttonHover: '#FF13AF',
   black: '#FFFFFF',
   white: 'white',
+  overlay: '#FFFFFF',
 };
 
 export const blackTheme = {
   mode: 'black',
+  overlay: 'black',
   text: '#F4F4F4', // Light grey for readability
   primary: '#2F262A', // Darker pink (main color)
   primaryLight: '#4E3B43', // Slightly lighter pink

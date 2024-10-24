@@ -6,6 +6,8 @@ import PageContentWrapper from '../components/layout/styled';
 import ShopCard from '../components/ShopCard';
 import { useShop } from '../contexts/ShopContext';
 import { useWardrobe } from '../contexts/WardrobeContext';
+import { Hero } from '../components/Hero';
+import { ResponsiveTitleText } from '../components/ShopCategoryText';
 
 const ShopPage: React.FC = () => {
   const { SHOPstyles, updatePurchased } = useShop();
@@ -20,37 +22,50 @@ const ShopPage: React.FC = () => {
   };
 
   return (
-    <PageContentWrapper>
-      <TitleBox>
-        <PageTitle>Shop</PageTitle>
-      </TitleBox>
-      <Tabs>
-        <Tab
-          onClick={() => setSelectedTab('tops')}
-          active={selectedTab === 'tops'}
-        >
-          Tops
-        </Tab>
-        <Tab
-          onClick={() => setSelectedTab('hair')}
-          active={selectedTab === 'hair'}
-        >
-          Hair
-        </Tab>
-        <Tab
-          onClick={() => setSelectedTab('eyes')}
-          active={selectedTab === 'eyes'}
-        >
-          Hair
-        </Tab>
-        {/* Add more tabs as needed */}
-      </Tabs>
-      <CardsContainer>
-        {SHOPstyles[selectedTab].map(style => (
-          <ShopCard key={style.number} style={style} onBuy={handleBuy} />
-        ))}
-      </CardsContainer>
-    </PageContentWrapper>
+    <div>
+      <Hero
+        title="The Mall"
+        text="Welcome to the mall! Here you can browse the latest fashion."
+        buttonLinks={[
+          { text: 'Get Started', link: '/get-started' },
+          { text: 'Learn More', link: '/learn-more' },
+        ]}
+        backgroundImage="./backgrounds/room1.png"
+      />
+      <PageContentWrapper>
+        <ResponsiveTitleText
+          title="Tops"
+          text="Here is some amazing text that describes the content."
+        />
+
+        <Tabs>
+          <Tab
+            onClick={() => setSelectedTab('tops')}
+            active={selectedTab === 'tops'}
+          >
+            Tops
+          </Tab>
+          <Tab
+            onClick={() => setSelectedTab('hair')}
+            active={selectedTab === 'hair'}
+          >
+            Hair
+          </Tab>
+          <Tab
+            onClick={() => setSelectedTab('eyes')}
+            active={selectedTab === 'eyes'}
+          >
+            Hair
+          </Tab>
+          {/* Add more tabs as needed */}
+        </Tabs>
+        <CardsContainer>
+          {SHOPstyles[selectedTab].map(style => (
+            <ShopCard key={style.number} style={style} onBuy={handleBuy} />
+          ))}
+        </CardsContainer>
+      </PageContentWrapper>
+    </div>
   );
 };
 

@@ -51,9 +51,10 @@ function DressingRoomPage() {
 const DressingRoomContainer = styled.section`
   display: flex;
   color: #000000;
-  min-height: 770px;
-  height: 100vh;
-  padding-bottom: 2rem;
+  overflow: hidden;
+  min-height: 620px;
+  height: calc(100vh - 3rem);
+
   @media (max-width: 1051px) {
     flex-direction: column;
     align-items: center;
@@ -72,8 +73,6 @@ interface MainSectionProps {
 const MainSection = styled.div<MainSectionProps>`
   flex: 1;
   position: relative;
-  border-bottom-left-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
   background-size: cover;
   height: auto;
   background-color: #d8d8d8;
