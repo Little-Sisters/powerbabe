@@ -1,25 +1,26 @@
-// ShopPage.tsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { shopTabsData } from '../assets/data/shoptabsData';
 import { StylesAndColorsData } from '../assets/IStylesAndColors';
+import { Hero } from '../components/Hero';
 import PageContentWrapper from '../components/layout/styled';
 import ShopCard from '../components/ShopCard';
+import { ResponsiveTitleText } from '../components/ShopCategoryText';
+import StyleSwitcherTabs from '../components/StyleSwitcherIconTabs';
 import { useShop } from '../contexts/ShopContext';
 import { useWardrobe } from '../contexts/WardrobeContext';
-import { Hero } from '../components/Hero';
-import { ResponsiveTitleText } from '../components/ShopCategoryText';
 
 const ShopPage: React.FC = () => {
   const { SHOPstyles, updatePurchased } = useShop();
   const { addToWardrobe } = useWardrobe();
-  const [selectedTab, setSelectedTab] = useState<
-    'tops' | 'hair' | 'bottoms' | 'eyes'
-  >('tops'); // Add more tabs as needed
+  const [selectedTab, setSelectedTab] = useState(shopTabsData[0].feature);
 
   const handleBuy = (style: StylesAndColorsData) => {
     addToWardrobe(selectedTab, style);
     updatePurchased(selectedTab, style.number);
   };
+
+  const selectedStyles = SHOPstyles[selectedTab] || [];
 
   return (
     <div>
@@ -27,8 +28,8 @@ const ShopPage: React.FC = () => {
         title="The Mall"
         text="Welcome to the mall! Here you can browse the latest fashion."
         buttonLinks={[
-          { text: 'Get Started', link: '/get-started' },
-          { text: 'Learn More', link: '/learn-more' },
+          { text: 'New arrivals!', link: '/get-started' },
+          { text: 'Get coins!', link: '/learn-more' },
         ]}
         backgroundImage="./backgrounds/room1.png"
       />
@@ -37,33 +38,35 @@ const ShopPage: React.FC = () => {
           title="Tops"
           text="Here is some amazing text that describes the content."
         />
-
-        <Tabs>
-          <Tab
-            onClick={() => setSelectedTab('tops')}
-            active={selectedTab === 'tops'}
-          >
-            Tops
-          </Tab>
-          <Tab
-            onClick={() => setSelectedTab('hair')}
-            active={selectedTab === 'hair'}
-          >
-            Hair
-          </Tab>
-          <Tab
-            onClick={() => setSelectedTab('eyes')}
-            active={selectedTab === 'eyes'}
-          >
-            Hair
-          </Tab>
-          {/* Add more tabs as needed */}
-        </Tabs>
-        <CardsContainer>
-          {SHOPstyles[selectedTab].map(style => (
-            <ShopCard key={style.number} style={style} onBuy={handleBuy} />
-          ))}
-        </CardsContainer>
+        <GridContainer>
+          <Sidebar>
+            <StyleSwitcherTabs
+              styleSwitchers={shopTabsData}
+              activeTab={selectedTab}
+              onTabClick={setSelectedTab}
+              shopMode={true}
+            />
+          </Sidebar>
+          <MainContent>
+            <div>Searchfield and sorting dropdown.</div>
+            <div>filter pills div</div>
+            <CardsContainer>
+              {selectedStyles.length > 0 ? (
+                selectedStyles.map(style => (
+                  <ShopCard
+                    key={style.number}
+                    style={style}
+                    onBuy={handleBuy}
+                  />
+                ))
+              ) : (
+                <NoItemsMessage>
+                  No items available in this category
+                </NoItemsMessage>
+              )}
+            </CardsContainer>
+          </MainContent>
+        </GridContainer>
       </PageContentWrapper>
     </div>
   );
@@ -71,65 +74,63 @@ const ShopPage: React.FC = () => {
 
 export default ShopPage;
 
-// Styled components for ShopPage
+// GridContainer.tsx
+const GridContainer = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
 
-export const TitleBox = styled.div`
-  width: 100%;
-  display: flex;
-  padding-bottom: 1.5rem;
+  @media (min-width: 1051px) {
+    grid-template-columns: 10rem 1fr; /* Sidebar and main content */
+  }
 `;
 
-export const PageTitle = styled.h1`
-  font-size: 2rem;
-  padding: 4px;
-  border-bottom: 1px solid ${({ theme }) => theme.text};
-  width: 100%;
+// Sidebar.tsx
+const Sidebar = styled.div`
+  @media (min-width: 1051px) {
+    grid-column: 1;
+  }
 `;
 
-export const Tabs = styled.div`
-  display: flex;
-  justify-content: row;
-  margin-bottom: 1.5rem;
-`;
+// MainContent.tsx
+const MainContent = styled.div`
+  display: grid;
+  gap: 1rem;
 
-export const Tab = styled.button<{ active: boolean }>`
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: ${({ active, theme }) =>
-    active ? theme.button : theme.primaryLight};
-  color: ${({ active, theme }) => (active ? theme.white : theme.text)};
-  border: none;
-  border-bottom: ${({ active, theme }) =>
-    active ? `2px solid ${theme.primary}` : 'none'};
-  transition:
-    background-color 0.3s,
-    color 0.3s;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.background};
+  @media (min-width: 1051px) {
+    grid-column: 2;
   }
 `;
 
 const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Start with 2 columns */
   gap: 1rem;
 
   @media (min-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Remains 2 columns */
   }
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
   }
 
   @media (min-width: 992px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
   }
 
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(
+      5,
+      1fr
+    ); /* 5 columns for extra-large screens */
   }
+`;
+
+// NoItemsMessage.tsx
+const NoItemsMessage = styled.div`
+  text-align: center;
+  color: ${({ theme }) => theme.textSecondary || '#666'};
+  font-size: 1.2rem;
+  padding: 2rem 0;
 `;

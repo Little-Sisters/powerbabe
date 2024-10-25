@@ -1,7 +1,6 @@
 import React from 'react';
 import CharacterCard from '../components/CharacterCard'; // Import the CharacterCard component
 import PageContentWrapper from '../components/layout/styled';
-import { PageTitle, TitleBox } from './ShopPage';
 
 const StartPage: React.FC = () => {
   // Example character data
@@ -16,9 +15,7 @@ const StartPage: React.FC = () => {
 
   return (
     <PageContentWrapper>
-      <TitleBox>
-        <PageTitle>Startpage</PageTitle>
-      </TitleBox>
+      Startpage
       {/* Add the CharacterCard here */}
       <CharacterCard name={character.name} stats={character.stats} />
     </PageContentWrapper>
