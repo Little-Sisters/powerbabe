@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import useMediaQuery from '../hooks/useMediaQuery';
 
 interface StyleSwitcherTabsProps {
   styleSwitchers: Array<{
@@ -9,17 +8,13 @@ interface StyleSwitcherTabsProps {
   }>;
   activeTab: string;
   onTabClick: (feature: string) => void;
-  shopMode?: boolean;
 }
 
 const StyleSwitcherTabs: React.FC<StyleSwitcherTabsProps> = ({
   styleSwitchers,
   activeTab,
   onTabClick,
-  shopMode = false,
 }) => {
-  const isMobile = useMediaQuery({ breakpoint: 1051 }); // Assumes breakpoint at 1050px
-
   return (
     <TabsWrapper>
       <MobileSwitcherTabs>
@@ -30,8 +25,6 @@ const StyleSwitcherTabs: React.FC<StyleSwitcherTabsProps> = ({
             onClick={() => onTabClick(switcher.feature)}
           >
             {switcher.icon}
-            {/* Conditionally show the text only if not mobile and shopMode is true */}
-            {!isMobile && shopMode && <TabText>{switcher.feature}</TabText>}
           </Tab>
         ))}
       </MobileSwitcherTabs>
@@ -91,11 +84,6 @@ const Tab = styled.div<{ isActive: boolean }>`
     padding: 10px;
     flex-direction: row;
   }
-`;
-
-const TabText = styled.span`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.text};
 `;
 
 export default StyleSwitcherTabs;
