@@ -17,13 +17,13 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ name, stats }) => {
       <CharacterInfo>
         <CharacterName>{name}</CharacterName>
         <StatsList>
-          <StatItem>Strength: {stats.strength}</StatItem>
-          <StatItem>Agility: {stats.agility}</StatItem>
+          <StatItem>Points: {stats.strength}</StatItem>
+          <StatItem>Ranking: {stats.agility}</StatItem>
           <StatItem>Intelligence: {stats.intelligence}</StatItem>
         </StatsList>
       </CharacterInfo>
       <CharacterContainer>
-        <Character />
+        <Character showTemporary={false} />
       </CharacterContainer>
     </CardWrapper>
   );

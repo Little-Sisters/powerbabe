@@ -25,18 +25,18 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     upperbodystyle,
     lowerbodystyle,
     lipstyle,
-    setEyestyle,
-    setHairstyle,
-    setTopstyle,
-    setBottomstyle,
-    setEyeBrowStyle,
-    setLipstyle,
-    setLowerBodystyle,
-    setUpperBodystyle,
+    temporaryUpperBodystyle,
+    setTemporaryEyestyle,
+    setTemporaryHairstyle,
+    setTemporaryTopstyle,
+    setTemporaryBottomstyle,
+    setTemporaryEyebrowstyle,
+    setTemporaryLipstyle,
+    setTemporaryLowerBodystyle,
+    setTemporaryUpperBodystyle,
   } = useStyleColor();
 
   const setInitialValues = (feature: string) => {
-    // Retrieve style and color from local storage based on the feature
     let storedStyle = '';
     let storedColor = '';
 
@@ -76,12 +76,10 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
       case 'headstyle':
         storedColor = headstyle.color || '';
         break;
-      // Add cases for other features as needed
       default:
         break;
     }
 
-    // If the values are empty strings, set the index to 0
     const initialStyleIndex =
       storedStyle !== ''
         ? stylesAndColors.findIndex(item => item.number === storedStyle)
@@ -117,33 +115,36 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     const colors = currentStyle.colors;
     const currentColor = colors[colorIndex];
 
-    // Updating the respective feature based on 'feature' prop
     switch (feature) {
       case 'topstyle':
-        setUpperBodystyle(
+        setTemporaryUpperBodystyle(
           currentStyle.pose?.toString() ?? '',
-          upperbodystyle.color,
+          temporaryUpperBodystyle.color,
         );
-        setTopstyle(styleKey, currentColor);
+        setTemporaryTopstyle(styleKey, currentColor);
         break;
       case 'bottomstyle':
-        setLowerBodystyle(
+        setTemporaryLowerBodystyle(
           currentStyle.pose?.toString() ?? '',
-          lowerbodystyle.color,
+          temporaryUpperBodystyle.color,
         );
-        setBottomstyle(styleKey, currentColor);
+        setTemporaryBottomstyle(styleKey, currentColor);
         break;
       case 'hairstyle':
-        setHairstyle(styleKey, currentColor, currentStyle.pose !== undefined);
+        setTemporaryHairstyle(
+          styleKey,
+          currentColor,
+          currentStyle.pose !== undefined,
+        );
         break;
       case 'eyestyle':
-        setEyestyle(styleKey, currentColor);
+        setTemporaryEyestyle(styleKey, currentColor);
         break;
       case 'lipstyle':
-        setLipstyle(styleKey, currentColor);
+        setTemporaryLipstyle(styleKey, currentColor);
         break;
       case 'eyebrowstyle':
-        setEyeBrowStyle(styleKey, currentColor);
+        setTemporaryEyebrowstyle(styleKey, currentColor);
         break;
       default:
         break;
@@ -220,7 +221,6 @@ export const ColorAndStyleSwitcher: React.FC<ColorAndStyleSwitcherProps> = ({
     </Switcher>
   );
 };
-
 export const Feauture = styled.p`
   color: ${({ theme }) => theme.text};
   font-weight: bold;

@@ -4,7 +4,13 @@ import { ColorAndStyleSwitcher } from './ColorAndStyleSwitcher';
 import { SideSectionTitle } from './DesktopSideContentDressupStyle';
 import { useWardrobe } from '../contexts/WardrobeContext';
 
-const DesktopSideContentDressupWardrobe: React.FC = () => {
+interface DesktopSideContentDressupWardrobeProps {
+  onSave: () => void;
+}
+
+const DesktopSideContentDressupWardrobe: React.FC<
+  DesktopSideContentDressupWardrobeProps
+> = ({ onSave }) => {
   const { bottomStyleData, topStylesData } = useWardrobe();
 
   const wardrobeSwitchers = [
@@ -32,7 +38,7 @@ const DesktopSideContentDressupWardrobe: React.FC = () => {
             <p>My name!</p>
             <p> My Status is like pretty good.</p>
           </NameBox>
-          <ReadyButton>Ready!</ReadyButton>
+          <ReadyButton onClick={onSave}>Save!</ReadyButton>
         </SideContentFooter>
       </FlexContainer>
     </>
@@ -48,8 +54,11 @@ export const SideContentFooter = styled.div`
 `;
 export const ReadyButton = styled.button`
   border-radius: 50%;
-  height: 4.5rem;
-  width: 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 4rem;
 `;
 
 export const NameBox = styled.div`

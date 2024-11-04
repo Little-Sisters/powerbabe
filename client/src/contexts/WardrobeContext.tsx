@@ -72,7 +72,7 @@ export const WardrobeProvider: React.FC<{ children: React.ReactNode }> = ({
       case 'bottom':
         setBottomStyles([...bottomStyles, item]);
         break;
-      case 'top':
+      case 'tops':
         setTopStyles([...topStyles, item]);
         break;
       default:

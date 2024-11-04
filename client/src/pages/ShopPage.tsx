@@ -39,8 +39,8 @@ const ShopPage: React.FC = () => {
         title="The Mall"
         text="Welcome to the mall! Here you can browse the latest fashion."
         buttonLinks={[
-          { text: 'New arrivals!', link: '/get-started' },
-          { text: 'Get coins!', link: '/learn-more' },
+          { text: 'New arrivals!', link: '/get-started', color: 'primary' },
+          { text: 'Get coins!', link: '/learn-more', color: 'secondary' },
         ]}
         backgroundImage="./backgrounds/room1.png"
       />
@@ -66,7 +66,6 @@ const ShopPage: React.FC = () => {
                 setSelectedSort(option ? option.value : null)
               }
             />
-            <div>filter pills div</div>
             <CardsContainer>
               {filteredStyles.length > 0 ? (
                 filteredStyles.map(style => (

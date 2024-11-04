@@ -4,6 +4,7 @@ import styled from 'styled-components';
 interface ButtonLink {
   text: string;
   link: string;
+  color: 'primary' | 'secondary';
 }
 
 interface Props {
@@ -27,7 +28,9 @@ export const Hero: React.FC<Props> = ({
         <Description>{text}</Description>
         <ButtonContainer>
           {buttonLinks.map((button, index) => (
-            <button key={index}>{button.text}</button>
+            <button key={index} className={`btn-${button.color}`}>
+              {button.text}
+            </button>
           ))}
         </ButtonContainer>
       </Content>
@@ -55,7 +58,6 @@ const hexToRgb = (hex: string) => {
   const r = (bigint >> 16) & 255;
   const g = (bigint >> 8) & 255;
   const b = bigint & 255;
-  console.log(`${r}, ${g}, ${b}`);
 
   return `${r}, ${g}, ${b}`;
 };

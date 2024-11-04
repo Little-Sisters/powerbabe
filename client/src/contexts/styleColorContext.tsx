@@ -1,6 +1,7 @@
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 
+// Define interfaces for the context
 interface StyleColorContextProps {
   hairstyle: { style: string; color: string; front: boolean };
   eyestyle: { style: string; color: string };
@@ -11,26 +12,37 @@ interface StyleColorContextProps {
   upperbodystyle: { style: string; color: string };
   lowerbodystyle: { style: string; color: string };
   headstyle: { color: string };
-  // Add more features as needed
+
+  temporaryHairstyle: { style: string; color: string; front: boolean };
+  temporaryEyestyle: { style: string; color: string };
+  temporaryLipstyle: { style: string; color: string };
+  temporaryEyebrowstyle: { style: string; color: string };
+  temporaryTopstyle: { style: string; color: string };
+  temporaryBottomstyle: { style: string; color: string };
+  temporaryUpperBodystyle: { style: string; color: string };
+  temporaryLowerBodystyle: { style: string; color: string };
+  temporaryHeadstyle: { color: string };
 }
 
 interface StyleColorContextActions {
-  setHairstyle: (style: string, color: string, front: boolean) => void;
-  setEyestyle: (style: string, color: string) => void;
-  setLipstyle: (style: string, color: string) => void;
-  setTopstyle: (style: string, color: string) => void;
-  setEyeBrowStyle: (style: string, color: string) => void;
-  setBottomstyle: (style: string, color: string) => void;
-  setUpperBodystyle: (style: string, color: string) => void;
-  setLowerBodystyle: (style: string, color: string) => void;
-  setHeadstyle: (color: string) => void;
-  // Add more setter functions as needed
+  setTemporaryHairstyle: (style: string, color: string, front: boolean) => void;
+  setTemporaryEyestyle: (style: string, color: string) => void;
+  setTemporaryLipstyle: (style: string, color: string) => void;
+  setTemporaryTopstyle: (style: string, color: string) => void;
+  setTemporaryEyebrowstyle: (style: string, color: string) => void;
+  setTemporaryBottomstyle: (style: string, color: string) => void;
+  setTemporaryUpperBodystyle: (style: string, color: string) => void;
+  setTemporaryLowerBodystyle: (style: string, color: string) => void;
+  setTemporaryHeadstyle: (color: string) => void;
+  saveStyles: () => void;
 }
 
+// Create context
 const StyleColorContext = createContext<
   (StyleColorContextProps & StyleColorContextActions) | undefined
 >(undefined);
 
+// Custom hook to use the context
 export const useStyleColor = () => {
   const context = useContext(StyleColorContext);
   if (!context) {
@@ -39,15 +51,13 @@ export const useStyleColor = () => {
   return context;
 };
 
+// Provider component
 export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // Saved state (persisted in local storage) with initial states as fallback
   const [hairstyle, setHairstyle] = useLocalStorageState(
-    {
-      style: '1',
-      color: 'platinum',
-      front: false,
-    },
+    { style: '1', color: 'platinum', front: false },
     'hairstyle',
   );
   const [eyestyle, setEyestyle] = useLocalStorageState(
@@ -58,7 +68,7 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
     { style: '1', color: 'burgundy' },
     'lipstyle',
   );
-  const [eyebrowstyle, setEyeBrowstyle] = useLocalStorageState(
+  const [eyebrowstyle, setEyebrowstyle] = useLocalStorageState(
     { style: '1', color: 'brown' },
     'eyebrowstyle',
   );
@@ -83,7 +93,32 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
     'headstyle',
   );
 
-  // Initialize other features as needed
+  // Temporary states (initially set to saved values)
+  const [temporaryHairstyle, setTemporaryHairstyle] = useState(hairstyle);
+  const [temporaryEyestyle, setTemporaryEyestyle] = useState(eyestyle);
+  const [temporaryLipstyle, setTemporaryLipstyle] = useState(lipstyle);
+  const [temporaryEyebrowstyle, setTemporaryEyebrowstyle] =
+    useState(eyebrowstyle);
+  const [temporaryTopstyle, setTemporaryTopstyle] = useState(topstyle);
+  const [temporaryBottomstyle, setTemporaryBottomstyle] = useState(bottomstyle);
+  const [temporaryUpperBodystyle, setTemporaryUpperBodystyle] =
+    useState(upperbodystyle);
+  const [temporaryLowerBodystyle, setTemporaryLowerBodystyle] =
+    useState(lowerbodystyle);
+  const [temporaryHeadstyle, setTemporaryHeadstyle] = useState(headstyle);
+
+  // Function to save temporary styles to local storage
+  const saveStyles = () => {
+    setHairstyle(temporaryHairstyle);
+    setEyestyle(temporaryEyestyle);
+    setLipstyle(temporaryLipstyle);
+    setEyebrowstyle(temporaryEyebrowstyle);
+    setTopstyle(temporaryTopstyle);
+    setBottomstyle(temporaryBottomstyle);
+    setUpperBodystyle(temporaryUpperBodystyle);
+    setLowerBodystyle(temporaryLowerBodystyle);
+    setHeadstyle(temporaryHeadstyle);
+  };
 
   const values: StyleColorContextProps & StyleColorContextActions = {
     hairstyle,
@@ -95,17 +130,38 @@ export const StyleColorProvider: React.FC<{ children: React.ReactNode }> = ({
     upperbodystyle,
     lowerbodystyle,
     headstyle,
-    setHairstyle: (style, color, front) =>
-      setHairstyle({ style, color, front }),
-    setEyestyle: (style, color) => setEyestyle({ style, color }),
-    setLipstyle: (style, color) => setLipstyle({ style, color }),
-    setEyeBrowStyle: (style, color) => setEyeBrowstyle({ style, color }),
-    setTopstyle: (style, color) => setTopstyle({ style, color }),
-    setBottomstyle: (style, color) => setBottomstyle({ style, color }),
-    setUpperBodystyle: (style, color) => setUpperBodystyle({ style, color }),
-    setLowerBodystyle: (style, color) => setLowerBodystyle({ style, color }),
-    setHeadstyle: color => setHeadstyle({ color }),
-    // Add more setter functions as needed
+
+    // Temporary values for immediate access
+    temporaryHairstyle,
+    temporaryEyestyle,
+    temporaryLipstyle,
+    temporaryEyebrowstyle,
+    temporaryTopstyle,
+    temporaryBottomstyle,
+    temporaryUpperBodystyle,
+    temporaryLowerBodystyle,
+    temporaryHeadstyle,
+
+    // Methods to update temporary states
+    setTemporaryHairstyle: (style, color, front) =>
+      setTemporaryHairstyle({ style, color, front }),
+    setTemporaryEyestyle: (style, color) =>
+      setTemporaryEyestyle({ style, color }),
+    setTemporaryLipstyle: (style, color) =>
+      setTemporaryLipstyle({ style, color }),
+    setTemporaryTopstyle: (style, color) =>
+      setTemporaryTopstyle({ style, color }),
+    setTemporaryEyebrowstyle: (style, color) =>
+      setTemporaryEyebrowstyle({ style, color }),
+    setTemporaryBottomstyle: (style, color) =>
+      setTemporaryBottomstyle({ style, color }),
+    setTemporaryUpperBodystyle: (style, color) =>
+      setTemporaryUpperBodystyle({ style, color }),
+    setTemporaryLowerBodystyle: (style, color) =>
+      setTemporaryLowerBodystyle({ style, color }),
+    setTemporaryHeadstyle: color => setTemporaryHeadstyle({ color }),
+
+    saveStyles,
   };
 
   return (

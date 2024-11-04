@@ -16,34 +16,36 @@ interface Props {
 const SkinColorSwitcher: React.FC<Props> = ({ feature, colors }) => {
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const {
-    headstyle,
-    upperbodystyle,
-    lowerbodystyle,
-    setUpperBodystyle,
-    setLowerBodystyle,
-    setHeadstyle,
+    // Temporary styles for displaying changes
+    temporaryHeadstyle,
+    temporaryUpperBodystyle,
+    temporaryLowerBodystyle,
+
+    // Temporary state setters
+    setTemporaryUpperBodystyle,
+    setTemporaryLowerBodystyle,
+    setTemporaryHeadstyle,
   } = useStyleColor();
 
   const goToNextColor = () => {
-    setCurrentColorIndex(prevIndex => (prevIndex + 1) % colors.length);
-    updateStyles((currentColorIndex + 1) % colors.length);
+    const nextIndex = (currentColorIndex + 1) % colors.length;
+    setCurrentColorIndex(nextIndex);
+    updateStyles(nextIndex);
   };
 
   const goToPreviousColor = () => {
-    setCurrentColorIndex(prevIndex =>
-      prevIndex === 0 ? colors.length - 1 : prevIndex - 1,
-    );
-    updateStyles(
-      currentColorIndex === 0 ? colors.length - 1 : currentColorIndex - 1,
-    );
+    const prevIndex =
+      currentColorIndex === 0 ? colors.length - 1 : currentColorIndex - 1;
+    setCurrentColorIndex(prevIndex);
+    updateStyles(prevIndex);
   };
 
-  // Function to update styles when changing color
+  // Function to update temporary styles when changing color
   const updateStyles = (index: number) => {
     const color = colors[index];
-    setUpperBodystyle(upperbodystyle.style, color);
-    setLowerBodystyle(lowerbodystyle.style, color);
-    setHeadstyle(color);
+    setTemporaryUpperBodystyle(temporaryUpperBodystyle.style, color);
+    setTemporaryLowerBodystyle(temporaryLowerBodystyle.style, color);
+    setTemporaryHeadstyle(color);
   };
 
   return (
@@ -53,7 +55,7 @@ const SkinColorSwitcher: React.FC<Props> = ({ feature, colors }) => {
         <PickerBox>
           <ButtonWithIcon onClick={goToPreviousColor} direction="prev" />
           <div>
-            <span>{headstyle.color}</span>
+            <span>{temporaryHeadstyle.color}</span>
           </div>
           <ButtonWithIcon onClick={goToNextColor} direction="next" />
         </PickerBox>

@@ -53,7 +53,7 @@ const ShopSwitcherTabs = styled.div`
   flex-direction: row;
   width: 100%;
   height: 3rem;
-  background-color: #f8f9fa;
+  background: ${({ theme }) => theme.card};
   justify-content: space-around;
   border-radius: 5px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);

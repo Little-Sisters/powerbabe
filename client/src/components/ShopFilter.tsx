@@ -61,7 +61,7 @@ const CardContainer = styled(motion.div)`
   justify-content: space-between;
   gap: 5rem;
   padding: 1rem;
-  background-color: white;
+  background: ${({ theme }) => theme.card};
   border-radius: 5px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;

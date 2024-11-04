@@ -2,12 +2,18 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Character from '../components/Character';
 import DesktopSideContentDressupStyle from '../components/DesktopSideContentDressupStyle';
-import DesktopSideContentDressupWardrobe from '../components/DesktopSideContentDressupWardrobe';
+import DesktopSideContentDressupWardrobe, {
+  ReadyButton,
+} from '../components/DesktopSideContentDressupWardrobe';
 import MobileSideContentDressup from '../components/MobileSideContentDressup';
 import useMediaQuery from '../hooks/useMediaQuery';
+import { useStyleColor } from '../contexts/styleColorContext';
 
 function DressingRoomPage() {
   const isMobile = useMediaQuery({ breakpoint: 1051 });
+
+  const { saveStyles } = useStyleColor();
+
   const backgrounds = [
     './backgrounds/room1.png',
     './backgrounds/room_pink.png',
@@ -21,6 +27,11 @@ function DressingRoomPage() {
       prevIndex => (prevIndex + 1) % backgrounds.length,
     );
   };
+
+  const handleSave = () => {
+    saveStyles();
+  };
+
   return (
     <DressingRoomContainer>
       {!isMobile && (
@@ -29,19 +40,20 @@ function DressingRoomPage() {
         </SideSection>
       )}
       <MainSection backgroundImage={backgrounds[currentBackgroundIndex]}>
-        <Character />
+        <Character showTemporary={true} />
         <ChangeBackgroundButton
           onClick={handleChangeBackground}
           className="btn-secondary"
         >
           Change room
         </ChangeBackgroundButton>
+        {isMobile && <ReadyButton onClick={handleSave}>Save!</ReadyButton>}
       </MainSection>
       <SideSection>
         {isMobile ? (
           <MobileSideContentDressup />
         ) : (
-          <DesktopSideContentDressupWardrobe />
+          <DesktopSideContentDressupWardrobe onSave={handleSave} />
         )}
       </SideSection>
     </DressingRoomContainer>
