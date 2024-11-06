@@ -117,6 +117,7 @@ const SortSelect = styled(Select)<{ isClearable: boolean }>`
 
   .react-select__menu {
     border-radius: 5px;
+    color: #333;
   }
   @media (max-width: 1051px) {
     width: 30%;

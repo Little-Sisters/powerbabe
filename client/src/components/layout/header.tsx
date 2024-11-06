@@ -9,9 +9,10 @@ import PageContentWrapper from './styled';
 interface HeaderProps {
   themeToggler: () => void;
   theme: string;
+  headerLinks: Array<{ path: string; label: string }>;
 }
 
-function Header({ themeToggler, theme }: HeaderProps) {
+function Header({ themeToggler, theme, headerLinks }: HeaderProps) {
   const isMobile = useMediaQuery({ breakpoint: 768 });
   const [isMenuOpen, setMenuOpen] = useState(false);
 
@@ -42,23 +43,25 @@ function Header({ themeToggler, theme }: HeaderProps) {
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               >
                 <CloseMenu onClick={toggleMenu}>×</CloseMenu>
-                <StyledNavLink onClick={toggleMenu} to="/">
-                  Home
-                </StyledNavLink>
-                <StyledNavLink onClick={toggleMenu} to="/shop">
-                  Shop
-                </StyledNavLink>
-                <StyledNavLink onClick={toggleMenu} to="/dressing-room">
-                  Dressing room
-                </StyledNavLink>
+                {headerLinks.map(link => (
+                  <StyledNavLink
+                    key={link.path}
+                    onClick={toggleMenu}
+                    to={link.path}
+                  >
+                    {link.label}
+                  </StyledNavLink>
+                ))}
               </MobileNav>
             </>
           ) : (
             <Nav>
               <ThemeToggler themeToggler={themeToggler} theme={theme} />
-              <StyledNavLink to="/">Home</StyledNavLink>
-              <StyledNavLink to="/shop">Shop</StyledNavLink>
-              <StyledNavLink to="/dressing-room">Dressing room</StyledNavLink>
+              {headerLinks.map(link => (
+                <StyledNavLink key={link.path} to={link.path}>
+                  {link.label}
+                </StyledNavLink>
+              ))}
             </Nav>
           )}
         </HeaderFlex>

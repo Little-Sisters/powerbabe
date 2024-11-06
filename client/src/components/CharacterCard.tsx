@@ -1,25 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useUser } from '../contexts/UserContext';
 import Character from './Character'; // Assume you have a Character component
 
-interface CharacterCardProps {
-  name: string;
-  stats: {
-    strength: number;
-    agility: number;
-    intelligence: number;
-  };
-}
+const CharacterCard: React.FC = () => {
+  const { username, characterName, ranking, styles, myStatus } = useUser();
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ name, stats }) => {
   return (
     <CardWrapper>
       <CharacterInfo>
-        <CharacterName>{name}</CharacterName>
+        <CharacterName>{username}</CharacterName>
         <StatsList>
-          <StatItem>Points: {stats.strength}</StatItem>
-          <StatItem>Ranking: {stats.agility}</StatItem>
-          <StatItem>Intelligence: {stats.intelligence}</StatItem>
+          <StatItem>Character name: {characterName}</StatItem>
+          <StatItem>Ranking: {ranking}</StatItem>
+          <StatItem>Haircolor: {styles.hairstyle.color}</StatItem>
+          <StatItem>status: {myStatus}</StatItem>
         </StatsList>
       </CharacterInfo>
       <CharacterContainer>
@@ -34,17 +29,17 @@ const CardWrapper = styled.div`
   flex-direction: row;
   align-items: space-between;
   padding: 1rem;
-  border: 1px solid #ddd;
   border-radius: 8px;
   background: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.text};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 2rem;
-  height: 25rem;
+  height: 40rem;
   width: 100%;
   gap: 1rem;
+  margin-top: 4rem;
   @media (min-width: 768px) {
-    width: 25rem;
+    width: 50%;
   }
 `;
 const CharacterContainer = styled.div`
