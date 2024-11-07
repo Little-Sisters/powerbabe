@@ -106,6 +106,22 @@ export const hairstyleData: StylesAndColorsData[] = [
     purchased: true,
     pose: 1,
   },
+  {
+    number: '9',
+    title: 'Mermaid waves',
+    colors: [
+      'platinum',
+      'blonde',
+      'brown',
+      'black',
+      'ginger',
+      'green',
+      'pink',
+      'blue',
+      'striped',
+    ],
+    purchased: false,
+  },
 ];
 
 export const SHOPHairStyleData: StylesAndColorsData[] = [

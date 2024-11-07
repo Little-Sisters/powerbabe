@@ -43,4 +43,10 @@ export const eyestyleData: StylesAndColorsData[] = [
     colors: ['blue', 'green', 'brown', 'black'],
     purchased: true,
   },
+  {
+    number: '7',
+    title: 'Dive',
+    colors: ['blue', 'green', 'brown', 'black'],
+    purchased: true,
+  },
 ];

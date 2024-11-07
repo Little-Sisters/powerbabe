@@ -63,4 +63,10 @@ export const lipstyleData: StylesAndColorsData[] = [
     colors: ['burgundy', 'hotpink', 'bubblegum', 'orange', 'darkred', 'brown'],
     purchased: true,
   },
+  {
+    number: '6',
+    title: 'bubblegum',
+    colors: ['bubblegum'],
+    purchased: true,
+  },
 ];

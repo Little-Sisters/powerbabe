@@ -67,4 +67,11 @@ export const bottomstyleData: StylesAndColorsData[] = [
     pose: 3,
     purchased: true,
   },
+  {
+    number: '9',
+    title: 'Dive Dress',
+    colors: ['blue', 'black', 'red', 'hotpink', 'turqoise', 'yellow'],
+    pose: 2,
+    purchased: true,
+  },
 ];

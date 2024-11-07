@@ -119,4 +119,11 @@ export const SHOPtopstyleData: StylesAndColorsData[] = [
     purchased: false,
     SHOPimage: './shopImages/scuba.png',
   },
+  {
+    number: '9',
+    title: 'Dive Dress Top',
+    colors: ['blue', 'black', 'red', 'hotpink', 'turqoise', 'yellow'],
+    pose: 1,
+    purchased: false,
+  },
 ];
