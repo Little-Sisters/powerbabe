@@ -46,7 +46,9 @@ const ShopFilterCard: React.FC<ShopFilterCardProps> = ({
       <SortSelect
         options={sortOptions}
         value={sortOptions.find(option => option.value === selectedSort)}
-        onChange={onSortChange}
+        onChange={(newValue: SortOption | null) =>
+          onSortChange(newValue as SortOption | null)
+        }
         placeholder="Sort by"
         isClearable
       />

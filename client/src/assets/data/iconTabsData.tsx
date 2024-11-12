@@ -1,4 +1,5 @@
 // data/styleSwitchersData.ts
+import { StylesAndColorsData } from '../IStylesAndColors';
 import BottomsIcon from '../icons/BottomsIcon';
 import SkinIcon from '../icons/SkinIcon';
 import TopIcon from '../icons/TopIcon';
@@ -7,7 +8,15 @@ import EyeIcon from '../icons/eyestyle';
 import HairIcon from '../icons/hairstyle';
 import LipsIcon from '../icons/lipsIcon';
 
-export const styleSwitchersData = (skinColors, hairstyleData, eyestyleData, eyebrowstyleData, lipstyleData, topStylesData, bottomStyleData) => [
+export const styleSwitchersData = (
+  skinColors: string[],
+  hairstyleData: StylesAndColorsData[],
+  eyestyleData: StylesAndColorsData[],
+  eyebrowstyleData: StylesAndColorsData[],
+  lipstyleData: StylesAndColorsData[],
+  topStylesData: StylesAndColorsData[],
+  bottomStyleData: StylesAndColorsData[],
+) => [
   {
     feature: 'skincolor',
     stylesAndColors: skinColors,
