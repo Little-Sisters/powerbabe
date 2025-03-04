@@ -3,10 +3,14 @@ import { useStyleColor } from '../contexts/styleColorContext';
 import { ImageComponent } from './ImageComponent';
 
 interface CharacterProps {
-  showTemporary?: boolean; // Optional prop to determine which version to show
+  showTemporary?: boolean;
+  isLoggedInCharacter?: boolean;
 }
 
-const Character: React.FC<CharacterProps> = ({ showTemporary = false }) => {
+const Character: React.FC<CharacterProps> = ({
+  showTemporary = false,
+  isLoggedInCharacter = true,
+}) => {
   const {
     hairstyle,
     eyestyle,
@@ -16,8 +20,6 @@ const Character: React.FC<CharacterProps> = ({ showTemporary = false }) => {
     upperbodystyle,
     lowerbodystyle,
     lipstyle,
-
-    // Temporary states
     temporaryHairstyle,
     temporaryEyestyle,
     temporaryTopstyle,
@@ -28,21 +30,59 @@ const Character: React.FC<CharacterProps> = ({ showTemporary = false }) => {
     temporaryLipstyle,
   } = useStyleColor();
 
-  // Choose saved or temporary styles based on the `showTemporary` prop
-  const currentHairstyle = showTemporary ? temporaryHairstyle : hairstyle;
-  const currentEyestyle = showTemporary ? temporaryEyestyle : eyestyle;
-  const currentTopstyle = showTemporary ? temporaryTopstyle : topstyle;
-  const currentBottomstyle = showTemporary ? temporaryBottomstyle : bottomstyle;
-  const currentEyebrowstyle = showTemporary
-    ? temporaryEyebrowstyle
-    : eyebrowstyle;
-  const currentUpperBodystyle = showTemporary
-    ? temporaryUpperBodystyle
-    : upperbodystyle;
-  const currentLowerBodystyle = showTemporary
-    ? temporaryLowerBodystyle
-    : lowerbodystyle;
-  const currentLipstyle = showTemporary ? temporaryLipstyle : lipstyle;
+  // Hardcoded styles for non-logged-in characters
+  const defaultStyles = {
+    hairstyle: { style: '3', color: 'black', front: false },
+    eyestyle: { style: '7', color: 'blue' },
+    eyebrowstyle: { style: '3', color: 'black' },
+    lipstyle: { style: '2', color: 'brown' },
+    topstyle: { style: '1', color: 'red' },
+    bottomstyle: { style: '7', color: 'blue' },
+    upperbodystyle: { style: '1', color: 'dark' },
+    lowerbodystyle: { style: '3', color: 'dark' },
+  };
+
+  // Use saved or temporary styles for logged-in user, else use hardcoded styles
+  const currentHairstyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryHairstyle
+      : hairstyle
+    : defaultStyles.hairstyle;
+  const currentEyestyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryEyestyle
+      : eyestyle
+    : defaultStyles.eyestyle;
+  const currentEyebrowstyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryEyebrowstyle
+      : eyebrowstyle
+    : defaultStyles.eyebrowstyle;
+  const currentLipstyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryLipstyle
+      : lipstyle
+    : defaultStyles.lipstyle;
+  const currentTopstyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryTopstyle
+      : topstyle
+    : defaultStyles.topstyle;
+  const currentBottomstyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryBottomstyle
+      : bottomstyle
+    : defaultStyles.bottomstyle;
+  const currentUpperBodystyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryUpperBodystyle
+      : upperbodystyle
+    : defaultStyles.upperbodystyle;
+  const currentLowerBodystyle = isLoggedInCharacter
+    ? showTemporary
+      ? temporaryLowerBodystyle
+      : lowerbodystyle
+    : defaultStyles.lowerbodystyle;
 
   const imageComponents = [
     {

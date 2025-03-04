@@ -50,29 +50,25 @@ const DowntownPage: React.FC = () => {
               key={cardIndex}
               onClick={() => handleCardClick(cardIndex)}
             >
-              {characters.map(character =>
-                characterPositions[character.id] === cardIndex ? (
+              {characters.map(character => {
+                const isLoggedInCharacter = character.id === loggedInHeroId;
+
+                return characterPositions[character.id] === cardIndex ? (
                   <CharacterWrapper
                     key={character.id}
-                    animate={{
-                      scale: [1, 1.2, 1], // Optional scale effect
-                    }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 150,
-                      damping: 20,
-                    }}
-                    // Only allow clicks on the logged-in hero for movement
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ type: 'spring', stiffness: 150, damping: 20 }}
                     style={{
-                      pointerEvents:
-                        character.id === loggedInHeroId ? 'auto' : 'none',
+                      pointerEvents: isLoggedInCharacter ? 'auto' : 'none',
                     }}
                   >
-                    {/* Render Character component with relevant props */}
-                    <Character showTemporary={false} />
+                    <Character
+                      showTemporary={false}
+                      isLoggedInCharacter={isLoggedInCharacter}
+                    />
                   </CharacterWrapper>
-                ) : null,
-              )}
+                ) : null;
+              })}
             </ImageCard>
           ))}
         </MainImage>
