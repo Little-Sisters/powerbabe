@@ -6,8 +6,8 @@ import DesktopSideContentDressupWardrobe, {
   ReadyButton,
 } from '../components/DesktopSideContentDressupWardrobe';
 import MobileSideContentDressup from '../components/MobileSideContentDressup';
-import useMediaQuery from '../hooks/useMediaQuery';
 import { useStyleColor } from '../contexts/styleColorContext';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 function DressingRoomPage() {
   const isMobile = useMediaQuery({ breakpoint: 1051 });
@@ -47,7 +47,11 @@ function DressingRoomPage() {
         >
           Change room
         </ChangeBackgroundButton>
-        {isMobile && <ReadyButton onClick={handleSave}>Save!</ReadyButton>}
+        {isMobile && (
+          <AbsoluteButton>
+            <ReadyButton onClick={handleSave}>Save!</ReadyButton>
+          </AbsoluteButton>
+        )}
       </MainSection>
       <SideSection>
         {isMobile ? (
@@ -59,6 +63,14 @@ function DressingRoomPage() {
     </DressingRoomContainer>
   );
 }
+
+const AbsoluteButton = styled.div`
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  z-index: 500;
+  cursor: pointer;
+`;
 
 const DressingRoomContainer = styled.section`
   display: flex;

@@ -75,8 +75,8 @@ export const ReadyButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
 `;
 
 export const NameBox = styled.div`

@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.white || theme.text};
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -42,7 +42,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.secondary || theme.primary};
     color: ${({ theme }) => theme.text};
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -65,7 +65,7 @@ export const GlobalStyles = createGlobalStyle`
  button {
    cursor: pointer;
     background: ${({ theme }) => theme.button};
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     font-weight:bold;
     color: ${({ theme }) => theme.white};
     transition: all 0.30s linear;
